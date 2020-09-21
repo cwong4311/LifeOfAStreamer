@@ -17,7 +17,7 @@ public class PlatformGenerator : MonoBehaviour
 
     private float totalScore;
 
-    private bool running;
+    private bool running = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,14 +29,16 @@ public class PlatformGenerator : MonoBehaviour
     void Update()
     {
         if (Globals.gameSetting == -1) {
-            foreach(MonoBehaviour c in  myPlayer.GetComponents<MonoBehaviour>()) {c.enabled = false;}
+            foreach(MonoBehaviour c in myPlayer.GetComponents<MonoBehaviour>()) {c.enabled = false;}
+            myPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             running = false;
             return;
         }
 
         if (!running) {
             running = true;
-            foreach(MonoBehaviour c in  myPlayer.GetComponents<MonoBehaviour>()) {c.enabled = true;}
+            foreach(MonoBehaviour c in myPlayer.GetComponents<MonoBehaviour>()) {c.enabled = true;}
+            myPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
 
         bool spawnPlatform = false;

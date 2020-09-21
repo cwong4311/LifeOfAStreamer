@@ -6,7 +6,7 @@ public class LScreenController : MonoBehaviour
 {
     public GameObject[] myGames;
     private int chooseGame = 0;
-    private bool firstDailyFlick = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,17 +33,14 @@ public class LScreenController : MonoBehaviour
                 break;
         }
 
-        if (!firstDailyFlick) {
-            StartCoroutine(Countdown(delay, messageBox));
-            firstDailyFlick = true;
-        } else {
-            Globals.gameSetting = 0;
-        }
+        StartCoroutine(Countdown(delay, messageBox));
     }
 
     public IEnumerator Countdown(int duration, GameObject countdown)
     {
         int t = duration;
+        countdown.SetActive(true);
+
         while (t > 0) {
             countdown.GetComponent<TextMesh>().text = "" + t;
             yield return new WaitForSeconds(1);

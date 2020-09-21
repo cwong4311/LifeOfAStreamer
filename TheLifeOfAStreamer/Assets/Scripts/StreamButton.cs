@@ -19,7 +19,9 @@ public class StreamButton : MonoBehaviour
 		if (myButton == ButtonType.Leave) {
 			myCamera.GetComponentInChildren<CameraPan>().ResetViews();
 			Globals.gameSetting = -1;
+			Globals.hasStreamed = true;
 		} else if (myButton == ButtonType.Finish) {
+			Globals.prevAction = "stream";
 			myFade.GetComponent<DayHandler>().DayEnd();
 		} 
 	}

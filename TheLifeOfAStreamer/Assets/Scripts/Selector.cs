@@ -33,11 +33,17 @@ public class Selector : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * interactionDistance);
         if(Physics.Raycast (transform.position, transform.forward, out hit, interactionDistance)) {
             if (hit.collider.tag == "Selectable") {
-                    hit.transform.gameObject.GetComponent<Selectable>().TriggerHighlight();
-                    if (Input.GetMouseButtonDown(0)) {
-                        hit.transform.gameObject.GetComponent<Selectable>().OnSelect();
+                hit.transform.gameObject.GetComponent<Selectable>().TriggerHighlight();
+                if (Input.GetMouseButtonDown(0)) {
+                    Selectable myObject = hit.transform.gameObject.GetComponent<Selectable>();
+                    if (myObject.objectType == Selectable.ObjectType.Stream) {
                         GetComponentInChildren<CameraPan>().ChangeViews();
+                    } else if (myObject.objectType == Selectable.ObjectType.Interact) {
+                        hit.transform.gameObject.GetComponent<Selectable>().InteractSelect();
+                    } else if (myObject.objectType == Selectable.ObjectType.Text) {
+                        hit.transform.gameObject.GetComponent<Selectable>().TextSelect();
                     }
+                }
             }
         }
 

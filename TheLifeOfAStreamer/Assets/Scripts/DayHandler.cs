@@ -18,23 +18,27 @@ public class DayHandler : MonoBehaviour
     {
         
     }
-
-    public void DayEnd() {
+    public void DayEnd(float attitude, float popularity) {
         viewerSystem.GetComponent<ViewerControlSystem>().endDay();
 
         Globals.gameSetting = -1;
         Globals.days += 1;
         Globals.prevViewer = Globals.dayViewer;
+        Globals.hasStreamed = false;
 		
-        Globals.attitude += Random.Range(-3f, 3f) + Globals.dayAttitude; // TO DO: Add Factors
-        Globals.popularity += Random.Range(-3f, 3f) + (Globals.gameScore / 300f) + 
-                                ((float) (Globals.dayViewer - Globals.prevViewer) / 10f) +
-                                ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f));
+        Globals.attitude += attitude;
+        Globals.popularity += popularity;
         Globals.gameScore = 0;
         Globals.dayViewer = 0;
         FadeOut();
     }
-
+    public void DayEnd() {
+        float attitude = Random.Range(-3f, 3f) + Globals.dayAttitude;   // TO DO: Better Formula
+        float popularity = Random.Range(-3f, 3f) + (Globals.gameScore / 300f) + 
+                                ((float) (Globals.dayViewer - Globals.prevViewer) / 10f) +
+                                ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f));
+        DayEnd(attitude, popularity);
+    }
     public void FadeOut() {
         myFade.SetTrigger("FadeOut");
     }
@@ -70,26 +74,65 @@ public class DayHandler : MonoBehaviour
             myText = "Finally got my streaming equipment all set up.\nI can finally start streaming!";
             myDuration = 4f;
         } else if (Globals.days == 2) {
-            myText = "Things didn't go too bad last time.\nHope today goes alright too";
+            if (Globals.prevAction == "stream") {
+                myText = "Things didn't go too bad last time.\nHope today goes alright too";
+            } else {
+                myText = "I ended up putting it off yesterday\nHope today's the day";
+            }
         } else if (Globals.days == 3) {
-            myText = "Third day on the job.\nHere goes nothing!";
+            if (Globals.prevAction == "stream") {
+                myText = "Another day on the job.\nHere goes nothing!";
+            } else {
+                myText = "Gotta start somewhere. Let's stream today";
+            }
         } else if (Globals.days == 4) {
-            myText = "Yeah, I feel pretty used to streaming now.\nIf only I could actually start making money off this";
-            myDuration = 4f;
+            if (Globals.prevAction == "stream") {
+                myText = "Yeah, I feel pretty used to streaming now.\nIf only I could actually start making money off this";
+                myDuration = 4f;
+            } else {
+                myText = "Taking breaks like this might feel good but I'll never get anywhere";
+                myDuration = 4f;  
+            }
         } else if (Globals.days == 60) {
             myText = "GAME OVER! End of Demo";
         } else {
             if (Globals.attitude > -THRESHOLD && Globals.attitude < THRESHOLD) {
-                myText = "Let's stream again today!";
+                if (Globals.prevAction == "stream") {
+                    myText = "Let's stream again today!";
+                } else {
+                    myText = "I didn't end up streaming yesterday..\nI probably should today";
+                }
             } else if (Globals.attitude >= THRESHOLD && Globals.attitude < THRESHOLD*2) {
-                myText = "Streaming's pretty fun!";
+                if (Globals.prevAction == "stream") {
+                    myText = "Streaming's pretty fun!";
+                } else {
+                    myText = "I got a good break yesterday.\nMy viewers are waiting for me!";
+                }
             } else if (Globals.attitude >= THRESHOLD*2) {
                 myText = "Let's get right into it again today!";
             } else if (Globals.attitude > -THRESHOLD*2 && Globals.attitude <= -THRESHOLD) {
-                myText = "Another day of streaming";
+                if (Globals.prevAction == "stream") {
+                    myText = "Another day of streaming";
+                } else {
+                    myText = "Maybe I should go somewhere and fun today";
+                    myColor = Color.red;                    
+                }
             } else if (Globals.attitude <= -THRESHOLD*2) {
-                myText = "Gotta stream again today...";
-                myColor = Color.red;
+                if (Globals.prevAction == "stream") {
+                    myText = "Gotta stream again today...";
+                    myColor = Color.red;
+                } else {
+                    myText = "Is streaming really what I want to do..?";
+                    myColor = Color.red;
+                }
+            } else if (Globals.attitude <= -THRESHOLD*3) {
+                if (Globals.prevAction == "stream") {
+                    myText = "I'm pretty done with this whole thing...";
+                    myColor = Color.red;
+                } else {
+                    myText = "Even though I didn't stream yesterday, I still feel so bad today";
+                    myColor = Color.red;
+                }
             }
         }
 

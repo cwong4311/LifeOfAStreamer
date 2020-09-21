@@ -39,7 +39,7 @@ public class CameraPan : MonoBehaviour
         StartCoroutine(ScreenFlick(false, 0.02f));
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        ToggleController(true);
+        StartCoroutine(WaitToToggleController(0.7f));
     }
     public IEnumerator PanToPosition(Transform start, Transform destination, float timeToMove)
     {
@@ -75,5 +75,16 @@ public class CameraPan : MonoBehaviour
         {
             c.enabled = flag;
         }
+    }
+
+    private IEnumerator WaitToToggleController(float delay) {
+        var t = 0f;
+        while(t < 1)
+        {
+             t += Time.deltaTime / delay;
+             yield return null;
+        }
+
+        ToggleController(true);
     }
 }

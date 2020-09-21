@@ -27,23 +27,26 @@ public class TextHandler : MonoBehaviour
             }
         }
     }
-    public void SetText(string message, float duration, float delay, Color myColor) {
+    public bool SetText(string message, float duration, float delay, Color myColor) {
         if (!running) {
             StartCoroutine(FadeIn(message, delay, myColor));
             TextDuration = duration;
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public void SetText(string message, float duration, float delay) {
-        SetText(message, duration, delay, Color.white);
+    public bool SetText(string message, float duration, float delay) {
+        return SetText(message, duration, delay, Color.white);
     }
 
-    public void SetText(string message, Color myColor) {
-        SetText(message, 3, 0, myColor);
+    public bool SetText(string message, Color myColor) {
+        return SetText(message, 3, 0, myColor);
     }
 
-    public void SetText(string message) {
-        SetText(message, 3, 0, Color.white);
+    public bool SetText(string message) {
+        return SetText(message, 3, 0, Color.white);
     }
 
     private IEnumerator FadeIn(string message, float delay, Color toColor)

@@ -124,6 +124,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 239087244}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &20123442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20123441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de3cb7aa0d67f45b9e0f33b9ab3291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMat:
+  - {fileID: 2100000, guid: fa16bf03626018f4fb25ce6d7f2eacf4, type: 2}
+  highlightMat:
+  - {fileID: 2100000, guid: 76a35bf5b481dff46b7e6e36bf1b82ae, type: 2}
+  objectType: 3
+  Messages:
+  - Just some old books.<br>I'll look at them later.
+  myDayHandler: {fileID: 0}
+  attitudeModifier: 0
 --- !u!4 &20123444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7cfa04f583975954aa13136ef3e0b02f,
@@ -1054,6 +1075,33 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 174721935}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &104475286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104475285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de3cb7aa0d67f45b9e0f33b9ab3291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMat:
+  - {fileID: 2100000, guid: 98494bf1722d32b42a454c80bec369ff, type: 2}
+  - {fileID: 2100000, guid: 07466865fa7d41e488aa74fbcbc933fe, type: 2}
+  - {fileID: 2100000, guid: b82c4cba74a50724b9625c2e8760725a, type: 2}
+  highlightMat:
+  - {fileID: 2100000, guid: 7f97ab6d2a9e70749ab185db3f4e364b, type: 2}
+  - {fileID: 2100000, guid: e708f92858bc1ac4780ce232d608ff89, type: 2}
+  - {fileID: 2100000, guid: f0bab5f8fecb92a4aa8a6dce2c587d8d, type: 2}
+  objectType: 2
+  Messages:
+  - Think I'll go back to sleep instead..<br> Streaming can wait.
+  - I'll just skip streaming today.
+  - Not feeling too well...
+  myDayHandler: {fileID: 1649436046}
+  attitudeModifier: 0
 --- !u!4 &104475288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 8e19e8a4659f4f24cacf10336e87fad4,
@@ -3322,7 +3370,10 @@ MonoBehaviour:
   highlightMat:
   - {fileID: 2100000, guid: 76a35bf5b481dff46b7e6e36bf1b82ae, type: 2}
   - {fileID: 2100000, guid: 728e773bb120d62458edd93eb69021d9, type: 2}
-  MyMessage: 
+  objectType: 1
+  Messages: []
+  myDayHandler: {fileID: 1649436046}
+  attitudeModifier: 0
 --- !u!1 &354425452
 GameObject:
   m_ObjectHideFlags: 0
@@ -5536,6 +5587,7 @@ GameObject:
   - component: {fileID: 587260776}
   - component: {fileID: 587260775}
   - component: {fileID: 587260774}
+  - component: {fileID: 587260777}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -5615,6 +5667,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587260772}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &587260777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587260772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de3cb7aa0d67f45b9e0f33b9ab3291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMat:
+  - {fileID: 2100000, guid: a2cf318a09a163649a2c76965f3e0e36, type: 2}
+  highlightMat:
+  - {fileID: 2100000, guid: a2cf318a09a163649a2c76965f3e0e36, type: 2}
+  objectType: 3
+  Messages:
+  - The grass is always greener on the other side..
+  - Maybe I should take a stroll in the city today
+  - The weather's not too bad.<br>Maybe I should go out for a bit.
+  myDayHandler: {fileID: 0}
+  attitudeModifier: 0
 --- !u!1001 &605922692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11520,6 +11595,29 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1756199422}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1412028863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412028862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de3cb7aa0d67f45b9e0f33b9ab3291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMat:
+  - {fileID: 2100000, guid: 442138e92c5eb084f87ea8ffa8b34009, type: 2}
+  highlightMat:
+  - {fileID: 2100000, guid: c29a4532487eea444baf8961ff2b5581, type: 2}
+  objectType: 2
+  Messages:
+  - Guess I'll go out<br>Grab some food instead...
+  - I wanna hang out today instead.
+  - Gotta take care of some stuff today.
+  myDayHandler: {fileID: 1649436046}
+  attitudeModifier: 1
 --- !u!65 &1412028865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13509,9 +13607,21 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
       propertyPath: m_JumpForce
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
@@ -16722,6 +16832,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2052148585}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2145772440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145772439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de3cb7aa0d67f45b9e0f33b9ab3291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMat:
+  - {fileID: 2100000, guid: 6795752bf2314a7468323eb69bd639b6, type: 2}
+  highlightMat:
+  - {fileID: 2100000, guid: 15b8f856dadc274409acf16ea7f26d5f, type: 2}
+  objectType: 3
+  Messages:
+  - Just some old books.<br>I'll look at them later.
+  myDayHandler: {fileID: 0}
+  attitudeModifier: 0
 --- !u!4 &2145772442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 59ba46532e1b9794b903649fbb78b885,

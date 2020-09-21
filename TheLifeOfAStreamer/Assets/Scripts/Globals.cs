@@ -11,8 +11,11 @@ public static class Globals
     public static int prevViewer = 0;
     public static float dayAttitude = 0f;
 
+    public static string prevAction = "stream";
+
     public static float mentalThreshold = 2f;
     public static float gameSetting = 0f;
+    public static bool hasStreamed = false;
     public static float gameScore = 0f;
 
     public static int returningViewers = 0;
