@@ -7,6 +7,7 @@ public class PlatformGenerator : MonoBehaviour
     public GameObject myPlatform;
     public GameObject myPlayer;
     public GameObject myUI;
+    public GameObject myRootObject;
     private Vector2 y_boundary = new Vector2(-7f, 7f);
     private Vector3 origin = new Vector3(18f, 0f, -0.5f);
     private float origin_y = 3f;
@@ -22,7 +23,7 @@ public class PlatformGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.gameObject.tag = "Untagged";
     }
 
     // Update is called once per frame
@@ -87,7 +88,9 @@ public class PlatformGenerator : MonoBehaviour
 
     public void GameOver() {
         Globals.gameSetting = -1;
-        Globals.gameScore = totalScore;
+        Globals.gameScore = (Globals.gameScore > totalScore) ? Globals.gameScore : totalScore;
+
+        myRootObject.tag = "GameOver";
 
         myPlayer.SetActive(false);
         myUI.transform.Find("GameOver").gameObject.SetActive(true);

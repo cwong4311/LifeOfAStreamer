@@ -8,6 +8,11 @@ public class AudienceCount : MonoBehaviour
     public bool leftAlign = false;
     private int prevLength = 1;
 
+    void Start() 
+    {
+        trackChildValue = GameObject.Find("Audience");
+    }
+
     // Update is called once per frame
     void Update()
     {

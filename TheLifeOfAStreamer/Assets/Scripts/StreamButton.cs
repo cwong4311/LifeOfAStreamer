@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ButtonType {Leave, Finish};
+public enum ButtonType {Leave, Finish, Reset};
 public class StreamButton : MonoBehaviour
 {
 	public GameObject myCamera;
@@ -23,6 +23,8 @@ public class StreamButton : MonoBehaviour
 		} else if (myButton == ButtonType.Finish) {
 			Globals.prevAction = "stream";
 			myFade.GetComponent<DayHandler>().DayEnd();
-		} 
+		} else if (myButton == ButtonType.Reset) {
+			myFade.GetComponent<LScreenController>().ResetGame();
+		}
 	}
 }
