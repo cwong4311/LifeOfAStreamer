@@ -14,7 +14,7 @@ public class Perishable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Globals.gameSetting == -1) {return;}
+        if (Globals.gameFlag == -1) {return;}
         
         transform.position += new Vector3(-0.1f, 0, 0);
         lifetime += Time.deltaTime;

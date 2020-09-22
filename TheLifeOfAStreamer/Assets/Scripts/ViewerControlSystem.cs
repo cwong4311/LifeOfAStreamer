@@ -41,14 +41,14 @@ public class ViewerControlSystem : MonoBehaviour
         }
 
         // FOR DEMO PURPOSES
-        if (Globals.days == 3 && Globals.gameSetting != -1 && test_created > 0) {
+        if (Globals.days == 3 && Globals.gameFlag != -1 && test_created > 0) {
             createViewer();
             if (test_created == 1) createTroll();
             test_created --;
         } 
         
         // Generate Viewer with delay (seconds)
-        if (Globals.days >= 3 && Globals.gameSetting != -1) {
+        if (Globals.days >= 3 && Globals.gameFlag != -1) {
             float spawnDelay = 60f - (float) Globals.days - (float) Globals.popularity;
             if (spawnDelay < 5) spawnDelay = 5;
             

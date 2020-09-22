@@ -21,7 +21,7 @@ public class DayHandler : MonoBehaviour
     public void DayEnd(float attitude, float popularity) {
         viewerSystem.GetComponent<ViewerControlSystem>().endDay();
 
-        Globals.gameSetting = -1;
+        Globals.gameFlag = -1;
         Globals.days += 1;
         Globals.prevViewer = Globals.dayViewer;
         Globals.hasStreamed = false;

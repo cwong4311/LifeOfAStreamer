@@ -7,7 +7,6 @@ public class LScreenController : MonoBehaviour
     public GameObject[] myGames;
 
     private GameObject spawnedGame = null;
-    private int chooseGame = 0;
 
     public GameObject resetButton;
 
@@ -20,19 +19,21 @@ public class LScreenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnedGame.tag != "GameOver") {
-            resetButton.SetActive(false);
-        } else {
-            resetButton.SetActive(true);
+        if (spawnedGame != null) {
+            if (spawnedGame.tag != "GameOver") {
+                resetButton.SetActive(false);
+            } else {
+                resetButton.SetActive(true);
+            }
         }
     }
 
     void OnEnable()
     {
-        Globals.gameSetting = -1;
+        Globals.gameFlag = -1;
         int delay; GameObject messageBox;
-
-        switch(chooseGame) {
+        
+        switch(Globals.gameType) {
             case 0:
             default:
                 if (spawnedGame == null) spawnedGame = Instantiate(myGames[0]);
@@ -59,7 +60,7 @@ public class LScreenController : MonoBehaviour
             t--;
         }
         countdown.GetComponent<TextMesh>().text = "Go";
-        Globals.gameSetting = 0;
+        Globals.gameFlag = 0;
 
         yield return new WaitForSeconds(1);
 

@@ -36,7 +36,7 @@ public class CameraPan : MonoBehaviour
     public void ResetViews()
     {
         StartCoroutine(PanToPosition(this.transform, originalTrans, 0.7f));
-        StartCoroutine(ScreenFlick(false, 0.02f));
+        StartCoroutine(ScreenFlick(false, 0.015f));
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         StartCoroutine(WaitToToggleController(0.7f));

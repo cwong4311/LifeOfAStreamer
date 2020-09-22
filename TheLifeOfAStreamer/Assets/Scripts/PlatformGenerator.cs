@@ -29,7 +29,7 @@ public class PlatformGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Globals.gameSetting == -1) {
+        if (Globals.gameFlag == -1) {
             foreach(MonoBehaviour c in myPlayer.GetComponents<MonoBehaviour>()) {c.enabled = false;}
             myPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             running = false;
@@ -87,7 +87,7 @@ public class PlatformGenerator : MonoBehaviour
     }
 
     public void GameOver() {
-        Globals.gameSetting = -1;
+        Globals.gameFlag = -1;
         Globals.gameScore = (Globals.gameScore > totalScore) ? Globals.gameScore : totalScore;
 
         myRootObject.tag = "GameOver";
