@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Streamer_0.3-FirstInteractable.unity
     guid: ebe695e8cf9bd4247833c4facea50e75
+  - enabled: 1
+    path: Assets/Scenes/Streamer_0.5-StreamerViewer.unity
+    guid: 58bb709386f83d14fac2f1e5cef4b7e1
   m_configObjects: {}
