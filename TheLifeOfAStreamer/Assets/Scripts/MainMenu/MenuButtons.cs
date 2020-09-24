@@ -7,7 +7,8 @@ public class MenuButtons : MonoBehaviour
     public enum MenuButtonType {
         None,
         Genre,
-        Platform
+        Platform,
+        MultimediaInput
     }
 
     public Material[] baseColour;
@@ -42,6 +43,10 @@ public class MenuButtons : MonoBehaviour
                         MenuController.GetComponent<MenuController>().SetGame(myGameType);
                     } else if (buttonType == MenuButtonType.Platform) {
                         MenuController.GetComponent<MenuController>().SetPlatform(myPlatformType);
+                    } else if (buttonType == MenuButtonType.MultimediaInput) {
+                        bool inputIsEnabled = false;
+                        if (myGameType == 0) inputIsEnabled = true;
+                        MenuController.GetComponent<MenuController>().SetWebcamAndMic(inputIsEnabled, inputIsEnabled);
                     }
                 }
             }

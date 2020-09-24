@@ -9,6 +9,9 @@ public class MenuController : MonoBehaviour
     private int streamPlatform = 0;
     private int currentMenu = 0;
     private bool gameStarted = false;
+    private bool webcamEnabled = false;
+    private bool micEnabled = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,8 +58,16 @@ public class MenuController : MonoBehaviour
         currentMenu++;
     }
 
+    public void SetWebcamAndMic(bool webcam, bool mic)
+    {
+        this.webcamEnabled = webcam;
+        this.micEnabled = mic;
+        currentMenu++;
+    }
+
     private void TransferGlobals() {
         Globals.gameType = gameMode;
+        Globals.webcamEnabled = this.webcamEnabled;
         //Globals.platformSetting = streamPlatform;
     }
 

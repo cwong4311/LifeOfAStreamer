@@ -6,11 +6,16 @@ public class DayHandler : MonoBehaviour
 {
     public Animator myFade;
     public GameObject viewerSystem;
+
+    private float dailyTimeLimit = 60f; //Time limit of each session, in Seconds.
+
     // Start is called before the first frame update
     void Start()
     {
         if (Globals.days == 1) runDailyQuote();
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        StartCoroutine(DayLimitHandler());
     }
 
     // Update is called once per frame
@@ -137,5 +142,41 @@ public class DayHandler : MonoBehaviour
         }
 
         myMessage.SetText(myText, myDuration, myDelay, myColor);
+    }
+
+    IEnumerator DayLimitHandler()
+    {
+        TextHandler myMessage = GameObject.Find("PlayerMessage").GetComponent<TextHandler>();
+        string myText = ""; float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
+        int dayMilestones = 0;
+        float time = 0f;
+
+        while (time < dailyTimeLimit)
+        {
+            yield return new WaitForSeconds(1);
+            time++;
+
+            if (time >= dailyTimeLimit * 0.7f && dayMilestones == 0)
+            {
+                dayMilestones++;
+                myText = "I'm starting to get a bit tired";
+                myMessage.SetText(myText, myDuration, myDelay, myColor);
+            }
+            else if (time >= dailyTimeLimit * 0.9f && dayMilestones == 1)
+            {
+                dayMilestones++;
+                myText = "Should probably wrap up soon...";
+                myMessage.SetText(myText, myDuration, myDelay, myColor);
+            }
+        }
+
+        myText = "I'm gonna pass ou-...";
+        myColor = Color.red;
+        myMessage.SetText(myText, myDuration, myDelay, myColor);
+        Globals.attitude -= 5f;
+
+        yield return new WaitForSeconds(3);
+
+        DayEnd();
     }
 }

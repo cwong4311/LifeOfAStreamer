@@ -22,6 +22,7 @@ public static class Globals
     public static int returningViewers = 0;
 
     public static string username = "Player";
+    public static bool webcamEnabled = false;
 
     public static int LoadScene = -1;
 }
