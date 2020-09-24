@@ -160,19 +160,28 @@ public class DayHandler : MonoBehaviour
             {
                 dayMilestones++;
                 myText = "I'm starting to get a bit tired";
-                myMessage.SetText(myText, myDuration, myDelay, myColor);
+                while (!myMessage.SetText(myText, myDuration, myDelay, myColor))
+                {
+                    yield return new WaitForSeconds(6);
+                }
             }
             else if (time >= dailyTimeLimit * 0.9f && dayMilestones == 1)
             {
                 dayMilestones++;
                 myText = "Should probably wrap up soon...";
-                myMessage.SetText(myText, myDuration, myDelay, myColor);
+                while (!myMessage.SetText(myText, myDuration, myDelay, myColor))
+                {
+                    yield return new WaitForSeconds(6);
+                }
             }
         }
 
         myText = "I'm gonna pass ou-...";
         myColor = Color.red;
-        myMessage.SetText(myText, myDuration, myDelay, myColor);
+        while (!myMessage.SetText(myText, myDuration, myDelay, myColor))
+        {
+            yield return new WaitForSeconds(6);
+        }
         Globals.attitude -= 5f;
 
         yield return new WaitForSeconds(3);
