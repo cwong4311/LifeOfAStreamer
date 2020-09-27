@@ -7,7 +7,6 @@ public class CameraPan : MonoBehaviour
     public GameObject destinationObj;
     public GameObject originObj;
     public GameObject myScreen;
-    public Camera myGameCam;
     private Transform destinationTrans;
     private Transform originalTrans;
     // Start is called before the first frame update
@@ -66,7 +65,6 @@ public class CameraPan : MonoBehaviour
              yield return null;
         }
         myScreen.SetActive(flag);
-        myGameCam.enabled = flag;
     }
 
     private void ToggleController(bool flag) {

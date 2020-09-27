@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class DayHandler : MonoBehaviour
 {
     public Animator myFade;
     public GameObject viewerSystem;
 
-    private float dailyTimeLimit = 60f; //Time limit of each session, in Seconds.
+    public GameObject myBlur;
+
+    private Material blurObj;
+
+    private float dailyTimeLimit = 900f; //Time limit of each session, in Seconds.
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +20,13 @@ public class DayHandler : MonoBehaviour
         if (Globals.days == 1) runDailyQuote();
         SceneManager.sceneLoaded += OnSceneLoaded;
 
+        if (Globals.days >= 15) {dailyTimeLimit = 1800f;}   //Streamer can stream twice as long after they get used to it
         StartCoroutine(DayLimitHandler());
+
+        if (myBlur != null) {
+            blurObj = Instantiate(myBlur.GetComponent<Image>().material);
+            myBlur.GetComponent<Image>().material = blurObj;
+        }
     }
 
     // Update is called once per frame
@@ -146,6 +157,8 @@ public class DayHandler : MonoBehaviour
 
     IEnumerator DayLimitHandler()
     {
+        bool triggerLapse = false;
+
         TextHandler myMessage = GameObject.Find("PlayerMessage").GetComponent<TextHandler>();
         string myText = ""; float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
         int dayMilestones = 0;
@@ -160,6 +173,7 @@ public class DayHandler : MonoBehaviour
             {
                 dayMilestones++;
                 myText = "I'm starting to get a bit tired";
+                triggerLapse = true;
                 while (!myMessage.SetText(myText, myDuration, myDelay, myColor))
                 {
                     yield return new WaitForSeconds(6);
@@ -174,6 +188,11 @@ public class DayHandler : MonoBehaviour
                     yield return new WaitForSeconds(6);
                 }
             }
+
+            if (triggerLapse && blurObj != null) {
+                StartCoroutine(BlurLapse());
+                triggerLapse = false;
+            }
         }
 
         myText = "I'm gonna pass ou-...";
@@ -184,8 +203,54 @@ public class DayHandler : MonoBehaviour
         }
         Globals.attitude -= 5f;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
 
+        StopCoroutine(BlurLapse());
         DayEnd();
+    }
+
+    IEnumerator BlurLapse() {
+        float currentTime = dailyTimeLimit * 0.7f;
+        float endTime = dailyTimeLimit;
+
+        bool goingUp = true;
+        float spectrum = 0f;
+        float blurLevel = 0f;
+        float blurMulti = 1f;
+
+        float waitTime = (endTime - currentTime) / 4f * -1;
+        float waitInc = (waitTime / 10) * -1;
+        float blurTime = 0.8f;
+
+        while (true) {
+            if (goingUp) {
+                blurObj.SetFloat("_Size", blurLevel);
+                blurLevel += (Time.deltaTime * blurMulti);
+
+                spectrum += Time.deltaTime;
+
+                if (spectrum >= blurTime) {
+                    goingUp = false;
+                }
+            } else {
+                if (spectrum >= 0f) {
+                    blurObj.SetFloat("_Size", blurLevel);
+                    blurLevel -= (Time.deltaTime * Mathf.Max(blurMulti / 1.2f, 1f));
+                }
+
+                spectrum -= Time.deltaTime;
+
+                if (spectrum <= waitTime) {
+                    spectrum = 0f;
+                    goingUp = true;
+                    blurMulti += (3f / (endTime - currentTime)); 
+                    waitTime += waitInc;    
+                    blurTime += 0.2f;
+                }
+            }
+
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }

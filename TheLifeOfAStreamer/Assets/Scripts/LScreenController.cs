@@ -10,6 +10,8 @@ public class LScreenController : MonoBehaviour
 
     public GameObject resetButton;
 
+    public GameObject GameSpawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class LScreenController : MonoBehaviour
         switch(Globals.gameType) {
             case 0:
             default:
-                if (spawnedGame == null) spawnedGame = Instantiate(myGames[0]);
+                if (spawnedGame == null) spawnedGame = Instantiate(myGames[0], GameSpawnPoint.transform);
                 spawnedGame.SetActive(true);
                 delay = 3; messageBox = spawnedGame.transform.Find("UI/GameOver").gameObject;
                 if (!Globals.webcamEnabled) { spawnedGame.transform.Find("UI/WebCam").gameObject.SetActive(false); }

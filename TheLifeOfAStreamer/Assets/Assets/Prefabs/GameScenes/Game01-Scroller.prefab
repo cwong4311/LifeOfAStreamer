@@ -690,7 +690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122510613837669652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.615498, y: 0.91566, z: 106.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1122510614266677474}
@@ -749,7 +749,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
+  - {fileID: 2100000, guid: 5963956b0a141a641819d753c79412f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1340,7 +1340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
+  - {fileID: 2100000, guid: 5963956b0a141a641819d753c79412f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1503,7 +1503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593385461551249219}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 12.5, y: -6.13, z: 1.33}
+  m_LocalPosition: {x: 12.41, y: -6.13, z: 0.86}
   m_LocalScale: {x: 9.792164, y: 6.4432173, z: 0.10873416}
   m_Children: []
   m_Father: {fileID: 1122510614636320148}
@@ -1586,6 +1586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1122510613837669655}
     m_Modifications:
+    - target: {fileID: 100002, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
+      propertyPath: m_Name
+      value: CharacterRobotBoy
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.874504
@@ -1642,10 +1646,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.3518299
       objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
-      propertyPath: m_Name
-      value: CharacterRobotBoy
-      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 11400000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1746,6 +1750,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208877865020654587, guid: 41d2e50066287bd448dadb2a735c5740,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5208877865020654587, guid: 41d2e50066287bd448dadb2a735c5740,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6854227
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208877865020654587, guid: 41d2e50066287bd448dadb2a735c5740,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.20198467
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208877865020654587, guid: 41d2e50066287bd448dadb2a735c5740,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8396226
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41d2e50066287bd448dadb2a735c5740, type: 3}

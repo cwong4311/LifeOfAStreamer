@@ -6,7 +6,7 @@ public static class Globals
 {
     public static int days = 1;
     public static float popularity = 0f;
-    public static float attitude = 0f;
+    public static float attitude = -100f;
     public static int dayViewer = 0;
     public static int prevViewer = 0;
     public static float dayAttitude = 0f;

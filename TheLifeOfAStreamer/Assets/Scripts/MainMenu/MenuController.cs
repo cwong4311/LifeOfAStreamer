@@ -30,7 +30,6 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (currentMenu < myMenus.Length - 1) {
             if (!myMenus[currentMenu].activeSelf) {
                 myMenus[currentMenu].SetActive(true);
