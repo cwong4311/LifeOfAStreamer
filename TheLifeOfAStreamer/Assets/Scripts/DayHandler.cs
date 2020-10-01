@@ -60,24 +60,11 @@ public class DayHandler : MonoBehaviour
     }
 
     public void OnFadeComplete() {
+        Globals.SaveGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void SaveScene() {
-        // Write Global Params to SaveFile
-    }
-
-    public void LoadScene(int sceneNum) {
-        Globals.LoadScene = sceneNum;
-        FadeOut();
-    }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if (Globals.LoadScene != -1) {
-            // Load in Globals Params from SaveFile
-            Globals.LoadScene = -1;
-        }
-        
         runDailyQuote();
     }
 
