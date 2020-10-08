@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HomeMenu : MonoBehaviour
@@ -9,7 +10,22 @@ public class HomeMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!Globals.GameExists())
+        {
+            GameObject continueButton = GameObject.Find("ContinueButton");
+            GameObject continueText = GameObject.Find("Continue");
+
+            continueButton.GetComponent<Button>().interactable = false;
+            continueText.GetComponent<Text>().color = Color.grey;
+        }
+        if (!Globals.ResultExists())
+        {
+            GameObject resultsButton = GameObject.Find("ResultsButton");
+            GameObject resultsText = GameObject.Find("Results");
+
+            resultsButton.GetComponent<Button>().interactable = false;
+            resultsText.GetComponent<Text>().color = Color.grey;
+        }
     }
 
     // Update is called once per frame
@@ -36,13 +52,19 @@ public class HomeMenu : MonoBehaviour
 
     public void NewGame()
     {
+        Globals.DeleteGame();
         SceneManager.LoadScene("Streamer_0.6-MenuEndingsAndGames");
     }
 
     public void LoadGame()
     {
-        Globals.LoadGame();
-        SceneManager.LoadScene("Streamer_0.6-MenuEndingsAndGames");
+        if (Globals.LoadGame())
+        {
+            SceneManager.LoadScene("Streamer_0.6-MenuEndingsAndGames");
+        } else
+        {
+            Debug.Log("No Currently Active Game");
+        }
     }
 
     public void GetPastResults()

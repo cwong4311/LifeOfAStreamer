@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 233896991}
   - component: {fileID: 233896990}
   m_Layer: 5
-  m_Name: Text
+  m_Name: New
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 313192528}
   - component: {fileID: 313192527}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,7 +424,7 @@ RectTransform:
   m_GameObject: {fileID: 696752414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.17, z: 1}
   m_Children: []
   m_Father: {fileID: 1120712924}
   m_RootOrder: 0
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 702920258}
   - component: {fileID: 702920257}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 722571675}
   - component: {fileID: 722571674}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -847,7 +847,7 @@ GameObject:
   - component: {fileID: 913263797}
   - component: {fileID: 913263796}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 982012566}
   - component: {fileID: 982012565}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: ResultsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1329,7 +1329,7 @@ RectTransform:
   m_GameObject: {fileID: 1074780905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.17, z: 1}
   m_Children: []
   m_Father: {fileID: 1172620883}
   m_RootOrder: 0
@@ -1732,7 +1732,7 @@ GameObject:
   - component: {fileID: 1395327606}
   - component: {fileID: 1395327605}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: NewButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1799,7 +1799,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1063303301}
-        m_MethodName: NewGame
+        m_MethodName: ShowConfirmation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1860,7 +1860,7 @@ GameObject:
   - component: {fileID: 1715459082}
   - component: {fileID: 1715459081}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1939,7 +1939,7 @@ GameObject:
   - component: {fileID: 1889979273}
   - component: {fileID: 1889979272}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Results
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

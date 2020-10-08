@@ -17,8 +17,7 @@ public class DayHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Globals.days == 1) runDailyQuote();
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        runDailyQuote();
 
         if (Globals.days >= 15) {dailyTimeLimit = 1800f;}   //Streamer can stream twice as long after they get used to it
         StartCoroutine(DayLimitHandler());
@@ -62,10 +61,6 @@ public class DayHandler : MonoBehaviour
     public void OnFadeComplete() {
         Globals.SaveGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        runDailyQuote();
     }
 
     private void runDailyQuote() {

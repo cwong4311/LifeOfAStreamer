@@ -29,7 +29,18 @@ public static class Globals
 
     public static bool GameExists()
     {
-        return true;
+        string destination = Application.persistentDataPath + "/save.dat";
+
+        if (File.Exists(destination)) return true;
+        else return false;
+    }
+
+    public static bool ResultExists()
+    {
+        string destination = Application.persistentDataPath + "/results.dat";
+
+        if (File.Exists(destination)) return true;
+        else return false;
     }
 
     public static void SaveGame()
@@ -46,14 +57,12 @@ public static class Globals
             myData += (field.Name + ", " + field.GetValue(null) + "_");
         }
 
-        Debug.Log(myData);
-
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, myData);
         file.Close();
     }
 
-    public static void LoadGame()
+    public static bool LoadGame()
     {
         string destination = Application.persistentDataPath + "/save.dat";
         FileStream file;
@@ -62,7 +71,7 @@ public static class Globals
         else
         {
             Debug.LogError("File not found");
-            return;
+            return false;
         }
 
         BinaryFormatter bf = new BinaryFormatter();
@@ -73,16 +82,41 @@ public static class Globals
 
         foreach (string item in parseLoad)
         {
-            string fieldName = item.Split(',')[0];
-            string fieldValue = item.Split(',')[1];
+            if (item == "") continue;
+            string fieldName = item.Split(',')[0].Trim();
+            string fieldValue = item.Split(',')[1].Trim();
 
             foreach (FieldInfo field in typeof(Globals).GetFields())
             {
                 if (field.Name.Equals(fieldName))
                 {
-                    field.GetValue(null) = fieldValue;
+                    if (field.GetValue(null) is int) {
+                        field.SetValue(null, int.Parse(fieldValue));
+                    }
+                    else if (field.GetValue(null) is string)
+                    {
+                        field.SetValue(null, fieldValue);
+                    }
+                    else if (field.GetValue(null) is bool)
+                    {
+                        field.SetValue(null, bool.Parse(fieldValue));
+                    }
+                    else if (field.GetValue(null) is float)
+                    {
+                        field.SetValue(null, float.Parse(fieldValue));
+                    }
+                    break;
                 }
             }
         }
+
+        return true;
+    }
+
+    public static void DeleteGame()
+    {
+        string destination = Application.persistentDataPath + "/save.dat";
+
+        if (File.Exists(destination)) File.Delete(destination);
     }
 }
