@@ -14,6 +14,8 @@ public class DayHandler : MonoBehaviour
 
     private float dailyTimeLimit = 900f; //Time limit of each session, in Seconds.
 
+    private bool leaveGame = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,11 +56,24 @@ public class DayHandler : MonoBehaviour
                                 ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f));
         DayEnd(attitude, popularity);
     }
+
     public void FadeOut() {
+        leaveGame = false;
+        myFade.SetTrigger("FadeOut");
+    }
+
+    public void LeaveGame()
+    {
+        leaveGame = true;
         myFade.SetTrigger("FadeOut");
     }
 
     public void OnFadeComplete() {
+        if (leaveGame)
+        {
+            SceneManager.LoadScene("Menu_0.1-MainMenuPrototpye");
+            return;
+        }
         Globals.SaveGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

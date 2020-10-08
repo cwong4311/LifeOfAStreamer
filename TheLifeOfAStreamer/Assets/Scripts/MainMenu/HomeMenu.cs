@@ -7,9 +7,13 @@ using UnityEngine.SceneManagement;
 public class HomeMenu : MonoBehaviour
 {
     public GameObject confirmation;
+    public GameObject namePlate;
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (!Globals.GameExists())
         {
             GameObject continueButton = GameObject.Find("ContinueButton");
@@ -41,8 +45,20 @@ public class HomeMenu : MonoBehaviour
             confirmation.SetActive(true);
         } else
         {
-            NewGame();
+            ShowName();
         }
+    }
+
+    public void ShowName()
+    {
+        CloseConfirmation();
+        namePlate.SetActive(true);
+    }
+
+    public void FinishNameInput()
+    {
+        Globals.username = namePlate.transform.Find("InputField").gameObject.GetComponent<InputField>().text;
+        NewGame();
     }
 
     public void CloseConfirmation()
