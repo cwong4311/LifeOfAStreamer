@@ -48,8 +48,8 @@ public class CameraPan : MonoBehaviour
       var currentRot = start.rotation;
       var destRot = destination.rotation;
       var t = 0f;
-       while(t < 1)
-       {
+      while(t < 1)
+      {
              t += Time.deltaTime / timeToMove;
              transform.position = Vector3.Lerp(currentPos, destPos, t);
              transform.rotation = Quaternion.Slerp(currentRot, destRot, t);
@@ -67,7 +67,7 @@ public class CameraPan : MonoBehaviour
         myScreen.SetActive(flag);
     }
 
-    private void ToggleController(bool flag) {
+    public void ToggleController(bool flag) {
         MonoBehaviour[] comps = transform.parent.GetComponents<MonoBehaviour>();
         foreach(MonoBehaviour c in comps)
         {

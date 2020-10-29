@@ -6,15 +6,26 @@ using UnityEngine.SceneManagement;
 public class DayHandler : MonoBehaviour
 {
     public Animator myFade;
+
     public GameObject viewerSystem;
 
     public GameObject myBlur;
 
+    public GameObject myResultsScreen;
+
+    public GameObject myEndScren;
+
     private Material blurObj;
+
+    private readonly bool continuousPlay = true;
 
     private float dailyTimeLimit = 900f; //Time limit of each session, in Seconds.
 
     private bool leaveGame = false;
+
+    private float dayPopularity = 0f;
+    private float dayAttitude = 0f;
+    private float timer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +52,7 @@ public class DayHandler : MonoBehaviour
         Globals.gameFlag = -1;
         Globals.days += 1;
         Globals.prevViewer = Globals.dayViewer;
+        Globals.totalViewer += Globals.dayViewer;
         Globals.hasStreamed = false;
 		
         Globals.attitude += attitude;
@@ -49,12 +61,13 @@ public class DayHandler : MonoBehaviour
         Globals.dayViewer = 0;
         FadeOut();
     }
+
     public void DayEnd() {
-        float attitude = Random.Range(-3f, 3f) + Globals.dayAttitude;   // TO DO: Better Formula
-        float popularity = Random.Range(-3f, 3f) + (Globals.gameScore / 300f) + 
+        dayAttitude = Random.Range(-3f, 3f) + Globals.dayAttitude;   // TO DO: Better Formula
+        dayPopularity = Random.Range(-3f, 3f) + (Globals.gameScore / 300f) + 
                                 ((float) (Globals.dayViewer - Globals.prevViewer) / 10f) +
                                 ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f));
-        DayEnd(attitude, popularity);
+        DayEnd(dayAttitude, dayPopularity);
     }
 
     public void FadeOut() {
@@ -75,7 +88,35 @@ public class DayHandler : MonoBehaviour
             return;
         }
         Globals.SaveGame();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (Globals.days > 60)
+        {
+            myEndScren.SetActive(true);
+        }
+        else
+        {
+            myResultsScreen.SetActive(true);
+
+            myResultsScreen.GetComponent<ResultsText>().timeTag = "" + (int)(timer / 60f);
+            myResultsScreen.GetComponent<ResultsText>().viewTag = "" + Globals.prevViewer;
+            myResultsScreen.GetComponent<ResultsText>().moneyTag = "$0";
+            myResultsScreen.GetComponent<ResultsText>().popDelta = dayPopularity;
+            myResultsScreen.GetComponent<ResultsText>().attDelta = Globals.attitude;
+
+            myResultsScreen.GetComponent<ResultsText>().RunScript();
+        }
+    }
+
+    public void ProgressDay()
+    {
+        if (continuousPlay)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            SceneManager.LoadScene("Menu_0.1-MainMenuPrototpye");
+        }
     }
 
     private void runDailyQuote() {
@@ -107,7 +148,7 @@ public class DayHandler : MonoBehaviour
                 myDuration = 4f;  
             }
         } else if (Globals.days == 60) {
-            myText = "GAME OVER! End of Demo";
+            myText = "This is the last day...";
         } else {
             if (Globals.attitude > -THRESHOLD && Globals.attitude < THRESHOLD) {
                 if (Globals.prevAction == "stream") {
@@ -159,14 +200,14 @@ public class DayHandler : MonoBehaviour
         TextHandler myMessage = GameObject.Find("PlayerMessage").GetComponent<TextHandler>();
         string myText = ""; float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
         int dayMilestones = 0;
-        float time = 0f;
+        timer = 0f;
 
-        while (time < dailyTimeLimit)
+        while (timer < dailyTimeLimit)
         {
             yield return new WaitForSeconds(1);
-            time++;
+            timer++;
 
-            if (time >= dailyTimeLimit * 0.7f && dayMilestones == 0)
+            if (timer >= dailyTimeLimit * 0.7f && dayMilestones == 0)
             {
                 dayMilestones++;
                 myText = "I'm starting to get a bit tired";
@@ -176,7 +217,7 @@ public class DayHandler : MonoBehaviour
                     yield return new WaitForSeconds(6);
                 }
             }
-            else if (time >= dailyTimeLimit * 0.9f && dayMilestones == 1)
+            else if (timer >= dailyTimeLimit * 0.9f && dayMilestones == 1)
             {
                 dayMilestones++;
                 myText = "Should probably wrap up soon...";
