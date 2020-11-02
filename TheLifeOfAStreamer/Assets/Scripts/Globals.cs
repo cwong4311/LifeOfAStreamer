@@ -31,7 +31,8 @@ public static class Globals
 
     public static bool GameExists()
     {
-        string destination = Application.persistentDataPath + "/save.dat";
+        string destination = Application.dataPath + "/Save/save.dat";
+        if (!Directory.Exists(Application.dataPath + "/Save")) return false;
 
         if (File.Exists(destination)) return true;
         else return false;
@@ -39,7 +40,8 @@ public static class Globals
 
     public static bool ResultExists()
     {
-        string destination = Application.persistentDataPath + "/results.dat";
+        string destination = Application.dataPath + "/Save/save.dat";
+        if (!Directory.Exists(Application.dataPath + "/Save")) return false;
 
         if (File.Exists(destination)) return true;
         else return false;
@@ -47,7 +49,12 @@ public static class Globals
 
     public static void SaveGame()
     {
-        string destination = Application.persistentDataPath + "/save.dat";
+        string destination = Application.dataPath + "/Save/save.dat";
+        if (!Directory.Exists(Application.dataPath + "/Save")) 
+            {
+                Directory.CreateDirectory(Application.dataPath + "/Save");
+            }
+
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenWrite(destination);
@@ -66,7 +73,7 @@ public static class Globals
 
     public static bool LoadGame()
     {
-        string destination = Application.persistentDataPath + "/save.dat";
+        string destination = Application.dataPath + "/Save/save.dat";
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenRead(destination);
@@ -117,7 +124,7 @@ public static class Globals
 
     public static void DeleteGame()
     {
-        string destination = Application.persistentDataPath + "/save.dat";
+        string destination = Application.dataPath + "/Save/save.dat";
 
         if (File.Exists(destination)) File.Delete(destination);
     }

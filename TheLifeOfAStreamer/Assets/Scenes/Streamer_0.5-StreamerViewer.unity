@@ -4970,19 +4970,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_JumpSpeed
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_StepInterval
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_WalkSpeed
-      value: 2
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_RunSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_IsWalking
@@ -4992,9 +4992,45 @@ PrefabInstance:
       propertyPath: m_RunstepLenghten
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_UseHeadBob
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_JumpSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_LandSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_JumpBob.BobDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_JumpBob.BobAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_HeadBob.HorizontalBobRange
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_HeadBob.VerticalBobRange
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_HeadBob.VerticaltoHorizontalRatio
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_ForceIntoRT
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Volume
+      value: 0.389
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
@@ -7371,7 +7407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8.1, y: -101.59961}
+  m_AnchoredPosition: {x: 8.1, y: -101.5}
   m_SizeDelta: {x: 320, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695674049
@@ -13515,8 +13551,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3178008, y: 0.66876894, z: 0.87780046}
-  m_Center: {x: -0.0013748414, y: 0.32724813, z: 0.0013750202}
+  m_Size: {x: 1.3178008, y: 4.68, z: 0.87780046}
+  m_Center: {x: -0.0013748414, y: 2.27, z: 0.0013750202}
 --- !u!1 &1461474488
 GameObject:
   m_ObjectHideFlags: 0
@@ -14048,8 +14084,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5906366, y: 0.9525325, z: 1.6498498}
-  m_Center: {x: -0.034374513, y: 0.47048578, z: 0.0011137418}
+  m_Size: {x: 1.5906366, y: 4.77, z: 1.6498498}
+  m_Center: {x: -0.034374513, y: 2.44, z: 0.0011137418}
 --- !u!4 &1518857309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a499363baa24e144f975ce37a21d1faa,
@@ -14491,6 +14527,8 @@ MonoBehaviour:
   myFade: {fileID: 1649436048}
   viewerSystem: {fileID: 401516324}
   myBlur: {fileID: 527374046}
+  myResultsScreen: {fileID: 0}
+  myEndScren: {fileID: 0}
 --- !u!1 &1650840894
 GameObject:
   m_ObjectHideFlags: 0

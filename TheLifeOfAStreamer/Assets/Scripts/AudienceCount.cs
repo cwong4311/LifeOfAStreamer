@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudienceCount : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class AudienceCount : MonoBehaviour
     void Update()
     {
         int viewerCount = trackChildValue.transform.childCount;
-        GetComponent<TextMesh>().text = "" + trackChildValue.transform.childCount;
+        GetComponent<Text>().text = "" + trackChildValue.transform.childCount;
 
         int curLength = viewerCount.ToString().Length;
 

@@ -5,28 +5,37 @@ using UnityEngine.UI;
 
 public class Clock : MonoBehaviour
 {
+    public bool isTime;
     private int myTime = 0;
     private float ms = 0;
-    private int TimeRate = 60;
+    private int TimeRate = 24;
     // Start is called before the first frame update
     void Start()
     {
         myTime = 43200;
+
+        if (!isTime) {
+            GetComponent<TextMesh>().text = Globals.days + "/11";
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ms += Time.deltaTime;
-        if (ms >= 1f) {
-            ms = 0;
-            myTime += TimeRate;
-        }
-        if (myTime >= 86400) {
-            myTime = 0;
-        }
+        if (isTime) {
+            ms += Time.deltaTime;
+            if (ms >= 1f) {
+                ms = 0;
+                myTime += TimeRate;
+            }
+            if (myTime >= 86400) {
+                myTime = 0;
+            }
 
-        UpdateClock();
+            UpdateClock();
+        } else {
+            return;
+        }
     }
 
     void UpdateClock() {

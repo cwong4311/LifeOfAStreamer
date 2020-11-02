@@ -9,7 +9,7 @@ public class ResultsText : MonoBehaviour
 
     public GameObject CameraPan;
 
-    public string timeTag = "0";
+    public int timeTag = 0;
     public string viewTag = "0";
     public string moneyTag = "$0";
 
@@ -49,7 +49,14 @@ public class ResultsText : MonoBehaviour
             {
                 if (i.name == "time")
                 {
-                    i.GetComponent<Text>().text = "I streamed for " + timeTag + " minutes today.";
+                    float ingameMinutes = ((float)timeTag / 60) * 24;
+                    if (ingameMinutes > 60) {
+                        int finalHour = (int)Mathf.Floor(ingameMinutes / 60);
+                        int finalMinute = (int)(ingameMinutes - (finalHour * 60));
+                        i.GetComponent<Text>().text = "I streamed for " + finalHour + "h " + finalMinute + "m today.";
+                    } else {
+                        i.GetComponent<Text>().text = "I streamed for " + (int)((float)timeTag / 60 * 24) + " minutes today.";
+                    }
                 }
                 else if (i.name == "audience")
                 {

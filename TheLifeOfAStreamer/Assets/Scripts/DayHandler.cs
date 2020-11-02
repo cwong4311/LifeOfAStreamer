@@ -27,10 +27,12 @@ public class DayHandler : MonoBehaviour
     private float dayAttitude = 0f;
     private float timer = 0f;
 
+    private int totalDays = 30;
+
     // Start is called before the first frame update
     void Start()
     {
-        runDailyQuote();
+        StartCoroutine(runDailyQuote());
 
         if (Globals.days >= 15) {dailyTimeLimit = 1800f;}   //Streamer can stream twice as long after they get used to it
         StartCoroutine(DayLimitHandler());
@@ -89,7 +91,7 @@ public class DayHandler : MonoBehaviour
         }
         Globals.SaveGame();
 
-        if (Globals.days > 60)
+        if (Globals.days > totalDays)
         {
             myEndScren.SetActive(true);
         }
@@ -97,7 +99,7 @@ public class DayHandler : MonoBehaviour
         {
             myResultsScreen.SetActive(true);
 
-            myResultsScreen.GetComponent<ResultsText>().timeTag = "" + (int)(timer / 60f);
+            myResultsScreen.GetComponent<ResultsText>().timeTag = (int) timer;
             myResultsScreen.GetComponent<ResultsText>().viewTag = "" + Globals.prevViewer;
             myResultsScreen.GetComponent<ResultsText>().moneyTag = "$0";
             myResultsScreen.GetComponent<ResultsText>().popDelta = dayPopularity;
@@ -119,10 +121,15 @@ public class DayHandler : MonoBehaviour
         }
     }
 
-    private void runDailyQuote() {
+    IEnumerator runDailyQuote() {
+        TextHandler myDay = GameObject.Find("DayMessage").GetComponent<TextHandler>();
         TextHandler myMessage = GameObject.Find("PlayerMessage").GetComponent<TextHandler>();
         float THRESHOLD = Globals.mentalThreshold;
         string myText = ""; float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
+
+        myDay.SetText("Day " + Globals.days, 1.7f, 0.5f, myColor);
+
+        yield return new WaitForSeconds(2);
 
         if (Globals.days == 1) {
             myText = "Finally got my streaming equipment all set up.\nI can finally start streaming!";
@@ -147,7 +154,7 @@ public class DayHandler : MonoBehaviour
                 myText = "Taking breaks like this might feel good but I'll never get anywhere";
                 myDuration = 4f;  
             }
-        } else if (Globals.days == 60) {
+        } else if (Globals.days == totalDays) {
             myText = "This is the last day...";
         } else {
             if (Globals.attitude > -THRESHOLD && Globals.attitude < THRESHOLD) {

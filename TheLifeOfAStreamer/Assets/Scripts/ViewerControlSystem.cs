@@ -15,6 +15,9 @@ public class ViewerControlSystem : MonoBehaviour
     private int returningViewer = 0;
 
     private float spawnTimer = 0;
+
+    private string myRoute = "intro";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +43,7 @@ public class ViewerControlSystem : MonoBehaviour
             }
         }
 
-        // FOR DEMO PURPOSES
+        // RNG System
         if (Globals.days == 3 && Globals.gameFlag != -1 && test_created > 0) {
             createViewer();
             if (test_created == 1) createTroll();
@@ -77,6 +80,22 @@ public class ViewerControlSystem : MonoBehaviour
                 createTroll();
                 dayTroll++;
             }
+        }
+
+        //Route System
+        if (Globals.days == 5) {
+            // Slow Increase to 10~20 viewers, random trolls
+        } else if (Globals.days == 10) {
+            // If Pop up & Att up, increase viewers
+            // If Pop up & Att down, increase viewers
+            // If Pop down & Att down, decrease viewers
+            // If Pop down & Att up, increase trolls more
+        } else if (Globals.days == 15) {
+
+        } else if (Globals.days == 20) {
+
+        } else if (Globals.days == 25) {
+
         }
     }
 
