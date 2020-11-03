@@ -8,9 +8,14 @@ public class HomeMenu : MonoBehaviour
 {
     public GameObject confirmation;
     public GameObject namePlate;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Cap framerate to 60
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 60;
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 

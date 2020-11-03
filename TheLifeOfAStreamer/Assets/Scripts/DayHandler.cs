@@ -61,6 +61,7 @@ public class DayHandler : MonoBehaviour
         Globals.popularity += popularity;
         Globals.gameScore = 0;
         Globals.dayViewer = 0;
+        Globals.totalMoney += Globals.dayMoney;
         FadeOut();
     }
 
@@ -68,7 +69,8 @@ public class DayHandler : MonoBehaviour
         dayAttitude = Random.Range(-3f, 3f) + Globals.dayAttitude;   // TO DO: Better Formula
         dayPopularity = Random.Range(-3f, 3f) + (Globals.gameScore / 300f) + 
                                 ((float) (Globals.dayViewer - Globals.prevViewer) / 10f) +
-                                ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f));
+                                ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f)) +
+                                ((float) Globals.subNumber / 10f);
         DayEnd(dayAttitude, dayPopularity);
     }
 
@@ -101,7 +103,8 @@ public class DayHandler : MonoBehaviour
 
             myResultsScreen.GetComponent<ResultsText>().timeTag = (int) timer;
             myResultsScreen.GetComponent<ResultsText>().viewTag = "" + Globals.prevViewer;
-            myResultsScreen.GetComponent<ResultsText>().moneyTag = "$0";
+            myResultsScreen.GetComponent<ResultsText>().moneyTag = "$" + Globals.dayMoney;
+            globals.dayMoney = 0;
             myResultsScreen.GetComponent<ResultsText>().popDelta = dayPopularity;
             myResultsScreen.GetComponent<ResultsText>().attDelta = Globals.attitude;
 

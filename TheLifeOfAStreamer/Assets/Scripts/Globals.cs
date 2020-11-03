@@ -10,7 +10,8 @@ public static class Globals
     public static int days = 1;
     public static float popularity = 0f;
     public static float attitude = 0f;
-    public static float totalMoney = 0f;
+    public static int totalMoney = 0;
+    public static int dayMoney = 0;
     public static int dayViewer = 0;
     public static int prevViewer = 0;
     public static int totalViewer = 0;
@@ -24,7 +25,8 @@ public static class Globals
     public static bool hasStreamed = false;
     public static float gameScore = 0f;
 
-    public static int returningViewers = 0;
+    public static int subNumber = 0;
+    public static string subNames = "";
 
     public static string username = "Player";
     public static bool webcamEnabled = false;

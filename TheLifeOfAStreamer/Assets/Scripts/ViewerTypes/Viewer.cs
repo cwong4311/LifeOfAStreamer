@@ -29,6 +29,10 @@ public class Viewer : MonoBehaviour
 
     protected float startingAttitude;
 
+    public bool amSubbed = false;
+
+    protected int timesDonated = 1;
+
     protected string[] prefixes = new string[] {"Dude", "DUDE", "Yo", "LMAO", "lmao", "KEK", "kek", "LOL", "lol", "yoooo", "damn", "dayum"};
     protected string[] suffixes = new string[] {"gg", "GG", "ggz", "pog", "pogs", "pogchamp", "poggers", "LMAO", "lmao", "KEK", "kek", "LOL", "lol", "haha", "hahahaha"};
     public virtual void setup() {
@@ -97,6 +101,14 @@ public class Viewer : MonoBehaviour
         if (secondWait <= 0) {
             secondWait = Random.Range(3, 10);
 
+            subToChannel();
+
+            //If viewer happy, and 10% (decreasing) chance
+            if (attitude > 20 && Random.Range(0, 100) < (int)(10 / timesDonated)) {
+                donateToChannel();
+                timesDonated++;
+            }
+
             bool sent = false;
             
             Message streamerMessage = chatBox.getLastPlayerMessage();
@@ -139,26 +151,80 @@ public class Viewer : MonoBehaviour
 
     public virtual void endDay()
     {
-        if (attitude > 40) {
-            if (Random.Range(0, 50) < (Globals.popularity > 40 ? 40 : Globals.popularity)) {
-                Globals.returningViewers++;
-            }
-        } else if (attitude < -50) {
-            if (Random.Range(0, 100) < (Globals.popularity > 10 ? 10 : Globals.popularity)) {
-                if (Globals.returningViewers > 0) Globals.returningViewers--;
-            }            
-        } else {
-            if (Random.Range(0, 100) < (Globals.popularity > 10 ? 10 : Globals.popularity)) {
-                Globals.returningViewers++;
-            }
-            if (Random.Range(0, 200) < (Globals.popularity > 10 ? 10 : Globals.popularity)) {
-                if (Globals.returningViewers > 0) Globals.returningViewers--;
-            }            
-        }
-
+        subToChannel();
         Globals.dayAttitude += Mathf.Min(attitude, 100f) / 200f;
 
         Pause();
+    }
+
+    protected virtual void donateToChannel() {
+        int donationAmount = Random.Range(attitude / 4, attitude + 1);
+        Globals.dayMoney += donationAmount;
+        Globals.dayAttitude += ((float)donationAmount / 50);
+
+        DisplayDonation();
+    }
+
+    protected virtual void subToChannel() {
+        // If this viewer isn't subbed, chance of subbing
+        if (!amSubbed) {
+            if (attitude > 30) {
+                if (Random.Range(0, 50) < (int)(Globals.popularity > 40 ? 40 : Globals.popularity)) {
+                    Globals.subNumber++;
+                    Globals.subNames += username + ",";
+                    Globals.dayAttitude += 0.3f;
+
+                    DisplaySubbed();
+                }         
+            } else {
+                if (Random.Range(0, 100) < (int)(Globals.popularity > 10 ? 10 : Globals.popularity)) {
+                    Globals.subNumber++;
+                    Globals.subNames += username + ",";
+                    Globals.dayAttitude += 0.3f;
+
+                    DisplaySubbed();
+                }
+            }
+        // If this viewer is subbed, chance of leaving
+        } else {
+            if (attitude < -50) {
+                if (Random.Range(0, 100) < (int)(Globals.popularity > 10 ? 10 : Globals.popularity)) {
+                    if (Globals.subNumber > 0) {
+
+                        // Remove this user from the list of subs
+                        ArrayList retunerNames = new ArrayList();
+                        foreach (string name in Globals.subNames.Split(",")) {
+                            if (name.Trim() == "") continue;
+                            if (name.Trim() == username) continue;
+                            returnerNames.Add(name.Trim());
+                        }
+
+                        // Add back to sublist without this name
+                        Globals.subNames = String.Join(",", (string[])retunerNames.ToArray(typeof(string)));
+                        Globals.subNumber--;
+                        Globals.dayAttitude -= 0.7f;
+                    }       
+                }   
+            } else {
+                if (Random.Range(0, 200) < (int)(Globals.popularity > 10 ? 10 : Globals.popularity)) {
+                    if (Globals.subNumber > 0) {
+
+                        // Remove this user from the list of subs
+                        ArrayList retunerNames = new ArrayList();
+                        foreach (string name in Globals.subNames.Split(",")) {
+                            if (name.Trim() == "") continue;
+                            if (name.Trim() == username) continue;
+                            returnerNames.Add(name.Trim());
+                        }
+
+                        // Add back to sublist without this name
+                        Globals.subNames = String.Join(",", (string[])retunerNames.ToArray(typeof(string)));
+                        Globals.subNumber--;
+                        Globals.dayAttitude -= 0.7f;
+                    }      
+                }     
+            }
+        }
     }
 
     public void Pause() {
@@ -312,5 +378,13 @@ public class Viewer : MonoBehaviour
                 }            
             }  
         }
+    }
+
+    protected virtual void DisplaySubbed() {
+        //TO DO
+    }
+
+    protected virtual void DisplayDonation() {
+        //TO DO
     }
 }

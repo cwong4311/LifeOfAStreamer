@@ -11,6 +11,8 @@ public class ViewerControlSystem : MonoBehaviour
     private int test_created = 3;
     private string[] viewerNames;
 
+    private ArrayList returnerNames = new ArrayList();
+
     private int dayTroll = 0;
     private int returningViewer = 0;
 
@@ -22,6 +24,12 @@ public class ViewerControlSystem : MonoBehaviour
     void Start()
     {
         viewerNames = usernameFile.text.Split('\n');
+        if (Globals.subNumber > 0) {
+            foreach (string name in Globals.subNames.Split(",")) {
+                if (name.Trim() == "") continue;
+                returnerNames.Add(name.Trim());
+            }
+        }
     }
 
     // Update is called once per frame
@@ -64,9 +72,13 @@ public class ViewerControlSystem : MonoBehaviour
                     createViewer();
                 }
 
-                if (returningViewer < Globals.returningViewers) {
-                    createViewer();
+                if (returningViewer < Globals.subNumber) {
+                    string thisName = returnerNames[0];
+                    
+                    createReturner(thisName);
                     returningViewer++;
+
+                    returnerNames.RemoveAt(0);
                 }
             }
         }
@@ -178,6 +190,45 @@ public class ViewerControlSystem : MonoBehaviour
         newViewer.GetComponent<Viewer>().username = myName;
         newViewer.GetComponent<Viewer>().attitude = myAttitude;
         newViewer.GetComponent<Viewer>().myObject = newViewer;
+        newViewer.GetComponent<Viewer>().setup();
+    }
+
+    private void createReturner(string name) {
+        Globals.dayViewer += 1;
+
+        // 9 types of viewers. 
+        /* 
+           > 0 - 1 is friendly
+           >     2 is lurker (neutral but low talk)
+           > 3 - 5 is neutral
+           > 6 - 8 is negative
+        */
+        int mySpawnType = Random.Range(0,5);
+        int viewType;
+        float myAttitude;
+
+        // Returning viewers are usually supportive
+        // Only have change of spawning good, lurkers or neutral.
+        if (mySpawnType == 0) {
+            viewType = 3;
+            myAttitude = Random.Range(-5f, 5f);
+        } else if (mySpawnType == 1) {
+            viewType = 2;
+            myAttitude = Random.Range(-5f, 5f);
+        } else {
+            viewType = 0;
+            myAttitude = Random.Range(30f, 50f);
+        }
+
+        string myName = name;
+
+        GameObject newViewer = Instantiate(viewerTypes[viewType], transform);
+        newViewer.name = viewType + "_" + myName;
+        newViewer.GetComponent<Viewer>().chatBox = chatBox.GetComponent<Chatbox>();
+        newViewer.GetComponent<Viewer>().username = name;
+        newViewer.GetComponent<Viewer>().attitude = myAttitude;
+        newViewer.GetComponent<Viewer>().myObject = newViewer;
+        newViewer.GetComponent<Viewer>().amSubbed = true;
         newViewer.GetComponent<Viewer>().setup();
     }
 
