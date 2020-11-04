@@ -25,7 +25,7 @@ public class ViewerControlSystem : MonoBehaviour
     {
         viewerNames = usernameFile.text.Split('\n');
         if (Globals.subNumber > 0) {
-            foreach (string name in Globals.subNames.Split(",")) {
+            foreach (string name in Globals.subNames.Split(',')) {
                 if (name.Trim() == "") continue;
                 returnerNames.Add(name.Trim());
             }
@@ -73,7 +73,7 @@ public class ViewerControlSystem : MonoBehaviour
                 }
 
                 if (returningViewer < Globals.subNumber) {
-                    string thisName = returnerNames[0];
+                    string thisName = returnerNames[0].ToString();
                     
                     createReturner(thisName);
                     returningViewer++;

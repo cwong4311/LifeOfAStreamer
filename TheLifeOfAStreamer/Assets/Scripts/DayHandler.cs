@@ -104,7 +104,7 @@ public class DayHandler : MonoBehaviour
             myResultsScreen.GetComponent<ResultsText>().timeTag = (int) timer;
             myResultsScreen.GetComponent<ResultsText>().viewTag = "" + Globals.prevViewer;
             myResultsScreen.GetComponent<ResultsText>().moneyTag = "$" + Globals.dayMoney;
-            globals.dayMoney = 0;
+            Globals.dayMoney = 0;
             myResultsScreen.GetComponent<ResultsText>().popDelta = dayPopularity;
             myResultsScreen.GetComponent<ResultsText>().attDelta = Globals.attitude;
 

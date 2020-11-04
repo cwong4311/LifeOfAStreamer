@@ -158,11 +158,11 @@ public class Viewer : MonoBehaviour
     }
 
     protected virtual void donateToChannel() {
-        int donationAmount = Random.Range(attitude / 4, attitude + 1);
+        int donationAmount = (int)Random.Range(attitude / 4, attitude + 1);
         Globals.dayMoney += donationAmount;
         Globals.dayAttitude += ((float)donationAmount / 50);
 
-        DisplayDonation();
+        DisplayDonation(donationAmount);
     }
 
     protected virtual void subToChannel() {
@@ -192,15 +192,15 @@ public class Viewer : MonoBehaviour
                     if (Globals.subNumber > 0) {
 
                         // Remove this user from the list of subs
-                        ArrayList retunerNames = new ArrayList();
-                        foreach (string name in Globals.subNames.Split(",")) {
+                        ArrayList returnerNames = new ArrayList();
+                        foreach (string name in Globals.subNames.Split(',')) {
                             if (name.Trim() == "") continue;
                             if (name.Trim() == username) continue;
                             returnerNames.Add(name.Trim());
                         }
 
                         // Add back to sublist without this name
-                        Globals.subNames = String.Join(",", (string[])retunerNames.ToArray(typeof(string)));
+                        Globals.subNames = string.Join(",", (string[])returnerNames.ToArray(typeof(string)));
                         Globals.subNumber--;
                         Globals.dayAttitude -= 0.7f;
                     }       
@@ -210,15 +210,15 @@ public class Viewer : MonoBehaviour
                     if (Globals.subNumber > 0) {
 
                         // Remove this user from the list of subs
-                        ArrayList retunerNames = new ArrayList();
-                        foreach (string name in Globals.subNames.Split(",")) {
+                        ArrayList returnerNames = new ArrayList();
+                        foreach (string name in Globals.subNames.Split(',')) {
                             if (name.Trim() == "") continue;
                             if (name.Trim() == username) continue;
                             returnerNames.Add(name.Trim());
                         }
 
                         // Add back to sublist without this name
-                        Globals.subNames = String.Join(",", (string[])retunerNames.ToArray(typeof(string)));
+                        Globals.subNames = string.Join(",", (string[])returnerNames.ToArray(typeof(string)));
                         Globals.subNumber--;
                         Globals.dayAttitude -= 0.7f;
                     }      
@@ -381,10 +381,16 @@ public class Viewer : MonoBehaviour
     }
 
     protected virtual void DisplaySubbed() {
-        //TO DO
+        TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
+        float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
+
+        streamMessage.SetText("You got a new sub!:\n" + username, myDuration, myDelay, myColor);
     }
 
-    protected virtual void DisplayDonation() {
-        //TO DO
+    protected virtual void DisplayDonation(int amount) {
+        TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
+        float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
+
+        streamMessage.SetText(username + "has donated:\n$" + amount, myDuration, myDelay, myColor);
     }
 }

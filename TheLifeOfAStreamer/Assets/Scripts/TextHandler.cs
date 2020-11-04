@@ -5,10 +5,19 @@ using UnityEngine.UI;
 
 public class TextHandler : MonoBehaviour
 {
+    [System.Serializable]
+    private class textEntry {
+        public string message;
+        public float duration;
+        public float delay;
+        public Color color;
+    }
+
     private float TextDuration = 0f;
     private float fadeTime = 1f;
     private bool hasText = false;
     private bool running = false;
+    private LinkedList<textEntry> mybacklog = new LinkedList<textEntry>();
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +34,22 @@ public class TextHandler : MonoBehaviour
                 StartCoroutine(FadeOut());
                 hasText = false;
             }
+        } else {
+            if (mybacklog.Count > 0 && !running) {
+                textEntry myMessage = mybacklog.First.Value;
+                mybacklog.RemoveFirst();
+
+                StartCoroutine(FadeIn(myMessage.message, myMessage.delay, myMessage.color));
+                TextDuration = myMessage.duration;
+            }
         }
     }
     public bool SetText(string message, float duration, float delay, Color myColor) {
-        if (!running) {
-            StartCoroutine(FadeIn(message, delay, myColor));
-            TextDuration = duration;
-            return true;
-        } else {
-            return false;
-        }
+        textEntry myMessage = new textEntry();
+        myMessage.message = message; myMessage.duration = duration; myMessage.delay = delay; myMessage.color = myColor;
+
+        mybacklog.AddLast(myMessage);
+        return true;
     }
 
     public bool SetText(string message, float duration, float delay) {
@@ -56,7 +71,7 @@ public class TextHandler : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         hasText = true;
-        
+
         Text text = gameObject.GetComponent<Text>();
         text.text = message;
         text.color = Color.clear;

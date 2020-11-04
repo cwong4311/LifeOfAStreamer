@@ -14,7 +14,7 @@ public class Lurker : Viewer
     public override void endDay() {
         if (attitude > 60) {
             if (Random.Range(0, 50) < (Globals.popularity > 40 ? 40 : Globals.popularity)) {
-                Globals.returningViewers++;
+                Globals.subNumber++;
             }
         }
     }
