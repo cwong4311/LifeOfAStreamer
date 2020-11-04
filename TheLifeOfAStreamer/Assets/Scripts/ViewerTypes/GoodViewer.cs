@@ -41,4 +41,19 @@ public class GoodViewer : Viewer
 
         return myMessage;
     }
+
+    protected override void checkIfLeaving() {
+        leaveCheck -= Time.deltaTime;
+        if (leaveCheck <= 0) {
+            leaveCheck = 20f;
+            // If attitude has only got worse by 10
+            if (attitude < (startingAttitude - 30f)) {
+                // Leave with 30% chance
+                if (Random.Range(0, 10) < 3) {
+                    endDay();
+                    if (myObject != null) Destroy(myObject, 3f);
+                }
+            }
+        }
+    }
 }

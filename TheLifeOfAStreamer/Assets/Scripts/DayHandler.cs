@@ -25,7 +25,9 @@ public class DayHandler : MonoBehaviour
 
     private float dayPopularity = 0f;
     private float dayAttitude = 0f;
+    
     private float timer = 0f;
+    private float streamTimer = 0f;
 
     private int totalDays = 30;
 
@@ -41,13 +43,21 @@ public class DayHandler : MonoBehaviour
             blurObj = Instantiate(myBlur.GetComponent<Image>().material);
             myBlur.GetComponent<Image>().material = blurObj;
         }
+
+        // Cap framerate to 60
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // If streamTimer hasn't been set, and gameFlag is no longer -1 (ie Game has started)
+        if (streamTimer == 0f && Globals.hasStreamed) {
+            streamTimer = timer;
+        }
     }
+
     public void DayEnd(float attitude, float popularity) {
         viewerSystem.GetComponent<ViewerControlSystem>().endDay();
 
@@ -66,11 +76,11 @@ public class DayHandler : MonoBehaviour
     }
 
     public void DayEnd() {
-        dayAttitude = Random.Range(-3f, 3f) + Globals.dayAttitude;   // TO DO: Better Formula
-        dayPopularity = Random.Range(-3f, 3f) + (Globals.gameScore / 300f) + 
-                                ((float) (Globals.dayViewer - Globals.prevViewer) / 10f) +
-                                ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f)) +
-                                ((float) Globals.subNumber / 10f);
+        dayAttitude = Random.Range(-2f, 2f) + Globals.dayAttitude;   // TO DO: Better Formula
+        dayPopularity = Random.Range(-3f, 3f) + (Globals.gameScore / 300f) 
+                                + ((float) (Globals.dayViewer - Globals.prevViewer) / 10f)
+                                + ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f))
+                                + ((float) Globals.subNumber / 10f);
         DayEnd(dayAttitude, dayPopularity);
     }
 
@@ -101,7 +111,7 @@ public class DayHandler : MonoBehaviour
         {
             myResultsScreen.SetActive(true);
 
-            myResultsScreen.GetComponent<ResultsText>().timeTag = (int) timer;
+            myResultsScreen.GetComponent<ResultsText>().timeTag = (int) (timer - streamTimer);
             myResultsScreen.GetComponent<ResultsText>().viewTag = "" + Globals.prevViewer;
             myResultsScreen.GetComponent<ResultsText>().moneyTag = "$" + Globals.dayMoney;
             Globals.dayMoney = 0;

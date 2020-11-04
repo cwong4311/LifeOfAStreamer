@@ -53,4 +53,12 @@ public class TheTroll : Viewer
     protected override void checkIfLeaving() {
         return;
     }
+
+    protected override void donateToChannel() {
+        return;
+    }
+
+    protected override void subToChannel() {
+        return;
+    }
 }

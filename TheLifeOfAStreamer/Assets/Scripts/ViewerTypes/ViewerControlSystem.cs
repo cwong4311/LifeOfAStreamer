@@ -8,6 +8,7 @@ public class ViewerControlSystem : MonoBehaviour
     public GameObject[] viewerTypes;
     public TextAsset usernameFile;
     private bool paused;
+    private bool dayEnd = false;
     private int test_created = 3;
     private string[] viewerNames;
 
@@ -15,6 +16,7 @@ public class ViewerControlSystem : MonoBehaviour
 
     private int dayTroll = 0;
     private int returningViewer = 0;
+    private int todayReturner = 0;
 
     private float spawnTimer = 0;
 
@@ -25,6 +27,8 @@ public class ViewerControlSystem : MonoBehaviour
     {
         viewerNames = usernameFile.text.Split('\n');
         if (Globals.subNumber > 0) {
+            todayReturner = Globals.subNumber;
+
             foreach (string name in Globals.subNames.Split(',')) {
                 if (name.Trim() == "") continue;
                 returnerNames.Add(name.Trim());
@@ -35,6 +39,7 @@ public class ViewerControlSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dayEnd) return;
 
         if (!chatBox.activeInHierarchy) {
             paused = true;
@@ -53,16 +58,18 @@ public class ViewerControlSystem : MonoBehaviour
 
         // RNG System
         if (Globals.days == 3 && Globals.gameFlag != -1 && test_created > 0) {
-            createViewer();
+            //createViewer();
+            createGoodViewer();
             if (test_created == 1) createTroll();
             test_created --;
         } 
         
         // Generate Viewer with delay (seconds)
-        if (Globals.days >= 3 && Globals.gameFlag != -1) {
-            float spawnDelay = 60f - (float) Globals.days - (float) Globals.popularity;
-            if (spawnDelay < 5) spawnDelay = 5;
+        if (Globals.days >= 3 && Globals.hasStreamed && Globals.gameFlag != -1) {
             
+            float spawnDelay = 30f - (float) Globals.days - (float) Globals.popularity;
+            if (spawnDelay < 5) spawnDelay = 5;
+
             //Check if a viewer spawns every X seconds (based on day count)
             spawnTimer += Time.deltaTime;
             if (spawnTimer > spawnDelay) {
@@ -71,14 +78,24 @@ public class ViewerControlSystem : MonoBehaviour
                 if ((Random.Range(0, 10000) + (Globals.popularity * 10)) >= 10000) {
                     createViewer();
                 }
+            }
+        }
 
-                if (returningViewer < Globals.subNumber) {
-                    string thisName = returnerNames[0].ToString();
-                    
-                    createReturner(thisName);
-                    returningViewer++;
+        // If the Streamer has streamed, every 10 seconds, have a random amount of
+        // subscribers return to stream.
+        if (Globals.hasStreamed && Globals.gameFlag != -1) {
+            float returnDelay = 10f;
+            if ((int)spawnTimer % (int)returnDelay == 0) {
+                if (returningViewer < todayReturner) {
+                    for (int i = 0; i < Random.Range(1, todayReturner - returningViewer + 1); i++) {
+                        if (returnerNames.Count == 0) break;
 
-                    returnerNames.RemoveAt(0);
+                        string thisName = returnerNames[0].ToString();
+                        createReturner(thisName);
+                        returningViewer++;
+
+                        returnerNames.RemoveAt(0);
+                    }
                 }
             }
         }
@@ -232,6 +249,34 @@ public class ViewerControlSystem : MonoBehaviour
         newViewer.GetComponent<Viewer>().setup();
     }
 
+    private void createGoodViewer() {
+        Globals.dayViewer += 1;
+
+        // 9 types of viewers. 
+        /* 
+           > 0 - 1 is friendly
+           >     2 is lurker (neutral but low talk)
+           > 3 - 5 is neutral
+           > 6 - 8 is negative
+        */
+        int viewType;
+        float myAttitude;
+        string myName = "Good_Demo_" + Random.Range(0,1000);
+
+        // Good Viewer Only
+        viewType = 0;
+        myAttitude = Random.Range(30f, 50f);
+        
+
+        GameObject newViewer = Instantiate(viewerTypes[viewType], transform);
+        newViewer.name = viewType + "_" + myName;
+        newViewer.GetComponent<Viewer>().chatBox = chatBox.GetComponent<Chatbox>();
+        newViewer.GetComponent<Viewer>().username = myName;
+        newViewer.GetComponent<Viewer>().attitude = myAttitude;
+        newViewer.GetComponent<Viewer>().myObject = newViewer;
+        newViewer.GetComponent<Viewer>().setup();
+    }
+
     private void createTroll() {
         Globals.dayViewer += 1;
 
@@ -258,6 +303,8 @@ public class ViewerControlSystem : MonoBehaviour
     }
 
     public void endDay() {
+        dayEnd = true;
+
         foreach (Viewer viewer in GetComponentsInChildren<Viewer>()) {
             viewer.endDay();
         }

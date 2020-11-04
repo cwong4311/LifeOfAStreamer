@@ -35,6 +35,7 @@ public class Viewer : MonoBehaviour
 
     protected string[] prefixes = new string[] {"Dude", "DUDE", "Yo", "LMAO", "lmao", "KEK", "kek", "LOL", "lol", "yoooo", "damn", "dayum"};
     protected string[] suffixes = new string[] {"gg", "GG", "ggz", "pog", "pogs", "pogchamp", "poggers", "LMAO", "lmao", "KEK", "kek", "LOL", "lol", "haha", "hahahaha"};
+
     public virtual void setup() {
         startingAttitude = attitude;
         downtime = Random.Range(3f, 40f);
@@ -59,7 +60,7 @@ public class Viewer : MonoBehaviour
             string myMessage;
             switch(step) {
                 case 0:
-                    Debug.Log(wordBank);
+                    //Debug.Log(wordBank);
                     myMessage = wordBank[0, Random.Range(0, wordBank.GetLength(1))];
                     downtime = Random.Range(15f, 60f);
                     break;
@@ -84,7 +85,7 @@ public class Viewer : MonoBehaviour
                     downtime = Random.Range(720f, 2880f);
                     break;
             }
-            Debug.Log(username + ": Request to Send");
+            //Debug.Log(username + ": Request to Send");
             sendMyMessage(username, myMessage, mainLurk);
             step += 1;
         }
@@ -102,12 +103,7 @@ public class Viewer : MonoBehaviour
             secondWait = Random.Range(3, 10);
 
             subToChannel();
-
-            //If viewer happy, and 10% (decreasing) chance
-            if (attitude > 20 && Random.Range(0, 100) < (int)(10 / timesDonated)) {
-                donateToChannel();
-                timesDonated++;
-            }
+            donateToChannel();
 
             bool sent = false;
             
@@ -143,7 +139,7 @@ public class Viewer : MonoBehaviour
                 }
             }
 
-            attitude += Random.Range(-1f, 1f);
+            attitude += Random.Range(-0.5f, 0.5f);
         }
 
         checkIfLeaving();
@@ -157,30 +153,41 @@ public class Viewer : MonoBehaviour
         Pause();
     }
 
-    protected virtual void donateToChannel() {
-        int donationAmount = (int)Random.Range(attitude / 4, attitude + 1);
-        Globals.dayMoney += donationAmount;
-        Globals.dayAttitude += ((float)donationAmount / 50);
+    protected virtual void donateToChannel() {    
+        //If viewer happy, and 5% (decreasing) chance
+        int checkValue = 5 / timesDonated;
+        
+        if (attitude > 20 && Random.Range(0, 100) < (checkValue > 0 ? checkValue : 1)) {
+            int donationAmount = (int)Random.Range(attitude / 4, attitude + 1);
+            Globals.dayMoney += donationAmount;
+            Globals.dayAttitude += ((float)donationAmount / 50);
 
-        DisplayDonation(donationAmount);
+            timesDonated++;
+            DisplayDonation(donationAmount);
+        }
+
     }
 
     protected virtual void subToChannel() {
         // If this viewer isn't subbed, chance of subbing
         if (!amSubbed) {
-            if (attitude > 30) {
-                if (Random.Range(0, 50) < (int)(Globals.popularity > 40 ? 40 : Globals.popularity)) {
+            if (attitude > 20) {
+                int checkValue = (int) (Globals.popularity > 20 ? 20 : Globals.popularity); if (checkValue < 5) checkValue = 5;
+                if (Random.Range(0, 50) < checkValue) {
                     Globals.subNumber++;
                     Globals.subNames += username + ",";
                     Globals.dayAttitude += 0.3f;
+                    amSubbed = true;
 
                     DisplaySubbed();
                 }         
             } else {
-                if (Random.Range(0, 100) < (int)(Globals.popularity > 10 ? 10 : Globals.popularity)) {
+                int checkValue = (int) (Globals.popularity > 10 ? 10 : Globals.popularity); if (checkValue < 1) checkValue = 1;
+                if (Random.Range(0, 100) < checkValue) {
                     Globals.subNumber++;
                     Globals.subNames += username + ",";
                     Globals.dayAttitude += 0.3f;
+                    amSubbed = true;
 
                     DisplaySubbed();
                 }
@@ -188,7 +195,8 @@ public class Viewer : MonoBehaviour
         // If this viewer is subbed, chance of leaving
         } else {
             if (attitude < -50) {
-                if (Random.Range(0, 100) < (int)(Globals.popularity > 10 ? 10 : Globals.popularity)) {
+                int checkValue = (int) (Globals.popularity > 10 ? 10 : Globals.popularity); if (checkValue < 1) checkValue = 1;
+                if (Random.Range(0, 100) < checkValue) {
                     if (Globals.subNumber > 0) {
 
                         // Remove this user from the list of subs
@@ -206,7 +214,8 @@ public class Viewer : MonoBehaviour
                     }       
                 }   
             } else {
-                if (Random.Range(0, 200) < (int)(Globals.popularity > 10 ? 10 : Globals.popularity)) {
+                int checkValue = (int) (Globals.popularity > 10 ? 10 : Globals.popularity); if (checkValue < 1) checkValue = 1;
+                if (Random.Range(0, 200) < checkValue) {
                     if (Globals.subNumber > 0) {
 
                         // Remove this user from the list of subs
@@ -353,26 +362,26 @@ public class Viewer : MonoBehaviour
         string myMessage = internetFormat(message);
         if (Random.Range(0, 10) > myLurk) {
             chatBox.SendChatMessage(username + ": " + myMessage);
-            Debug.Log(username + ": Request Successful");
+            //Debug.Log(username + ": Request Successful");
             return;
         }
-        Debug.Log(username + ": Lurk Rejection");
+        //Debug.Log(username + ": Lurk Rejection");
     }
 
     protected virtual void checkIfLeaving() {
         leaveCheck -= Time.deltaTime;
         if (leaveCheck <= 0) {
             leaveCheck = 20f;
-            // If attitude hasn't changed or only got worse
-            if (attitude <= startingAttitude) {
-                // Leave with 40% chance
-                if (Random.Range(0, 10) < 4) {
+            // If attitude has only got worse by 10
+            if (attitude < (startingAttitude - 10f)) {
+                // Leave with 30% chance
+                if (Random.Range(0, 10) < 3) {
                     endDay();
                     if (myObject != null) Destroy(myObject, 3f);
                 }
             } else {
-                // Otherwise leave with 5% chance
-                if (Random.Range(0, 100) < 5) {
+                // Otherwise leave with 2% chance
+                if (Random.Range(0, 100) < 2) {
                     endDay();
                     if (myObject != null) Destroy(myObject, 3f);
                 }            
@@ -391,6 +400,6 @@ public class Viewer : MonoBehaviour
         TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
         float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
 
-        streamMessage.SetText(username + "has donated:\n$" + amount, myDuration, myDelay, myColor);
+        streamMessage.SetText(username + " has donated:\n$" + amount, myDuration, myDelay, myColor);
     }
 }

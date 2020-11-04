@@ -39,7 +39,7 @@ public class LScreenController : MonoBehaviour
             case 0:
             default:
                 if (spawnedGame == null) spawnedGame = Instantiate(myGames[0], GameSpawnPoint.transform);
-                spawnedGame.SetActive(true);
+                spawnedGame.SetActive(true); Globals.hasStreamed = true;
                 delay = 3; messageBox = spawnedGame.transform.Find("UI/GameOver").gameObject;
                 if (!Globals.webcamEnabled) { spawnedGame.transform.Find("UI/WebCam").gameObject.SetActive(false); }
                 break;
