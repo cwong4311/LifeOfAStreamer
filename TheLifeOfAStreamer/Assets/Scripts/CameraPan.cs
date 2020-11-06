@@ -5,15 +5,20 @@ using UnityEngine;
 public class CameraPan : MonoBehaviour
 {
     public GameObject destinationObj;
+    public GameObject phoneDestinationObj;
     public GameObject originObj;
     public GameObject myScreen;
+    public GameObject phoneScreen;
     private Transform destinationTrans;
     private Transform originalTrans;
+    private Transform phoneDestinationTrans;
+    private bool isFocused = false;
     // Start is called before the first frame update
     void Start()
     {
         destinationTrans = destinationObj.transform;
         originalTrans = originObj.transform;
+        phoneDestinationTrans = phoneDestinationObj.transform;
     }
 
     // Update is called once per frame
@@ -21,12 +26,20 @@ public class CameraPan : MonoBehaviour
     {
     }
 
-    public void ChangeViews()
+    public void ChangeViews(string destinationFlag)
     {
+        GetComponent<Selector>().enabled = false;
         originalTrans.position = originObj.transform.position;
         originalTrans.rotation = this.transform.rotation;
-        StartCoroutine(PanToPosition(this.transform, destinationTrans, 0.7f));
-        StartCoroutine(ScreenFlick(true, 0.7f));
+        if (destinationFlag == "phone") {
+            StartCoroutine(PanToPosition(this.transform, phoneDestinationTrans, 0.7f));
+            StartCoroutine(ScreenFlick(true, 0.7f, 1));
+        }
+        else {
+            StartCoroutine(PanToPosition(this.transform, destinationTrans, 0.7f));
+            StartCoroutine(ScreenFlick(true, 0.7f, 0));
+        }
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         ToggleController(false);
@@ -35,10 +48,11 @@ public class CameraPan : MonoBehaviour
     public void ResetViews()
     {
         StartCoroutine(PanToPosition(this.transform, originalTrans, 0.7f));
-        StartCoroutine(ScreenFlick(false, 0.015f));
+        StartCoroutine(ScreenFlick(false, 0.015f, -1));
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         StartCoroutine(WaitToToggleController(0.7f));
+        GetComponent<Selector>().enabled = true;
     }
     public IEnumerator PanToPosition(Transform start, Transform destination, float timeToMove)
     {
@@ -56,7 +70,7 @@ public class CameraPan : MonoBehaviour
              yield return null;
       }
     }
-    private IEnumerator ScreenFlick(bool flag, float timeToMove)
+    private IEnumerator ScreenFlick(bool flag, float timeToMove, int screenType)
     {
         var t = 0f;
         while(t < 1)
@@ -64,7 +78,19 @@ public class CameraPan : MonoBehaviour
              t += Time.deltaTime / timeToMove;
              yield return null;
         }
-        myScreen.SetActive(flag);
+        switch(screenType) {
+            default:
+            case 0:
+                myScreen.SetActive(flag);
+                break;
+            case 1:
+                phoneScreen.SetActive(flag);
+                break;
+            case -1:
+                myScreen.SetActive(flag);
+                phoneScreen.SetActive(flag);
+                break;
+        }
     }
 
     public void ToggleController(bool flag) {
@@ -73,6 +99,10 @@ public class CameraPan : MonoBehaviour
         {
             c.enabled = flag;
         }
+    }
+
+    public bool getFocused() {
+        return isFocused;
     }
 
     private IEnumerator WaitToToggleController(float delay) {

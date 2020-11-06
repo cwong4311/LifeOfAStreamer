@@ -11,10 +11,8 @@ public class Selectable : MonoBehaviour
         Interact,
         Text
     }
-    private float highlightTimer = 0f;
+
     private bool clicked = false;
-    public Material[] baseMat;
-    public Material[] highlightMat;
     public ObjectType objectType = ObjectType.None;
     public string[] Messages;
     private GameObject playerMessage;
@@ -27,8 +25,8 @@ public class Selectable : MonoBehaviour
     void Start()
     {
         gameObject.tag = "Selectable";
-        gameObject.GetComponent<MeshRenderer>().materials = baseMat;
         playerMessage = GameObject.Find("/PlayerCanvas/PlayerMessage");
+        
         if (Messages.Length > 0) {
             MyMessage = Messages[Random.Range(0, Messages.Length)].Replace("<br>", "\n");
         } else {
@@ -39,20 +37,6 @@ public class Selectable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (highlightTimer > 0) highlightTimer -= Time.deltaTime;
-        if (highlightTimer <= 0) {
-            gameObject.GetComponent<MeshRenderer>().materials = baseMat;
-        } else {
-            gameObject.GetComponent<MeshRenderer>().materials = highlightMat;
-        }
-    }
-
-    public void TriggerHighlight() {
-        highlightTimer = 0.1f;
-    }
-
-    public void ChangeViews(Transform destination) {
-        playerMessage.GetComponent<TextHandler>().SetText(MyMessage);
     }
 
     public void InteractSelect() {
