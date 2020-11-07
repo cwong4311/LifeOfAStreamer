@@ -25,6 +25,9 @@ public static class Globals
     public static bool hasStreamed = false;
     public static float gameScore = 0f;
 
+    public static bool hasPosted = false;
+    public static string reserveDays = "";
+
     public static int subNumber = 0;
     public static string subNames = "";
 

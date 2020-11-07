@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -62,6 +63,32 @@ public class MenuController : MonoBehaviour
         this.webcamEnabled = webcam;
         this.micEnabled = mic;
         currentMenu++;
+    }
+
+    public void GoToPage(int pageNum)
+    {
+        myMenus[currentMenu].SetActive(false);
+        currentMenu = pageNum;
+    }
+
+    public void PostOrReserve(int postType)
+    {
+        int pageNum;
+
+        switch(postType) {
+            case 0:
+                Globals.hasPosted = true;
+                pageNum = 3;
+                break;
+            default:
+                int bookedDay = int.Parse(myMenus[currentMenu].transform.Find("InputField").gameObject.GetComponent<InputField>().text);
+                Globals.reserveDays += bookedDay + ",";
+                pageNum = 4;
+                break;
+        }
+
+        myMenus[currentMenu].SetActive(false);
+        currentMenu = pageNum;
     }
 
     private void TransferGlobals() {

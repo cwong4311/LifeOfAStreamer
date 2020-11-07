@@ -61,14 +61,29 @@ public class DayHandler : MonoBehaviour
     public void DayEnd(float attitude, float popularity) {
         viewerSystem.GetComponent<ViewerControlSystem>().endDay();
 
+        // If I say I'm streaming, but I don't stream, lose popularity
+        if (Globals.hasPosted && !Globals.hasStreamed) {
+            popularity -= (0.2f * Globals.subNumber);
+        } else if (Globals.hasPosted && Globals.hasStreamed) {
+            popularity += (0.1f * Globals.subNumber);
+        }
+        // If today is a day I've booked for streaming, but I don't stream, lose popularity.
+        if (Globals.reserveDays.Contains(Globals.days + "") && !Globals.hasStreamed) {
+            popularity -= (0.5f * Globals.subNumber);
+        } else if (Globals.reserveDays.Contains(Globals.days + "") && Globals.hasStreamed) {
+            popularity += (0.2f * Globals.subNumber);
+        }
+
         Globals.gameFlag = -1;
         Globals.days += 1;
         Globals.prevViewer = Globals.dayViewer;
         Globals.totalViewer += Globals.dayViewer;
         Globals.hasStreamed = false;
+        Globals.hasPosted = false;
 		
         Globals.attitude += attitude;
         Globals.popularity += popularity;
+        Globals.dayAttitude = 0;
         Globals.gameScore = 0;
         Globals.dayViewer = 0;
         Globals.totalMoney += Globals.dayMoney;
@@ -81,6 +96,7 @@ public class DayHandler : MonoBehaviour
                                 + ((float) (Globals.dayViewer - Globals.prevViewer) / 10f)
                                 + ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f))
                                 + ((float) Globals.subNumber / 10f);
+
         DayEnd(dayAttitude, dayPopularity);
     }
 
