@@ -6,20 +6,17 @@
 
 --
 
-Sunday - Thursday (Wk 9)
-Ensure Game Loop
+Sunday - Friday (Wk 9)
+Ensure Game Loop, Add 2 more Minigames
 
-Friday - Sunday (Wk 9)
+Saturday - Monday (Wk 10)
 Misc
 
-Monday - Wednesday (Wk 10)
-Feedback, Sound
+Tuesday - Thursday (Wk 10)
+Sound
 
-Thursday - Saturday (Wk 10)
-Master Up
-
-Sunday - Tuesday (Wk 11)
-Debug, Clean Up
+Friday - Tuesday (Wk 11)
+Master Up, Debug
 
 Wednesday (Wk 11)
 Deliverable, 10pg Portfolio
@@ -42,11 +39,11 @@ Deliverable, 10pg Portfolio
 	- Make sure a story works
 	- Improve Overall Interface, Menu Design and UI
 	- Polish Everything up overall
-	- More effects based on Attitude
-	- Tweak Popularity and Attitude Stats
+	(- More effects based on Attitude)
+	(- Tweak Popularity and Attitude Stats)
 	
 
-- Feedback:		(2/11)
+(- Feedback:)		(2/11)
 	- reactions for quantify
 	- propositions to have player react to streamer actions, rather than
 	  an involved player playing game system
