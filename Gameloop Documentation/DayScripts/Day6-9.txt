@@ -1,0 +1,30 @@
+Use existing AudienceViewer system with random
+generation.
+
+Set Story viewer (allowing player choices) as 2~3
+Netural, Good or Bad viewers (no trolls spawn).
+
+Add some responses for player responses.
+Add game-specific and action-specific dialogue
+
+---
+Good Route
+
+Day 6: Neutral + Lurker				~ 10 viewers
+
+Day 7: Bad + Neutral + Lurker			~ 20 viewers
+
+Day 8: Bad + Neutral + Good + Lurker(w/ Donations) ~ 30 viewers
+
+Day 9: Bad + Neutral + Good + Lurker(w/ Donations) ~ 40 viewers
+
+---
+Bad Route
+
+Day 6: No-one					~ 0 viewers
+
+Day 7: Bad + Neutral + Lurker + Troll (1)	~ 3 viewers
+
+Day 8: Bad + Neutral + Lurker + Troll (2)	~ 5 viewers
+
+Day 9: Bad + Neutral + Lurker	 		~ 2 viewers
