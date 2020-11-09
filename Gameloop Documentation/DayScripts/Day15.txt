@@ -1,0 +1,23 @@
+40~70 Viewers
+---
+
+Overview:
+
+> Bad Route, can't interact with pc or bed (New text popups)
+Text popups for bookshelves change too, and for going out
+the door too.
+
+Click on door, fade to black.
+
+"It's time to do something else".
+
+
+> Good Route, Can't interact with door or bed. 
+Streaming on pc results in initial flow of comments coming in.
+
+Things like "Hello", "<playername> starting again."
+"It's starting, pogs", etc.
+
+Fade to white.
+
+"And so I continued to stream."

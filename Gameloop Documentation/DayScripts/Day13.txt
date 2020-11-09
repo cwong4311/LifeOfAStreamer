@@ -1,0 +1,14 @@
+50~100+ viewers
+--
+
+Overview:
+
+Starts off with run-of-the-mill civil chatting.
+
+Hate comments and trolling starts to tick in once the player
+messes up, or doesn't get X score by X time.
+
+Player is given responses to alleviate the trolling, but will
+eventually be overwhelmed and black out.
+
+(Insert Gradual FX here for the 'gradually overwhelmed' part)
