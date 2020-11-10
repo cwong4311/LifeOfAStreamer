@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,14 +35,21 @@ public class LScreenController : MonoBehaviour
     {
         Globals.gameFlag = -1;
         int delay; GameObject messageBox;
-        
+        Debug.Log(Globals.gameType);
         switch(Globals.gameType) {
-            case 0:
             default:
+            case 1:
                 if (spawnedGame == null) spawnedGame = Instantiate(myGames[0], GameSpawnPoint.transform);
                 spawnedGame.SetActive(true); Globals.hasStreamed = true;
                 delay = 3; messageBox = spawnedGame.transform.Find("UI/GameOver").gameObject;
                 if (!Globals.webcamEnabled) { spawnedGame.transform.Find("UI/WebCam").gameObject.SetActive(false); }
+                break;
+            //case 2:
+            case 3:
+                if (spawnedGame == null) spawnedGame = Instantiate(myGames[1], GameSpawnPoint.transform);
+                spawnedGame.SetActive(true); Globals.hasStreamed = true;
+                delay = 3; messageBox = spawnedGame.transform.Find("GameOver").gameObject;
+                if (!Globals.webcamEnabled) { spawnedGame.transform.Find("WebCam").gameObject.SetActive(false); }
                 break;
         }
 
@@ -57,6 +65,15 @@ public class LScreenController : MonoBehaviour
         int t = duration;
         countdown.SetActive(true);
 
+        try {
+            countdown.GetComponent<TextMesh>().text = "";
+        } catch (Exception e2) {
+            Globals.gameFlag = 0;
+            countdown.SetActive(false);
+            yield break;
+        }
+
+        // Do the countdown
         while (t > 0) {
             countdown.GetComponent<TextMesh>().text = "" + t;
             yield return new WaitForSeconds(1);
