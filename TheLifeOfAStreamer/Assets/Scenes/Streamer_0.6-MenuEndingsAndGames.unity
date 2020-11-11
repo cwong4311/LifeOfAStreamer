@@ -2008,15 +2008,15 @@ MonoBehaviour:
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 3
+    m_MaxSize: 41
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Action
+  m_Text: Shooter
 --- !u!222 &152844857
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7284,7 +7284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18857,6 +18857,7 @@ MonoBehaviour:
   myGames:
   - {fileID: 1122510613837669652, guid: 07002ee23db00824887b145cb8d8c615, type: 3}
   - {fileID: 8961115938410231079, guid: ec24db85d896aef4ca4e0df8cb330029, type: 3}
+  - {fileID: 1366390406618772705, guid: 7e3d6196e3da6924999ba1fdbf5a03a4, type: 3}
   resetButton: {fileID: 1099947243}
   GameSpawnPoint: {fileID: 771996386}
 --- !u!1 &1154388249
@@ -25009,7 +25010,7 @@ Transform:
   - {fileID: 2069581203}
   - {fileID: 753463505}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592584336
 GameObject:

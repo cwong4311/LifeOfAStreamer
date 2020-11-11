@@ -83,12 +83,12 @@ public class PlatformGenerator : MonoBehaviour
             lengthDelay = 1.5f + (myLength / 2f);
         }
 
+        Globals.gameScore = (Globals.gameScore > totalScore) ? Globals.gameScore : totalScore;  
         if (myPlayer.transform.localPosition.y < -8 || myPlayer.transform.localPosition.x < -35 ) GameOver();
     }
 
     public void GameOver() {
         Globals.gameFlag = -1;
-        Globals.gameScore = (Globals.gameScore > totalScore) ? Globals.gameScore : totalScore;
 
         myRootObject.tag = "GameOver";
 

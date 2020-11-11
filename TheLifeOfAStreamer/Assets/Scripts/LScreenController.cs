@@ -35,7 +35,7 @@ public class LScreenController : MonoBehaviour
     {
         Globals.gameFlag = -1;
         int delay; GameObject messageBox;
-        Debug.Log(Globals.gameType);
+
         switch(Globals.gameType) {
             default:
             case 1:
@@ -44,7 +44,12 @@ public class LScreenController : MonoBehaviour
                 delay = 3; messageBox = spawnedGame.transform.Find("UI/GameOver").gameObject;
                 if (!Globals.webcamEnabled) { spawnedGame.transform.Find("UI/WebCam").gameObject.SetActive(false); }
                 break;
-            //case 2:
+            case 2:
+                if (spawnedGame == null) spawnedGame = Instantiate(myGames[2], GameSpawnPoint.transform);
+                spawnedGame.SetActive(true); Globals.hasStreamed = true;
+                delay = 3; messageBox = spawnedGame.transform.Find("UI/GameOver").gameObject;
+                if (!Globals.webcamEnabled) { spawnedGame.transform.Find("UI/WebCam").gameObject.SetActive(false); }
+                break;
             case 3:
                 if (spawnedGame == null) spawnedGame = Instantiate(myGames[1], GameSpawnPoint.transform);
                 spawnedGame.SetActive(true); Globals.hasStreamed = true;
