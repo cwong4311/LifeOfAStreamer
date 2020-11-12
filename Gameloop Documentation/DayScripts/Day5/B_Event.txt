@@ -5,8 +5,8 @@ is a streaming scene for this specific game (regardless of what game is being
 played).
 
 --- [ 1 ] ---
-- Whoa, I didn't realise people were streaming this game.
-- I guess there's a niche for everything, though!
+X: Whoa, I didn't realise people were streaming this game.
+X: I guess there's a niche for everything, though!
 
 Responses:
     A. Haha yeah, I guess there's not a lot to watch... [Self-deprecating, -Morale]
@@ -15,12 +15,12 @@ Responses:
     D. ... [Non-committal, -Morale]
 
 --- [ 2A ] ---
-- Oh. Well, I'll stick aroudn until I get bored, lol.
-- *around
-- Don't disappoint me!
-- Gotta make sure you make SUITable content for this game lmao [Cards only]
-- You gotta show off the HEIGHT of your talents hahaha [Platformer only]
-- I don't wanna be SPACing out mid-stream now [Space invaders only]
+X: Oh. Well, I'll stick aroudn until I get bored, lol.
+X: *around
+X: Don't disappoint me!
+X: Gotta make sure you make SUITable content for this game lmao [Cards only]
+X: You gotta show off the HEIGHT of your talents hahaha [Platformer only]
+X: I don't wanna be SPACing out mid-stream now [Space invaders only]
 
 Responses:
     I. Prepare to be impressed! [Boastful, +Morale (More if a high score is reached next?)]
@@ -33,24 +33,25 @@ Responses:
 
 
 --- [ 3A.I ] ---  Same as [ 3B.II ]
-- Haha, okay, this should be good!
-- [At next high score] POG (from 1/2 present viewers, tweak numbers if you want)
-    - Wow, you weren't joking!
+X: Haha, okay, this should be good!
+X: [At next high score] POG (from 1/2 present viewers, tweak numbers if you want)
+    X: Wow, you weren't joking!
 
 Wait for next event?
 
 --- [ 3A.II ] --- Same as [ 3A.IV ], [ 3B.IV ], [ 3C.III ]
-- LOL
-    - [If 3A.IV, Space Invaders] Two whole puns at once!
-- That's pretty funny, actually.
-    - [If 3A.II] You just made this worse for yourself! I'm invested now.
+X: LOL
+    X: [If 3A.IV, Space Invaders] Two whole puns at once!
+X: That's pretty funny, actually.
+    X: [If 3A.II] You just made this worse for yourself! I'm invested now.
+Y: [Optional, pun only] Nooooo, not the puns D:
 
 ... Might put in extra lines but this is probably sufficient.
 Should feel like a positive-ish interaction.
 Wait for next event.
 
 --- [ 3A.III ] ---
-- Oh, ok :(
+X: Oh, ok :(
 
 End of event/wait for next event.
 
@@ -59,11 +60,11 @@ End of event/wait for next event.
 
 ==================================
 --- [ 2B ] ---
-- A little bit! I wasn't very good at it, though.
-- I guess you could say I'm better SUITed to watching other people play! [Cards]
-- The game makes my anxiety spike, and I'm JUMPy enough as it is hahah [Platformer]
-    - It's easier to just watch, though.
-- The controls just felt a little too ALIEN to me, you know what I mean? [Space invaders]
+X: A little bit! I wasn't very good at it, though.
+X: I guess you could say I'm better SUITed to watching other people play! [Cards]
+X: The game makes my anxiety spike, and I'm JUMPy enough as it is hahah [Platformer]
+    X: It's easier to just watch, though.
+X: The controls just felt a little too ALIEN to me, you know what I mean? [Space invaders]
 
 Responses:
     I. The game's not that hard, lol. [Admonishing, -Morale]
@@ -72,7 +73,7 @@ Responses:
 
     IV. I'm sure you could ACE this if you tried! [Cards, Playful, ++Morale]
     IV. Sometimes all it takes is a little leap of faith. [Platformer, Playful, ++Morale]
-    IV. Yeah, I know it takes a little while to get used to the SPACing - but it's worth it! [Space Invaders, Playful, ++Morale]
+    IV. Yeah, I know it takes a little while to get used to the SPACing X: but it's worth it! [Space Invaders, Playful, ++Morale]
 
 --- [ 3B.I ] ---
 No response. Wait for next event.
@@ -80,17 +81,17 @@ No response. Wait for next event.
 --- [ 3B.II ] --- Same as [ 3A.I ]
 
 --- [ 3B.III ] ---
-- I guess so!
+X: I guess so!
 No further messages until next event.
 
 --- [ 3B.IV ] --- Same as [ 3A.II ]
 
 ==================================
 --- [ 2C ] ---
-- Whoa, I've never seen that one before!
-- Maybe that's why people don't stream it lol. Too buggy.
-- You're right tho that's pretty funny
-- Is the game really that deep, though? It looks pretty simple.
+X: Whoa, I've never seen that one before!
+X: Maybe that's why people don't stream it lol. Too buggy.
+X: You're right tho that's pretty funny
+X: Is the game really that deep, though? It looks pretty simple.
 
 Responses:
     I. Yeah. (Try to explain why.) [Enthusiastic, +Morale]
@@ -98,8 +99,8 @@ Responses:
     III. Nah, I was messing with you. [Playful, Neutral]
 
 --- [ 3C.I ] ---
-- Huh. Guess I never really looked at it like that.
-- Still not sure I get it, but it's cool that you like it that much!
+X: Huh. Guess I never really looked at it like that.
+X: Still not sure I get it, but it's cool that you like it that much!
 
 Responses:
     A. Thanks!
@@ -108,15 +109,15 @@ Responses:
 End of event; wait for next.
 
 --- [ 3C.II ] ---
-- Are you... gonna tell us why? Lol
+X: Are you... gonna tell us why? Lol
 
 Responses:
     A. Yes  [Go to 3C.I, no morale change]
     B. No
 
 --- [ 3C.II.B ] ---
-- F
-- ok
+X: F
+X: ok
 
 End of event. Wait for next event.
 

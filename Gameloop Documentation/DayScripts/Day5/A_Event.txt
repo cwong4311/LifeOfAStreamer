@@ -5,3 +5,124 @@ After a while, they still don't seem to get it, and continue to ask
 questions (often mid-gameplay, which isn't really an issue if you're
 not playing an actiony game). The streamer's options can be
 characterised as: patient, non-committal, dismissive.
+
+--- [ 1 ] ---
+X: So like
+X: What do you even do in this game?
+X: Sorry I've been watching for a bit, and I still don't get it
+
+Responses:
+    A. Isn't it obvious? [Non-committal, -Morale]
+    B. Well... (try to explain the game) [Helpful, +Morale]
+
+--- [ 2A ] ---
+X: No, not really...
+Y: Seems pretty straightforward to me!
+Y: [Cards only] You try matching the cards, and they disappear when you do.
+    Y: The goal is to clear the board.
+Y: [Platformer only] The player has to try not to fall while the world moves around them. It's a bit harder than it looks.
+Y: [Space Invaders only] Things come in wanting to hurt the player! The player has to shoot them down before they become a problem.
+
+Go to [ 2B ].
+
+--- [ 2B ] ---
+X: Hmm, I see...
+
+--- [ 3 ] ---
+Triggers after a couple more rounds of gameplay, hopefully
+midway through a run.
+X: I still don't get it.
+
+Responses (All neutral except C):
+    A. What's there not to get?
+    B. What do you mean?
+    C. Lol are you just trolling [Accusatory, -Morale]
+
+--- [ 4A, 4B ] ---
+X: I mean, like, why do you even do these things?
+X: [Cards] Why flip the cards? Every time you clear the board, they just come back.
+X: [Platformer] Is there a place you're trying to get to at the end? Are you running from something?
+    X: Why does the little man keep coming back after he falls to his death?
+X: [Space Invaders] What do the things want? When you shoot them, they just keep coming back.
+    X: Doesn't look like shooting them really helps you, either...
+
+Responses:
+    I. You're definitely trolling. [Accusatory, -Morale]
+    II. Hahaha, you're thinking about this too hard. It's just a game. [Dismissive, -Morale]
+    III. Hmm, the game doesn't really say anything about that, sorry. I just like playing for the sake of playing. [Gentle, Neutral]
+    IV. OFFICIALLY, there isn't a reason- but... (humour them, and make something up) [Engaging, Playful, +Morale]
+
+--- [ 5A/B.I ] --- Same as [ 4C ]
+X: No...
+X: I don't even know what that means
+
+Nothing until next event.
+
+--- [ 5A/B.II ] ---
+X: ... ok.
+
+Nothing until next event.
+
+--- [ 5A/B.III ] ---
+X: Oh, I see
+X: It must be fun to play, then, even if it's not that deep lol
+X: Not the kind of game I'd normally play
+
+See: [ 5A/B.IV ] for responses.
+
+--- [ 5A/B.IV ] ---
+X: Hahaha okay okay
+X: You know for a moment I thought you were making fun of me
+X: But that's actually pretty funny
+X: I guess the game just isn't that deep
+X: Not really the kind of game I'd normally play
+
+Responses:
+    A. Yeah, that's ok. Hope you like watching it, at least! [Friendly, +Morale]
+    B. What kind of game do you normally play? [Engaging, +Morale]
+
+--- [ 6A ] ---
+X: Yeah, I think I'll stick around a bit
+X: Maybe I'll get to see why you find it fun haha
+
+Nothing until next event.
+
+--- [ 6B ] ---
+X: Last Reverie XVI
+X: It's good
+X: Really pretty
+Y: Ohhh I've been meaning to try that one
+X: I'm kinda trash at it though
+X: My brother bought it for my birthday
+
+Responses:
+    A. Yeah? I've had my eye on that, too. Maybe I'll stream it someday. [Engaging, +Morale]
+    B. Haven't really heard of that one, sorry. Must be very different. [Neutral]
+
+--- [ 7A ] ---
+X: That'd be really cool!
+X: I've played it a lot but I really want to see what other people think about it
+X: I don't normally play a lot of videogames but this one got me curious hahaha
+
+Ends on a good note. Wait til next event.
+
+--- [ 7B ] ---
+X: Oh, that's ok
+X: It's a very different game, yeah
+Y: Lots more story lol
+Y: Kinda like watching a movie sometimes
+X: But like, a good movie
+Y: Yeah, it's real quality from what I've watched
+Y: Maybe you should stream it lol
+
+Responses:
+    A. Hmm, maybe. [ 7A ]
+    B. Probably not, sorry. [Neutral]
+
+--- [ 8 ] ---
+Y: gg
+X: Haha that's ok
+
+Wait til next event.
+
+--- [ 4C ] --- Same as [ 5A/B.I ]
