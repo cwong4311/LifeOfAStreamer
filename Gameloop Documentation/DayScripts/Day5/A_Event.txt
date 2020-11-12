@@ -1,128 +1,124 @@
 Event A
 
-A curious viewer approaches and asks what kind of game it is.
-After a while, they still don't seem to get it, and continue to ask
-questions (often mid-gameplay, which isn't really an issue if you're
-not playing an actiony game). The streamer's options can be
-characterised as: patient, non-committal, dismissive.
+A new viewer comes through and expresses surprise about the fact that there
+is a streaming scene for this specific game (regardless of what game is being
+played).
 
 --- [ 1 ] ---
-X: So like
-X: What do you even do in this game?
-X: Sorry I've been watching for a bit, and I still don't get it
+X: Whoa, I didn't realise people were streaming this game.
+X: I guess there's a niche for everything, though!
 
 Responses:
-    A. Isn't it obvious? [Non-committal, -Morale]
-    B. Well... (try to explain the game) [Helpful, +Morale]
+    A. Haha yeah, I guess there's not a lot to watch... [Self-deprecating, -Morale]
+    B. It's pretty fun! You've played before? [Engaging, +Morale]
+    C. Yeah, it's surprisingly deep, actually. Also, some of the bugs look kinda funny. Watch this. [Engaging, +Morale]
+    D. ... [Non-committal, -Morale]
 
 --- [ 2A ] ---
-X: No, not really...
-Y: Seems pretty straightforward to me!
-Y: [Cards only] You try matching the cards, and they disappear when you do.
-    Y: The goal is to clear the board.
-Y: [Platformer only] The player has to try not to fall while the world moves around them. It's a bit harder than it looks.
-Y: [Space Invaders only] Things come in wanting to hurt the player! The player has to shoot them down before they become a problem.
+X: Oh. Well, I'll stick aroudn until I get bored, lol.
+X: *around
+X: Don't disappoint me!
+X: Gotta make sure you make SUITable content for this game lmao [Cards only]
+X: You gotta show off the HEIGHT of your talents hahaha [Platformer only]
+X: I don't wanna be SPACing out mid-stream now [Space invaders only]
 
-Go to [ 2B ].
+Responses:
+    I. Prepare to be impressed! [Boastful, +Morale (More if a high score is reached next?)]
+    II. I don't think I can handle the pressure. [Sarcastic, Playful, +Morale]
+    III. Puns aren't funny, lol [Discouraging, -Morale]
 
+    IV. Don't worry, I think this stream'll MATCH your expectations :> [Cards, Playful, ++Morale]
+    IV. Guess I can't let you down now, esp since you've taken such a LEAP of faith to keep watching! [Platformer, Playful, ++Morale]
+    IV. I'll SHOOT for the stars! [Space invaders, Playful, ++Morale]
+
+
+--- [ 3A.I ] ---  Same as [ 3B.II ]
+X: Haha, okay, this should be good!
+X: [At next high score] POG (from 1/2 present viewers, tweak numbers if you want)
+    X: Wow, you weren't joking!
+
+Wait for next event?
+
+--- [ 3A.II ] --- Same as [ 3A.IV ], [ 3B.IV ], [ 3C.III ]
+X: LOL
+    X: [If 3A.IV, Space Invaders] Two whole puns at once!
+X: That's pretty funny, actually.
+    X: [If 3A.II] You just made this worse for yourself! I'm invested now.
+Y: [Optional, pun only] Nooooo, not the puns D:
+
+... Might put in extra lines but this is probably sufficient.
+Should feel like a positive-ish interaction.
+Wait for next event.
+
+--- [ 3A.III ] ---
+X: Oh, ok :(
+
+End of event/wait for next event.
+
+--- [ 3A.IV ] --- Same as [ 3A.II ]
+
+
+==================================
 --- [ 2B ] ---
-X: Hmm, I see...
-
---- [ 3 ] ---
-Triggers after a couple more rounds of gameplay, hopefully
-midway through a run.
-X: I still don't get it.
-
-Responses (All neutral except C):
-    A. What's there not to get?
-    B. What do you mean?
-    C. Lol are you just trolling [Accusatory, -Morale]
-
---- [ 4A, 4B ] ---
-X: I mean, like, why do you even do these things?
-X: [Cards] Why flip the cards? Every time you clear the board, they just come back.
-X: [Platformer] Is there a place you're trying to get to at the end? Are you running from something?
-    X: Why does the little man keep coming back after he falls to his death?
-X: [Space Invaders] What do the things want? When you shoot them, they just keep coming back.
-    X: Doesn't look like shooting them really helps you, either...
+X: A little bit! I wasn't very good at it, though.
+X: I guess you could say I'm better SUITed to watching other people play! [Cards]
+X: The game makes my anxiety spike, and I'm JUMPy enough as it is hahah [Platformer]
+    X: It's easier to just watch, though.
+X: The controls just felt a little too ALIEN to me, you know what I mean? [Space invaders]
 
 Responses:
-    I. You're definitely trolling. [Accusatory, -Morale]
-    II. Hahaha, you're thinking about this too hard. It's just a game. [Dismissive, -Morale]
-    III. Hmm, the game doesn't really say anything about that, sorry. I just like playing for the sake of playing. [Gentle, Neutral]
-    IV. OFFICIALLY, there isn't a reason- but... (humour them, and make something up) [Engaging, Playful, +Morale]
+    I. The game's not that hard, lol. [Admonishing, -Morale]
+    II. Well you're in luck: I'm a pro! Watch this. [Boastful, +Morale (bonus if high score?)]
+    III. No shame in that. [Neutral]
 
---- [ 5A/B.I ] --- Same as [ 4C ]
-X: No...
-X: I don't even know what that means
+    IV. I'm sure you could ACE this if you tried! [Cards, Playful, ++Morale]
+    IV. Sometimes all it takes is a little leap of faith. [Platformer, Playful, ++Morale]
+    IV. Yeah, I know it takes a little while to get used to the SPACing X: but it's worth it! [Space Invaders, Playful, ++Morale]
 
-Nothing until next event.
+--- [ 3B.I ] ---
+No response. Wait for next event.
 
---- [ 5A/B.II ] ---
-X: ... ok.
+--- [ 3B.II ] --- Same as [ 3A.I ]
 
-Nothing until next event.
+--- [ 3B.III ] ---
+X: I guess so!
+No further messages until next event.
 
---- [ 5A/B.III ] ---
-X: Oh, I see
-X: It must be fun to play, then, even if it's not that deep lol
-X: Not the kind of game I'd normally play
+--- [ 3B.IV ] --- Same as [ 3A.II ]
 
-See: [ 5A/B.IV ] for responses.
-
---- [ 5A/B.IV ] ---
-X: Hahaha okay okay
-X: You know for a moment I thought you were making fun of me
-X: But that's actually pretty funny
-X: I guess the game just isn't that deep
-X: Not really the kind of game I'd normally play
+==================================
+--- [ 2C ] ---
+X: Whoa, I've never seen that one before!
+X: Maybe that's why people don't stream it lol. Too buggy.
+X: You're right tho that's pretty funny
+X: Is the game really that deep, though? It looks pretty simple.
 
 Responses:
-    A. Yeah, that's ok. Hope you like watching it, at least! [Friendly, +Morale]
-    B. What kind of game do you normally play? [Engaging, +Morale]
+    I. Yeah. (Try to explain why.) [Enthusiastic, +Morale]
+    II. Yeah. [Non-committal, -Morale]
+    III. Nah, I was messing with you. [Playful, Neutral]
 
---- [ 6A ] ---
-X: Yeah, I think I'll stick around a bit
-X: Maybe I'll get to see why you find it fun haha
-
-Nothing until next event.
-
---- [ 6B ] ---
-X: Last Reverie XVI
-X: It's good
-X: Really pretty
-Y: Ohhh I've been meaning to try that one
-X: I'm kinda trash at it though
-X: My brother bought it for my birthday
+--- [ 3C.I ] ---
+X: Huh. Guess I never really looked at it like that.
+X: Still not sure I get it, but it's cool that you like it that much!
 
 Responses:
-    A. Yeah? I've had my eye on that, too. Maybe I'll stream it someday. [Engaging, +Morale]
-    B. Haven't really heard of that one, sorry. Must be very different. [Neutral]
+    A. Thanks!
+    B. ...
 
---- [ 7A ] ---
-X: That'd be really cool!
-X: I've played it a lot but I really want to see what other people think about it
-X: I don't normally play a lot of videogames but this one got me curious hahaha
+End of event; wait for next.
 
-Ends on a good note. Wait til next event.
-
---- [ 7B ] ---
-X: Oh, that's ok
-X: It's a very different game, yeah
-Y: Lots more story lol
-Y: Kinda like watching a movie sometimes
-X: But like, a good movie
-Y: Yeah, it's real quality from what I've watched
-Y: Maybe you should stream it lol
+--- [ 3C.II ] ---
+X: Are you... gonna tell us why? Lol
 
 Responses:
-    A. Hmm, maybe. [ 7A ]
-    B. Probably not, sorry. [Neutral]
+    A. Yes  [Go to 3C.I, no morale change]
+    B. No
 
---- [ 8 ] ---
-Y: gg
-X: Haha that's ok
+--- [ 3C.II.B ] ---
+X: F
+X: ok
 
-Wait til next event.
+End of event. Wait for next event.
 
---- [ 4C ] --- Same as [ 5A/B.I ]
+--- [ 3C.III ] --- Same as [ 3A.II ]
