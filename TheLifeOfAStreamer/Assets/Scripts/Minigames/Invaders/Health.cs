@@ -14,8 +14,8 @@ public class Health : MonoBehaviour
         transform.localScale = new Vector3(displayHealth, 0.2f, 0.01f);
     }
 
-    public void SetHealth(float curHP, float maxHP) {
+    public void SetHealth(float curHP, float maximumHP) {
         health = curHP;
-        maxHP = maxHP;
+        maxHP = maximumHP;
     }
 }

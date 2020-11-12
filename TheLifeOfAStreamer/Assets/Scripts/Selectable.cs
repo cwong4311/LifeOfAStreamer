@@ -39,16 +39,18 @@ public class Selectable : MonoBehaviour
     {
     }
 
-    public void InteractSelect() {
-        if (clicked) return;
+    public bool InteractSelect() {
+        if (clicked) return false;
         if (Globals.hasStreamed) {
             playerMessage.GetComponent<TextHandler>().SetText("I've already started streaming. I can't leave halfway");
-            return;
+            return false;
         }
         if (playerMessage.GetComponent<TextHandler>().SetText(MyMessage)) {
             clicked = true;
             StartCoroutine(WaitForDayEnd(2.5f, Random.Range(1f, 3f), Random.Range(-5f, -2f)));
+            return true;
         }
+        return false;
     }
 
     public void TextSelect() {

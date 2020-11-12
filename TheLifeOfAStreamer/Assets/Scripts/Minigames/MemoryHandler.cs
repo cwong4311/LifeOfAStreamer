@@ -13,7 +13,6 @@ public class MemoryHandler : MonoBehaviour
     private float myCounter;
 
     private int matchedNumber = 0;
-    private bool currentlyComparing = false;
 
     public GameObject gameOver;
     public GameObject Timer;

@@ -13,6 +13,7 @@ public class CameraPan : MonoBehaviour
     private Transform originalTrans;
     private Transform phoneDestinationTrans;
     private bool isFocused = false;
+    private bool isPanning = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class CameraPan : MonoBehaviour
 
     public void ChangeViews(string destinationFlag)
     {
+        if (isPanning) return;
         GetComponent<Selector>().enabled = false;
         originalTrans.position = originObj.transform.position;
         originalTrans.rotation = this.transform.rotation;
@@ -47,6 +49,7 @@ public class CameraPan : MonoBehaviour
 
     public void ResetViews()
     {
+        if (isPanning) return;
         StartCoroutine(PanToPosition(this.transform, originalTrans, 0.7f));
         StartCoroutine(ScreenFlick(false, 0.015f, -1));
         Cursor.lockState = CursorLockMode.Locked;
@@ -56,19 +59,21 @@ public class CameraPan : MonoBehaviour
     }
     public IEnumerator PanToPosition(Transform start, Transform destination, float timeToMove)
     {
-      var currentPos = start.position;
-      var destPos = destination.position;
+        isPanning = true;
+        var currentPos = start.position;
+        var destPos = destination.position;
 
-      var currentRot = start.rotation;
-      var destRot = destination.rotation;
-      var t = 0f;
-      while(t < 1)
-      {
-             t += Time.deltaTime / timeToMove;
-             transform.position = Vector3.Lerp(currentPos, destPos, t);
-             transform.rotation = Quaternion.Slerp(currentRot, destRot, t);
-             yield return null;
-      }
+        var currentRot = start.rotation;
+        var destRot = destination.rotation;
+        var t = 0f;
+        while(t < 1)
+        {
+                t += Time.deltaTime / timeToMove;
+                transform.position = Vector3.Lerp(currentPos, destPos, t);
+                transform.rotation = Quaternion.Slerp(currentRot, destRot, t);
+                yield return null;
+        }
+        isPanning = false;
     }
     private IEnumerator ScreenFlick(bool flag, float timeToMove, int screenType)
     {

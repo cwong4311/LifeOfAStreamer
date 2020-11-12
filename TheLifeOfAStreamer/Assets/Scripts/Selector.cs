@@ -12,6 +12,12 @@ public class Selector : MonoBehaviour
     private GameObject crosshair;
     private float crosshairPersist = 0f;
 
+    public GameObject confirmPrompt;
+    private Selectable tempSelect;
+    private bool isPrompt = false;
+
+    public GameObject Fader;
+
     bool running = false;
     
     // Start is called before the first frame update
@@ -66,7 +72,24 @@ public class Selector : MonoBehaviour
                             // Ignore
                         }
                     } else if (myObject.objectType == Selectable.ObjectType.Interact) {
-                        myObject.InteractSelect();
+                        tempSelect = myObject;
+                        switch(hit.collider.name) {
+                            default:
+                            case "Door":
+                                if (!isPrompt) {
+                                    ToggleController(false);
+                                    DoorPrompt();
+                                    isPrompt = true;
+                                }
+                                break;
+                            case "Bed":
+                                if (!isPrompt) {
+                                    ToggleController(false);
+                                    BedPrompt();
+                                    isPrompt = true;
+                                }
+                                break;
+                        }
                     } else if (myObject.objectType == Selectable.ObjectType.Text) {
                         myObject.TextSelect();
                     }
@@ -77,5 +100,84 @@ public class Selector : MonoBehaviour
         running = false;
 
         yield return null;
+    }
+
+    public void DoorPrompt() {
+        confirmPrompt.SetActive(true);
+        confirmPrompt.transform.Find("Door").gameObject.SetActive(true);
+    }
+
+    public void GoOutPrompt() {
+        confirmPrompt.transform.Find("Door").gameObject.SetActive(false);
+        confirmPrompt.transform.Find("GoOut").gameObject.SetActive(true);
+    }
+
+    public void ExitPrompt() {
+        confirmPrompt.transform.Find("Door").gameObject.SetActive(false);
+        confirmPrompt.transform.Find("Exit").gameObject.SetActive(true);
+    }
+
+    public void BedPrompt() {
+        confirmPrompt.SetActive(true);
+        confirmPrompt.transform.Find("Bed").gameObject.SetActive(true);
+    }
+
+
+
+    public void GoOut(bool flag) {
+        if (flag) {
+            if (!tempSelect.InteractSelect()) {
+                ToggleController(true);
+                tempSelect = null;
+                isPrompt = false;
+            }
+        } else {
+            ToggleController(true);
+            tempSelect = null;
+            isPrompt = false;
+        }
+        confirmPrompt.transform.Find("GoOut").gameObject.SetActive(false);
+        confirmPrompt.SetActive(false);
+    }
+
+    public void Exit(bool flag) {
+        if (flag) {
+            Fader.GetComponent<DayHandler>().LeaveGame();
+        } else {
+            ToggleController(true);
+            tempSelect = null;
+            isPrompt = false;
+        }
+        confirmPrompt.transform.Find("Exit").gameObject.SetActive(false);
+        confirmPrompt.SetActive(false);
+    }
+
+    public void Sleep(bool flag) {
+        if (flag) {
+            if (!tempSelect.InteractSelect()) {
+                ToggleController(true);
+                tempSelect = null;
+                isPrompt = false;
+            }
+        } else {
+            ToggleController(true);
+            tempSelect = null;
+            isPrompt = false;
+        }
+        confirmPrompt.transform.Find("Bed").gameObject.SetActive(false);
+        confirmPrompt.SetActive(false);
+    }
+
+    
+    private void ToggleController(bool flag) {
+        if (!flag) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            GetComponent<CameraPan>().ToggleController(false);
+        } else {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            GetComponent<CameraPan>().ToggleController(true);
+        }
     }
 }
