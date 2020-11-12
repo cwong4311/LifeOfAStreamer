@@ -30,7 +30,7 @@ public class Enemy : InvaderObject
             fireTimer -= Time.deltaTime;
             if (fireTimer <= 0f) {
                 fireTimer = uniqueDelay;
-                Instantiate(laserObj, transform.position, Quaternion.identity, laserHolder);
+                Instantiate(laserObj, transform.position, new Quaternion(0f, 0f, 180f, 1f), laserHolder);
             }
         }
 

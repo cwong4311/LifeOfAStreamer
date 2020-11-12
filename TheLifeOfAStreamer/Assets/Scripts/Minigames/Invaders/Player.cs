@@ -8,13 +8,14 @@ public class Player : InvaderObject
     public GameObject gameHandler;
     public Transform laserObj;
     public Transform laserHolder;
+    public GameObject myHealth;
 
     public float[] x_boundary;
     private float moveSpeed = 15;
     
     private float health;
     private float maxHP = 100f;
-    private float dmgTaken = 4f;
+    private float dmgTaken = 5f;
 
 
     private float fireDelay = 0.3f;
@@ -32,7 +33,7 @@ public class Player : InvaderObject
     {
         if (running) {
             float horizontalInput = Input.GetAxis("Horizontal");
-            transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
+            transform.Translate(new Vector3(-horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
             if (transform.localPosition.x < x_boundary[0]) 
                 transform.localPosition = new Vector3(x_boundary[0], 
                     transform.localPosition.y, transform.localPosition.z);
@@ -44,7 +45,7 @@ public class Player : InvaderObject
             if (Input.GetKey("space") && delayCounter <= 0f)
             {
                 delayCounter = fireDelay;
-                Instantiate(laserObj, transform.position, Quaternion.identity, laserHolder);
+                Instantiate(laserObj, transform.position, new Quaternion(0f, 0f, 180f, 1f), laserHolder);
             }
         }
 
@@ -59,6 +60,7 @@ public class Player : InvaderObject
     {        
         if (collision.gameObject.tag == "EnemyLaser") {
             health -= dmgTaken;
+            myHealth.GetComponent<Health>().SetHealth(health, maxHP);
         }
     }
 
@@ -66,6 +68,7 @@ public class Player : InvaderObject
         running = true;
 
         health = maxHP;
+        myHealth.GetComponent<Health>().SetHealth(health, maxHP);
     }
 
     public override void Run() {

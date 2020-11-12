@@ -86,7 +86,7 @@ public class MemoryHandler : MonoBehaviour
             }
         }
 
-        if (Globals.gameFlag == -1) {
+        if (Globals.gameFlag == -1 && Globals.hasStreamed) {
             myRootObject.SetActive(false);
             GameOver();
         }

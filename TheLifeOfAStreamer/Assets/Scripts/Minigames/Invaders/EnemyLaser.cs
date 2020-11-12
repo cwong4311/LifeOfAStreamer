@@ -29,8 +29,7 @@ public class EnemyLaser : InvaderObject
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Player" || 
-            collision.gameObject.name == "Wall" ||
-            collision.gameObject.tag == "PlayerLaser") {
+            collision.gameObject.name == "Wall") {
             Destroy(gameObject);
         }
     }

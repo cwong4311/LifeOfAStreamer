@@ -8,7 +8,7 @@ public class PlatformGenerator : MonoBehaviour
     public GameObject myPlayer;
     public GameObject myUI;
     public GameObject myRootObject;
-    private Vector2 y_boundary = new Vector2(-7f, 7f);
+    private Vector2 y_boundary = new Vector2(-6.5f, 6.5f);
     private Vector3 origin = new Vector3(18f, 0f, -0.5f);
     private float origin_y = 3f;
     private float lastY = 6.684f;
@@ -80,7 +80,7 @@ public class PlatformGenerator : MonoBehaviour
             newPlatform.transform.localScale += new Vector3(myLength, 0f, 0f);
             newPlatform.transform.localPosition += new Vector3(0f, lastY + myY, 0f);
             lastY += myY;
-            lengthDelay = 1.5f + (myLength / 2f);
+            lengthDelay = 1.2f + (myLength / 2.2f);
         }
 
         Globals.gameScore = (Globals.gameScore > totalScore) ? Globals.gameScore : totalScore;  

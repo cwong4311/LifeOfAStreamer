@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WebCam : MonoBehaviour
 {
@@ -39,8 +41,17 @@ public class WebCam : MonoBehaviour
         if (!webcamConnected) return;
 
         webcamTexture = new WebCamTexture();
-        Renderer renderer = GetComponent<Renderer>();
-        renderer.material.mainTexture = webcamTexture;
+        Debug.Log("Test");
+        try {
+            Renderer renderer = GetComponent<Renderer>();
+            renderer.material.mainTexture = webcamTexture;
+        }
+        catch (Exception e) {
+            Debug.Log("Trig");
+            RawImage renderer = GetComponent<RawImage>();
+            renderer.texture = webcamTexture;
+            renderer.material.mainTexture = webcamTexture;
+        }
         webcamTexture.Play();
         webcamPlaying = true;
     }

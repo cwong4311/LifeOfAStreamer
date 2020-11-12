@@ -74,7 +74,6 @@ public class DayHandler : MonoBehaviour
             popularity += (0.2f * Globals.subNumber);
         }
 
-        Globals.gameFlag = -1;
         Globals.days += 1;
         Globals.prevViewer = Globals.dayViewer;
         Globals.totalViewer += Globals.dayViewer;
@@ -87,6 +86,8 @@ public class DayHandler : MonoBehaviour
         Globals.gameScore = 0;
         Globals.dayViewer = 0;
         Globals.totalMoney += Globals.dayMoney;
+
+        Globals.gameFlag = -1;
         FadeOut();
     }
 
