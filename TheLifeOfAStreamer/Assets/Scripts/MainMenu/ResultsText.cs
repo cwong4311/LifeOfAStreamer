@@ -164,15 +164,20 @@ public class ResultsText : MonoBehaviour
         {
             i.SetActive(true);
             Text myText = i.GetComponent<Text>();
+            Image myButton = null; //Specifically for buttonShow
 
             Color endColor;
+            Color endButtonColor; //Specifically for buttonShow
             if (myText.name == "ButtonText")
             {
                 i.GetComponentInParent<Button>().interactable = true;
                 endColor = new Color(1f, 0f, 0f, 1f);
+                myButton = i.GetComponentInParent<Image>();
+                endButtonColor = new Color(0.15f, 0.15f, 0.15f, 0.5f);
             } else
             {
                 endColor = new Color(1f, 1f, 1f, 1f);
+                endButtonColor = new Color(1f, 1f, 1f, 1f);
             }
 
             float t = 0;
@@ -180,6 +185,7 @@ public class ResultsText : MonoBehaviour
             {
                 // Now the loop will execute on every end of frame until the condition is true
                 myText.color = Color.Lerp(new Color(1.0f, 1.0f, 1.0f, 0.0f), endColor, t);
+                if (myButton != null) myButton.color = Color.Lerp(new Color(1.0f, 1.0f, 1.0f, 0.0f), endButtonColor, t);
                 t += Time.deltaTime / 2;
                 yield return new WaitForEndOfFrame(); // So that I return something at least.
             }
