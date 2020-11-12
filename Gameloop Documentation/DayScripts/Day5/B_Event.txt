@@ -1,8 +1,10 @@
-Event B
+Event A
 
 A new viewer comes through and expresses surprise about the fact that there
 is a streaming scene for this specific game (regardless of what game is being
 played).
+
+(PS: Chronologically First)
 
 --- [ 1 ] ---
 X: Whoa, I didn't realise people were streaming this game.

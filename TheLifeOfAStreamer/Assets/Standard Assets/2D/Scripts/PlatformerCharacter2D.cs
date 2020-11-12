@@ -52,6 +52,17 @@ namespace UnityStandardAssets._2D
 
         public void Move(float move, bool crouch, bool jump)
         {
+            if (m_Grounded && move == 0f && !jump) {
+                Vector2 slideBack = new Vector2(m_Rigidbody2D.position.x - 0.13f, m_Rigidbody2D.position.y);
+                m_Rigidbody2D.MovePosition(slideBack);
+            } 
+            
+            if (m_Grounded && move < 0f) {
+                Debug.Log(move);
+                move -= 0.5f;
+                if (move < -1f) move = -1f;
+            }
+
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
             {
@@ -100,7 +111,7 @@ namespace UnityStandardAssets._2D
                 m_JumpTime = Time.deltaTime;
             } else if (jump && m_JumpTime < 0.2f) {
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 10));
-                m_JumpTime += Time.deltaTime;          
+                m_JumpTime += Time.deltaTime;
             }
         }
 

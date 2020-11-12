@@ -41,13 +41,11 @@ public class WebCam : MonoBehaviour
         if (!webcamConnected) return;
 
         webcamTexture = new WebCamTexture();
-        Debug.Log("Test");
         try {
             Renderer renderer = GetComponent<Renderer>();
             renderer.material.mainTexture = webcamTexture;
         }
         catch (Exception e) {
-            Debug.Log("Trig");
             RawImage renderer = GetComponent<RawImage>();
             renderer.texture = webcamTexture;
             renderer.material.mainTexture = webcamTexture;
