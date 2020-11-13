@@ -1,0 +1,8 @@
+L_D = Long Delay
+Name# = change npc name
+DNT = (current npc) donate
+SBC = (current npc) subscribe
+E_C = (current npc) leave room
+FX# = play fx number
+SF# = play sfx number
+

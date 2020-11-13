@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ViewerControlSystem : MonoBehaviour
 {
+    public TextAsset usernameFile;
     public GameObject chatBox;
     public GameObject[] viewerTypes;
-    public TextAsset usernameFile;
+    public GameObject scriptedViewer;
+    public TextAsset[] dayScripts;
     private bool paused;
     private bool dayEnd = false;
     private int test_created = 3;
@@ -21,6 +23,7 @@ public class ViewerControlSystem : MonoBehaviour
     private float spawnTimer = 0;
 
     private string myRoute = "intro";
+    private bool storyInitialised = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +59,7 @@ public class ViewerControlSystem : MonoBehaviour
             }
         }
 
+        /*
         // RNG System
         if (Globals.days == 3 && Globals.gameFlag != -1 && test_created > 0) {
             //createViewer();
@@ -110,21 +114,32 @@ public class ViewerControlSystem : MonoBehaviour
                 dayTroll++;
             }
         }
+        */
 
         //Route System
-        if (Globals.days == 5) {
-            // Slow Increase to 10~20 viewers, random trolls
-        } else if (Globals.days == 10) {
-            // If Pop up & Att up, increase viewers
-            // If Pop up & Att down, increase viewers
-            // If Pop down & Att down, decrease viewers
-            // If Pop down & Att up, increase trolls more
-        } else if (Globals.days == 15) {
-
-        } else if (Globals.days == 20) {
-
-        } else if (Globals.days == 25) {
-
+        if (!storyInitialised) {
+            switch(Globals.days) {
+                default:
+                    break;
+                case 1: //change to 3
+                    createScriptedViewer(0);
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 8:             // Day 10 on Chart
+                    break;
+                case 9:             // Day 11 on Chart
+                    break;                
+                case 10:            // Day 13 on Chart
+                    break;
+                case 11:            // Day 14 on Chart
+                    break;                
+                case 12:            // Day 15 on Chart
+                    break;
+            }
+            storyInitialised = true;
         }
     }
 
@@ -275,6 +290,33 @@ public class ViewerControlSystem : MonoBehaviour
         newViewer.GetComponent<Viewer>().attitude = myAttitude;
         newViewer.GetComponent<Viewer>().myObject = newViewer;
         newViewer.GetComponent<Viewer>().setup();
+    }
+
+    private void createScriptedViewer(int scriptLoaded) {
+        GameObject newViewer = Instantiate(scriptedViewer, transform);
+        newViewer.GetComponent<ScriptedViewer>().LoadStory(dayScripts[scriptLoaded]);
+        int scViewers = newViewer.GetComponent<ScriptedViewer>().GetViewerCount();
+
+        Globals.dayViewer += scViewers;
+
+        for (int i = 0; i < scViewers; i++) {
+            string nameNumbers = "";
+
+            if (Random.Range(0, 100) > 30) {
+                for (int n = 0; n < Random.Range(0, 3); n++) {
+                    nameNumbers += Random.Range(0, 10).ToString();
+                }
+            }
+            string myName = viewerNames[Random.Range(0, viewerNames.Length)] + "" + nameNumbers;
+            newViewer.GetComponent<ScriptedViewer>().AddName(myName, i);
+        }
+
+        newViewer.GetComponent<Viewer>().chatBox = chatBox.GetComponent<Chatbox>();
+        newViewer.GetComponent<Viewer>().username = "scripted";
+        newViewer.GetComponent<Viewer>().attitude = 0;
+        newViewer.GetComponent<Viewer>().myObject = newViewer;
+        newViewer.GetComponent<Viewer>().setup();
+        newViewer.GetComponent<ScriptedViewer>().SetupComplete();
     }
 
     private void createTroll() {

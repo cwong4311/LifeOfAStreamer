@@ -6546,6 +6546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7799cfc8ee6af498a0af051c8364d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usernameFile: {fileID: 4900000, guid: 28278de3dade71f49b77c421370c10b8, type: 3}
   chatBox: {fileID: 284544578}
   viewerTypes:
   - {fileID: 2210085644898365814, guid: 66ca3f9e3977daf408682fb77f56a2dd, type: 3}
@@ -6557,7 +6558,10 @@ MonoBehaviour:
   - {fileID: 8983521146600360740, guid: b93841fd4cc9a1a4a9119f31a4d739d3, type: 3}
   - {fileID: 8983521146600360740, guid: b93841fd4cc9a1a4a9119f31a4d739d3, type: 3}
   - {fileID: 4306182013811394805, guid: 50f9e85df70d1794b91faa9c43c9a048, type: 3}
-  usernameFile: {fileID: 4900000, guid: 28278de3dade71f49b77c421370c10b8, type: 3}
+  scriptedViewer: {fileID: 5877830356463113082, guid: 2befa8deae2d3c84aaeeac678940d852,
+    type: 3}
+  dayScripts:
+  - {fileID: 4900000, guid: 1fb45ba973f461b4fb54f57ed102b649, type: 3}
 --- !u!4 &401516326
 Transform:
   m_ObjectHideFlags: 0

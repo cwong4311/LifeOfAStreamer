@@ -58,7 +58,6 @@ namespace UnityStandardAssets._2D
             } 
             
             if (m_Grounded && move < 0f) {
-                Debug.Log(move);
                 move -= 0.5f;
                 if (move < -1f) move = -1f;
             }

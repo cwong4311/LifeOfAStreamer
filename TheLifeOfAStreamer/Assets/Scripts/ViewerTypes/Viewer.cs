@@ -368,6 +368,10 @@ public class Viewer : MonoBehaviour
         //Debug.Log(username + ": Lurk Rejection");
     }
 
+    protected virtual void sendMyRawMessage(string username, string message) {
+        chatBox.SendChatMessage(username + ": " + message);
+    }
+
     protected virtual void checkIfLeaving() {
         leaveCheck -= Time.deltaTime;
         if (leaveCheck <= 0) {
