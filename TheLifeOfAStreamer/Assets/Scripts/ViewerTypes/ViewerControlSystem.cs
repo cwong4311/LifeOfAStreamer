@@ -121,7 +121,7 @@ public class ViewerControlSystem : MonoBehaviour
             switch(Globals.days) {
                 default:
                     break;
-                case 1: //change to 3
+                case 3:
                     createScriptedViewer(0);
                     break;
                 case 5:

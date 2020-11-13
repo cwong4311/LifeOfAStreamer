@@ -164,12 +164,17 @@ public class DayHandler : MonoBehaviour
         if (Globals.days == 1) {
             myText = "Finally got my streaming equipment all set up.\nNow I can start streaming!";
             myDuration = 4f;
+
+            StartCoroutine(TriggerInternalMonologue(myMessage, "No viewers, as expected.\nMaybe it's time to call it...", 300f));
         } else if (Globals.days == 2) {
             if (Globals.prevAction == "stream") {
                 myText = "Things didn't go too bad last time.\nHope today goes alright too";
             } else {
                 myText = "I ended up putting it off yesterday\nHope today's the day";
             }
+
+            StartCoroutine(TriggerInternalMonologue(myMessage, "Still no one.\nWonder when someone will pop in to chat...", 300f));
+            StartCoroutine(TriggerInternalMonologue(myMessage, "Let's call it a day.\nHopefully tomorrow will go better.", 500f));
         } else if (Globals.days == 3) {
             if (Globals.prevAction == "stream") {
                 myText = "Another day on the job.\nHere goes nothing!";
@@ -184,6 +189,9 @@ public class DayHandler : MonoBehaviour
                 myText = "Taking breaks like this might feel good but I'll never get anywhere";
                 myDuration = 4f;  
             }
+
+            StartCoroutine(TriggerInternalMonologue(myMessage, "No one's coming in today.\n Guess you can't always be lucky...", 300f));
+            StartCoroutine(TriggerInternalMonologue(myMessage, "Maybe it's time to wrap for the day", 500f));
         } else if (Globals.days == totalDays) {
             myText = "This is the last day...";
         } else {
@@ -327,5 +335,17 @@ public class DayHandler : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null;
         }
+    }
+
+    IEnumerator TriggerInternalMonologue(TextHandler handler, string message, float delay) {
+        float timer = 0f;
+        float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
+
+        while (timer < delay) {
+            timer ++;
+            yield return new WaitForSeconds(1);
+        }
+
+        if (Globals.hasStreamed) handler.SetText(message, myDuration, myDelay, myColor);
     }
 }
