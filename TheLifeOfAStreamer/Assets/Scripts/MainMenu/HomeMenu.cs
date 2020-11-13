@@ -27,14 +27,6 @@ public class HomeMenu : MonoBehaviour
             continueButton.GetComponent<Button>().interactable = false;
             continueText.GetComponent<Text>().color = Color.grey;
         }
-        if (!Globals.ResultExists())
-        {
-            GameObject resultsButton = GameObject.Find("ResultsButton");
-            GameObject resultsText = GameObject.Find("Results");
-
-            resultsButton.GetComponent<Button>().interactable = false;
-            resultsText.GetComponent<Text>().color = Color.grey;
-        }
     }
 
     // Update is called once per frame
@@ -63,7 +55,6 @@ public class HomeMenu : MonoBehaviour
     public void FinishNameInput()
     {
         Globals.username = namePlate.transform.Find("InputField").gameObject.GetComponent<InputField>().text;
-        NewGame();
     }
 
     public void CloseConfirmation()
@@ -73,6 +64,7 @@ public class HomeMenu : MonoBehaviour
 
     public void NewGame()
     {
+        Debug.Log(Globals.username);
         Globals.DeleteGame();
         SceneManager.LoadScene("Streamer_0.6-MenuEndingsAndGames");
     }
@@ -86,11 +78,6 @@ public class HomeMenu : MonoBehaviour
         {
             Debug.Log("No Currently Active Game");
         }
-    }
-
-    public void GetPastResults()
-    {
-
     }
 
     public void Exit()

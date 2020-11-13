@@ -162,7 +162,7 @@ public class DayHandler : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         if (Globals.days == 1) {
-            myText = "Finally got my streaming equipment all set up.\nI can finally start streaming!";
+            myText = "Finally got my streaming equipment all set up.\nNow I can start streaming!";
             myDuration = 4f;
         } else if (Globals.days == 2) {
             if (Globals.prevAction == "stream") {

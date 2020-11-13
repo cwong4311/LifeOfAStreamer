@@ -43,15 +43,6 @@ public static class Globals
         else return false;
     }
 
-    public static bool ResultExists()
-    {
-        string destination = Application.dataPath + "/Save/save.dat";
-        if (!Directory.Exists(Application.dataPath + "/Save")) return false;
-
-        if (File.Exists(destination)) return true;
-        else return false;
-    }
-
     public static void SaveGame()
     {
         string destination = Application.dataPath + "/Save/save.dat";
@@ -131,6 +122,35 @@ public static class Globals
     {
         string destination = Application.dataPath + "/Save/save.dat";
 
-        if (File.Exists(destination)) File.Delete(destination);
+        if (File.Exists(destination)) {
+            File.Delete(destination);
+            
+            days = 1;
+            popularity = 0f;
+            attitude = 0f;
+            totalMoney = 0;
+            dayMoney = 0;
+            dayViewer = 0;
+            prevViewer = 0;
+            totalViewer = 0;
+            dayAttitude = 0f;
+
+            prevAction = "stream";
+
+            mentalThreshold = 2f;
+            gameFlag = 0;
+            gameType = 0;
+            hasStreamed = false;
+            gameScore = 0f;
+
+            hasPosted = false;
+            reserveDays = "";
+
+            subNumber = 0;
+            subNames = "";
+
+            username = "Player";
+            webcamEnabled = false;
+        }
     }
 }
