@@ -408,7 +408,6 @@ public class Viewer : MonoBehaviour
     }
 
     protected virtual void DisplayDonation(int amount, string msg) {
-        Debug.Log("Dispalying Donation");
         TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
         float myDuration = 3f; float myDelay = 0.5f; Color color = Color.white;
 

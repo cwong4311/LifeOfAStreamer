@@ -131,10 +131,11 @@ public class ViewerControlSystem : MonoBehaviour
                     break;
                 case 7:
                     break;
-                case 1:        //Default Value 8     // Day 10 on Chart
+                case 8:            // Day 10 on Chart
                     createScriptedViewer(2);
                     break;                
-                case 9:            // Day 11 on Chart
+                case 1:  //Default Value 9          // Day 11 on Chart
+                    createScriptedViewer(3);
                     break;
                 case 10:            // Day 13 on Chart
                     break;                

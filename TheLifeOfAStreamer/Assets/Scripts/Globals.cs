@@ -149,8 +149,7 @@ public static class Globals
 
             subNumber = 0;
             subNames = "";
-
-            username = "Player";
+            
             webcamEnabled = false;
         }
     }

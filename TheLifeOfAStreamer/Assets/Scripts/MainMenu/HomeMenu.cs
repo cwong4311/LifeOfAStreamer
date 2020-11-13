@@ -64,7 +64,6 @@ public class HomeMenu : MonoBehaviour
 
     public void NewGame()
     {
-        Debug.Log(Globals.username);
         Globals.DeleteGame();
         SceneManager.LoadScene("Streamer_0.6-MenuEndingsAndGames");
     }

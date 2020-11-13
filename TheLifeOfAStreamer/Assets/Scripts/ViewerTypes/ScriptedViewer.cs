@@ -93,12 +93,12 @@ public class ScriptedViewer : Viewer
 
         string platformName = "";
         switch (Globals.platformSetting) {
-            default:
             case 1:
-                platformName = "Twotch";
-                break;
-            case 0:
                 platformName = "MyTube";
+                break;
+            default:
+            case 2:
+                platformName = "Twotch";
                 break;
         }
         try {
@@ -171,6 +171,8 @@ public class ScriptedViewer : Viewer
                 DisplayDonation(money, msg);
                 return "";
             case string s when s.Contains("S_C"):
+                Globals.subNumber++;
+                Globals.subNames += username + ",";
                 DisplaySubbed();
                 return "";
             case string s when s.Contains("B_N"):
