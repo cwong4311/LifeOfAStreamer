@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +9,13 @@ using Ink.Runtime;
 public class ScriptedViewer : Viewer
 {
 	// Set this file to your compiled json asset
-	public TextAsset inkAsset;
     public GameObject promptCanvas;
     public GameObject[] buttons;
 	// The ink story that we're wrapping
 	Story _inkStory;
 
     private string[] viewerNames;
+    private Color[] viewerColors;
     private ArrayList dummySet;
 
     private bool choiceDisplayed = false;
@@ -28,7 +29,7 @@ public class ScriptedViewer : Viewer
     void Awake()
     {
         dummySet = new ArrayList();
-        scriptCounter = Random.Range(scriptDelay / 2, scriptDelay);
+        scriptCounter = UnityEngine.Random.Range(scriptDelay / 2, scriptDelay);
         ToggleAllOptions(false);
     }
 
@@ -46,7 +47,7 @@ public class ScriptedViewer : Viewer
         if (scriptCounter > 0) scriptCounter -= Time.deltaTime;
 
         while (_inkStory.canContinue && scriptCounter <= 0) {
-            scriptCounter = Random.Range(scriptDelay / 3f, scriptDelay);
+            scriptCounter = UnityEngine.Random.Range(scriptDelay / 3f, scriptDelay);
 
             string myMessage = Sanitise(_inkStory.Continue());
             if (myMessage != "") {
@@ -72,7 +73,7 @@ public class ScriptedViewer : Viewer
         _inkStory.Continue(); //Swallow the response
 
         ToggleAllOptions(false);
-        scriptCounter = Random.Range(scriptDelay / 5f, scriptDelay / 2.5f);
+        scriptCounter = UnityEngine.Random.Range(scriptDelay / 5f, scriptDelay / 2.5f);
     }
 
     private void ToggleAllOptions(bool flag) {
@@ -82,12 +83,31 @@ public class ScriptedViewer : Viewer
     }
 
     private void ToggleCanvas (bool flag) {
-        promptCanvas.SetActive(flag);
+        promptCanvas.GetComponent<PromptAnimation>().Toggle(flag);
     }
 
     public void LoadStory(TextAsset loadText) {
-        _inkStory = new Story(inkAsset.text);
+        _inkStory = new Story(loadText.text);
         viewerNames = new string[(int)_inkStory.variablesState["viewers"]];
+        viewerColors = new Color[(int)_inkStory.variablesState["viewers"]];
+
+        string platformName = "";
+        switch (Globals.platformSetting) {
+            default:
+            case 1:
+                platformName = "Twotch";
+                break;
+            case 0:
+                platformName = "MyTube";
+                break;
+        }
+        try {
+            _inkStory.variablesState["platform"] = platformName;
+            _inkStory.variablesState["playername"] = Globals.username;
+        } catch (Exception e3) {
+            Debug.Log("Not Existing Variables");
+        }
+
         switch(Globals.gameType) {
             default:
             case 1:
@@ -118,7 +138,13 @@ public class ScriptedViewer : Viewer
 
     public void SetupComplete() {
         chatboxDisplay = GameObject.Find("PlayerCanvas/ScreenCanvas/Right Window");
+
+        for (int i = 0; i < viewerNames.Length; i++) {
+            viewerColors[i] = UnityEngine.Random.ColorHSV(0f, 0.8f, 0.5f, 1f, 0.5f, 0.8f);
+        }
+
         username = viewerNames[0];
+        myColor = viewerColors[0];  // TO DO: Color bug when changing names
 
         storyLoaded = true;
     }
@@ -128,28 +154,31 @@ public class ScriptedViewer : Viewer
             default:
                 return rawMessage.Trim();
             case string s when s.Contains("L_D"):
-                scriptCounter = Random.Range(scriptDelay * 3, scriptDelay * 4);
+                scriptCounter = UnityEngine.Random.Range(scriptDelay * 3, scriptDelay * 4);
                 return "";
             case string s when s.Contains("S_D"):
                 scriptCounter = 0.3f;
                 return "";
             case string s when s.Contains("N_C"):
-                // TODO:
+                int nameIndex = int.Parse(s.Split('_')[2]);
+                username = viewerNames[nameIndex - 1];
+                myColor = viewerColors[nameIndex - 1];
                 return "";
             case string s when s.Contains("D_T"):
-                // TODO:
+                int money = int.Parse(s.Split('_')[2]);
+                string msg = s.Split('_')[3];
+                Globals.dayMoney += money;
+                DisplayDonation(money, msg);
                 return "";
             case string s when s.Contains("S_C"):
-                // TODO:
+                DisplaySubbed();
+                return "";
+            case string s when s.Contains("B_N"):
+                sendSystemBan(username);
+                DeleteViewer();
                 return "";
             case string s when s.Contains("E_C"):
-                if (dummySet.Count > 0) {
-                    GameObject temp = (GameObject)dummySet[0];
-                    dummySet.RemoveAt(0);
-                    Destroy(temp);
-                } else {
-                    Destroy(gameObject);
-                }
+                DeleteViewer();
                 return "";
             case string s when s.Contains("F_X"):
                 // TODO:
@@ -159,10 +188,20 @@ public class ScriptedViewer : Viewer
                 return "";
             case string s when s.Contains("I_M"):
                 TextHandler myMessage = GameObject.Find("PlayerMessage").GetComponent<TextHandler>();
-                float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
+                float myDuration = 3f; float myDelay = 0.5f; Color color = Color.white;
                 string myText = s.Split('_')[2];
-                myMessage.SetText(myText, myDuration, myDelay, myColor);
+                myMessage.SetText(myText, myDuration, myDelay, color);
                 return "";
+        }
+    }
+
+    private void DeleteViewer() {
+        if (dummySet.Count > 0) {
+            GameObject temp = (GameObject)dummySet[0];
+            dummySet.RemoveAt(0);
+            Destroy(temp);
+        } else {
+            Destroy(gameObject);
         }
     }
 }

@@ -37,7 +37,7 @@ public class Chatbox : MonoBehaviour
         }
     }
 
-    public void SendChatMessage(string text, Message.MessageType messageType) {
+    public void SendChatMessage(string text, Message.MessageType messageType, Color color) {
         if (messageList.Count >= maxMessages) {
             Destroy(messageList[0].textObject.gameObject);
             messageList.Remove(messageList[0]);
@@ -49,14 +49,22 @@ public class Chatbox : MonoBehaviour
         GameObject newText = Instantiate(textObject, chatPanel.transform);
         newMessage.textObject = newText.GetComponent<Text>();
         newMessage.textObject.text = newMessage.text;
-        newMessage.textObject.color = MessageTypeColor(messageType);
+        newMessage.textObject.color = color;
         newMessage.messageType = messageType;
 
         messageList.Add(newMessage);
     }
 
+    public void SendChatMessage(string text, Message.MessageType messageType) {
+        SendChatMessage(text, Message.MessageType.message, MessageTypeColor(messageType));
+    }
+
+    public void SendChatMessage(string text, Color color) {
+        SendChatMessage(text, Message.MessageType.message, color);
+    }
+
     public void SendChatMessage(string text) {
-        SendChatMessage(text, Message.MessageType.message);
+        SendChatMessage(text, Message.MessageType.message, message);
     }
 
     public Message getMessageAt(int index) {

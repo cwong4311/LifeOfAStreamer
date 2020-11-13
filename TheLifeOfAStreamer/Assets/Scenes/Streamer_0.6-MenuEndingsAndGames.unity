@@ -4491,7 +4491,7 @@ MonoBehaviour:
     type: 3}
   chatBox: {fileID: 1351530734}
   message: {r: 0, g: 0, b: 0, a: 1}
-  info: {r: 0.2880918, g: 0.6274609, b: 0.735849, a: 1}
+  info: {r: 0, g: 0.13757372, b: 1, a: 1}
   streamerMessage: {r: 0.095318615, g: 0.3207547, b: 0.095318615, a: 1}
   trollMessage: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &284544581
@@ -4928,7 +4928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115.6, y: -279.8}
+  m_AnchoredPosition: {x: -802.5, y: 281}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &304804624
@@ -6563,6 +6563,8 @@ MonoBehaviour:
   - {fileID: 3014335058774291905, guid: ee978895792d67349944940a482486e7, type: 3}
   dayScripts:
   - {fileID: 4900000, guid: 1fb45ba973f461b4fb54f57ed102b649, type: 3}
+  - {fileID: 4900000, guid: 0b077e859fa5c404696a52956220372f, type: 3}
+  - {fileID: 4900000, guid: 7dc7a9522c6e49c48937793faf11fa4a, type: 3}
 --- !u!4 &401516326
 Transform:
   m_ObjectHideFlags: 0
@@ -11977,7 +11979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8.1, y: -101.5}
+  m_AnchoredPosition: {x: 8.1, y: -839}
   m_SizeDelta: {x: 320, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695674049
@@ -12007,7 +12009,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 113
-    m_Alignment: 4
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1

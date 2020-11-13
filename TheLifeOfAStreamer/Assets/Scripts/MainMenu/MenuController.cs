@@ -94,7 +94,7 @@ public class MenuController : MonoBehaviour
     private void TransferGlobals() {
         Globals.gameType = gameMode;
         Globals.webcamEnabled = this.webcamEnabled;
-        //Globals.platformSetting = streamPlatform;
+        Globals.platformSetting = streamPlatform;
     }
 
     private void EnableGameScreen() {

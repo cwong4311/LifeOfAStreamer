@@ -28,6 +28,7 @@ public class Viewer : MonoBehaviour
     protected int fillerLurk = 3; // Message miss rate is 30% by default
 
     protected float startingAttitude;
+    protected Color myColor;
 
     public bool amSubbed = false;
 
@@ -37,6 +38,7 @@ public class Viewer : MonoBehaviour
     protected string[] suffixes = new string[] {"gg", "GG", "ggz", "pog", "pogs", "pogchamp", "poggers", "LMAO", "lmao", "KEK", "kek", "LOL", "lol", "haha", "hahahaha"};
 
     public virtual void setup() {
+        myColor = Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f);
         startingAttitude = attitude;
         downtime = Random.Range(3f, 40f);
         populateDictionary();
@@ -47,6 +49,7 @@ public class Viewer : MonoBehaviour
 
     protected virtual void Start()
     {
+        myColor = Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f);
         setup();
     }
 
@@ -361,7 +364,7 @@ public class Viewer : MonoBehaviour
     protected virtual void sendMyMessage(string username, string message, int myLurk) {
         string myMessage = internetFormat(message);
         if (Random.Range(0, 10) > myLurk) {
-            chatBox.SendChatMessage(username + ": " + myMessage);
+            chatBox.SendChatMessage(username + ": " + myMessage, myColor);
             //Debug.Log(username + ": Request Successful");
             return;
         }
@@ -369,7 +372,11 @@ public class Viewer : MonoBehaviour
     }
 
     protected virtual void sendMyRawMessage(string username, string message) {
-        chatBox.SendChatMessage(username + ": " + message);
+        chatBox.SendChatMessage(username + ": " + message, myColor);
+    }
+
+    protected virtual void sendSystemBan(string username) {
+        chatBox.SendChatMessage("System: [" + username + "] has been banned.", Message.MessageType.info, myColor);
     }
 
     protected virtual void checkIfLeaving() {
@@ -395,15 +402,20 @@ public class Viewer : MonoBehaviour
 
     protected virtual void DisplaySubbed() {
         TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
-        float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
+        float myDuration = 3f; float myDelay = 0.5f; Color color = Color.white;
 
-        streamMessage.SetText("You got a new sub!:\n" + username, myDuration, myDelay, myColor);
+        streamMessage.SetText("You got a new sub!:\n" + username, myDuration, myDelay, color);
+    }
+
+    protected virtual void DisplayDonation(int amount, string msg) {
+        Debug.Log("Dispalying Donation");
+        TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
+        float myDuration = 3f; float myDelay = 0.5f; Color color = Color.white;
+
+        streamMessage.SetText(username + " has donated: $" + amount + "\n\"" + msg +"\"", myDuration, myDelay, color);
     }
 
     protected virtual void DisplayDonation(int amount) {
-        TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
-        float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
-
-        streamMessage.SetText(username + " has donated:\n$" + amount, myDuration, myDelay, myColor);
+        DisplayDonation(amount, "");
     }
 }

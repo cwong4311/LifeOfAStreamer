@@ -3,6 +3,7 @@ S_D = Short Delay
 N_C_# = change npc [name]
 D_T_$ = (current npc) donate
 S_C = (current npc) subscribe
+B_N = (current npc) Show ban as system msg
 E_C = (current npc) exit viewer [leave the chat]
 F_X_# = play fx number
 S_F_# = play sfx number

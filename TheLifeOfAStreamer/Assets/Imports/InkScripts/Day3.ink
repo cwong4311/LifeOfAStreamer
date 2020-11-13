@@ -1,6 +1,7 @@
 VAR game_type = "mem"
 VAR viewers = 1
 
+N_C_1
 Man, haven't seen this game in a while.
 How are things going?
 * Alright
