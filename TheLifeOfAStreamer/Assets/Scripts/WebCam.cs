@@ -50,7 +50,12 @@ public class WebCam : MonoBehaviour
             renderer.texture = webcamTexture;
             renderer.material.mainTexture = webcamTexture;
         }
-        webcamTexture.Play();
+
+        try {
+            webcamTexture.Play();
+        } catch (Exception e2) {
+            this.gameObject.SetActive(false);
+        }
         webcamPlaying = true;
     }
 
@@ -66,8 +71,6 @@ public class WebCam : MonoBehaviour
 
     IEnumerator ConnectMedia()
     {
-        findWebCams();
-
         yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
         if (Application.HasUserAuthorization(UserAuthorization.WebCam))
         {
@@ -76,34 +79,6 @@ public class WebCam : MonoBehaviour
         else
         {
             webcamMissing = true;
-        }
-
-        findMicrophones();
-
-        yield return Application.RequestUserAuthorization(UserAuthorization.Microphone);
-        if (Application.HasUserAuthorization(UserAuthorization.Microphone))
-        {
-            Debug.Log("Microphone found");
-        }
-        else
-        {
-            micMissing = true;
-        }
-    }
-
-    void findWebCams()
-    {
-        foreach (var device in WebCamTexture.devices)
-        {
-            Debug.Log("Name: " + device.name);
-        }
-    }
-
-    void findMicrophones()
-    {
-        foreach (var device in Microphone.devices)
-        {
-            Debug.Log("Name: " + device);
         }
     }
 }

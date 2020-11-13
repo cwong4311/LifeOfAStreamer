@@ -17,7 +17,10 @@ Are u new to streaming?
     Cool. Yea, streaming's really something.
     Takes a while to get rolling.
     Good luck dude.
-    -> GameTalk
+    ** Thanks 
+        -> GameTalk
+    ** \[Ignore\] 
+        -> GameTalk
 * Nah
     Ah rip, soz.
     Good luck dude, gettin your name out there can be pretty hard.
@@ -64,7 +67,7 @@ L_D
     Nice shot!
 }
 {game_type == "mem":
-    Remembering everything is so hard
+    Remembering all the cards is so hard
     L_D
     Nice matching kek
 }
@@ -77,18 +80,23 @@ You stream often?
 * Yeah
     cool
     I'll catch you next stream then!
-    cya
-    E_C
-    -> END
+    -> Fin
 * Not really
     rip
     Well, maybe next time you're on.
-    cya
-    E_C
-    -> END
+    -> Fin
 * Dunno
     I see
     Well, whenever you stream again.
-    cya
-    E_C
-    -> END
+    -> Fin
+    
+== Fin ==
+cya
+S_D
+I_M_That was a pretty cool guy
+S_D
+I_M_I think that's good enough for one day
+S_D
+E_C
+-> END
+

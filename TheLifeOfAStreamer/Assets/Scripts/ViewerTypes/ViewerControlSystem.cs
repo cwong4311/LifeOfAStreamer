@@ -7,7 +7,7 @@ public class ViewerControlSystem : MonoBehaviour
     public TextAsset usernameFile;
     public GameObject chatBox;
     public GameObject[] viewerTypes;
-    public GameObject scriptedViewer;
+    public GameObject[] scriptedViewer;
     public TextAsset[] dayScripts;
     private bool paused;
     private bool dayEnd = false;
@@ -117,7 +117,7 @@ public class ViewerControlSystem : MonoBehaviour
         */
 
         //Route System
-        if (!storyInitialised) {
+        if (!storyInitialised && Globals.hasStreamed) {
             switch(Globals.days) {
                 default:
                     break;
@@ -293,11 +293,15 @@ public class ViewerControlSystem : MonoBehaviour
     }
 
     private void createScriptedViewer(int scriptLoaded) {
-        GameObject newViewer = Instantiate(scriptedViewer, transform);
+        GameObject newViewer = Instantiate(scriptedViewer[0], transform);
         newViewer.GetComponent<ScriptedViewer>().LoadStory(dayScripts[scriptLoaded]);
         int scViewers = newViewer.GetComponent<ScriptedViewer>().GetViewerCount();
 
         Globals.dayViewer += scViewers;
+        ArrayList dummySet = new ArrayList();
+        for (int i = 1; i < scViewers; i++) {
+            dummySet.Add(Instantiate(scriptedViewer[1], transform));
+        }
 
         for (int i = 0; i < scViewers; i++) {
             string nameNumbers = "";
@@ -316,6 +320,7 @@ public class ViewerControlSystem : MonoBehaviour
         newViewer.GetComponent<Viewer>().attitude = 0;
         newViewer.GetComponent<Viewer>().myObject = newViewer;
         newViewer.GetComponent<Viewer>().setup();
+        newViewer.GetComponent<ScriptedViewer>().AttachDummies(dummySet);
         newViewer.GetComponent<ScriptedViewer>().SetupComplete();
     }
 

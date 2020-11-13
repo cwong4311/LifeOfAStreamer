@@ -488,6 +488,7 @@ MonoBehaviour:
   myObject: {fileID: 0}
   amSubbed: 0
   inkAsset: {fileID: 4900000, guid: 1fb45ba973f461b4fb54f57ed102b649, type: 3}
+  promptCanvas: {fileID: 681743916}
   buttons:
   - {fileID: 5343990681122085379}
   - {fileID: 1359711575986222542}
