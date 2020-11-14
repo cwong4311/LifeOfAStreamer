@@ -17,6 +17,7 @@ public class ScriptedViewer : Viewer
     private string[] viewerNames;
     private Color[] viewerColors;
     private ArrayList dummySet;
+    public Transform dummy;
 
     private bool choiceDisplayed = false;
     private bool storyLoaded = false;
@@ -25,10 +26,12 @@ public class ScriptedViewer : Viewer
     private float scriptCounter = 0f;
 
     private GameObject chatboxDisplay;
+    private FX myFX;
 
     void Awake()
     {
         dummySet = new ArrayList();
+        myFX = GameObject.Find("Effects").GetComponent<FX>();
         scriptCounter = UnityEngine.Random.Range(scriptDelay / 2, scriptDelay);
         ToggleAllOptions(false);
     }
@@ -183,16 +186,29 @@ public class ScriptedViewer : Viewer
                 DeleteViewer();
                 return "";
             case string s when s.Contains("F_X"):
-                // TODO:
+                int effectNum = int.Parse(s.Split('_')[2]);
+                myFX.PlayEffects(effectNum);
                 return "";
             case string s when s.Contains("S_F"):
                 // TODO:
+                Debug.Log("SF Called");
                 return "";
             case string s when s.Contains("I_M"):
                 TextHandler myMessage = GameObject.Find("PlayerMessage").GetComponent<TextHandler>();
                 float myDuration = 3f; float myDelay = 0.5f; Color color = Color.white;
                 string myText = s.Split('_')[2];
                 myMessage.SetText(myText, myDuration, myDelay, color);
+                return "";
+            case string s when s.Contains("A_D"):
+                if (dummy == null) return "";
+                GameObject newDummy = Instantiate(dummy.gameObject, transform.parent);
+                dummySet.Add(newDummy);
+                scriptCounter = 0.3f;
+                return "";
+            case string s when s.Contains("R_N"):
+                username = GetComponentInParent<ViewerControlSystem>().makeName();
+                myColor = UnityEngine.Random.ColorHSV(0f, 0.8f, 0.5f, 1f, 0.5f, 0.8f);
+                scriptCounter = 0.3f;
                 return "";
         }
     }

@@ -9,3 +9,5 @@ F_X_# = play fx number
 S_F_# = play sfx number
 I_M_(msg) = Internal Monologue
 
+A_D = Add Viewer (To Audience #)
+R_N = Randomise name and colour

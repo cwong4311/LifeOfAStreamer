@@ -23,16 +23,12 @@ public class Chatbox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (chatBox == null) return;
+        
         if (chatBox.text != "") {
             if (Input.GetKeyDown(KeyCode.Return)) {
                 SendChatMessage(username + ": " + chatBox.text, Message.MessageType.streamerMessage);
                 chatBox.text = "";
-            }
-        }
-
-        if (!chatBox.isFocused) {
-            if (Input.GetKeyDown("]")) {
-                SendChatMessage("System: Testing", Message.MessageType.info);
             }
         }
     }

@@ -376,7 +376,7 @@ public class Viewer : MonoBehaviour
     }
 
     protected virtual void sendSystemBan(string username) {
-        chatBox.SendChatMessage("System: [" + username + "] has been banned.", Message.MessageType.info, myColor);
+        chatBox.SendChatMessage("System: [" + username + "] has been banned.", Message.MessageType.info);
     }
 
     protected virtual void checkIfLeaving() {
@@ -409,7 +409,7 @@ public class Viewer : MonoBehaviour
 
     protected virtual void DisplayDonation(int amount, string msg) {
         TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
-        float myDuration = 3f; float myDelay = 0.5f; Color color = Color.white;
+        float myDuration = 4f; float myDelay = 0.5f; Color color = Color.white;
 
         streamMessage.SetText(username + " has donated: $" + amount + "\n\"" + msg +"\"", myDuration, myDelay, color);
     }

@@ -600,6 +600,7 @@ MonoBehaviour:
   - {fileID: 5343990681122085379}
   - {fileID: 1359711575986222542}
   - {fileID: 5961964152288531955}
+  dummy: {fileID: 3850320428907057717, guid: ee978895792d67349944940a482486e7, type: 3}
 --- !u!1 &5961964152288531955
 GameObject:
   m_ObjectHideFlags: 0
