@@ -122,23 +122,31 @@ public class ViewerControlSystem : MonoBehaviour
                 default:
                     break;
                 case 3:
-                    createScriptedViewer(0);
+                    createScriptedViewer(0, 10f);
                     break;
                 case 5:
-                    createScriptedViewer(1);
+                    createScriptedViewer(1, 7f);
                     break;
                 case 6:
+                    spawnProceduralForScript(2, 2, 0, 0);       // Lurker, Normal, Simps, +Sub
+                    createScriptedViewer(2, 6f);
                     break;
+                case 1:
                 case 7:
+                    spawnProceduralForScript(6, 2, 1, 5);
+                    createScriptedViewer(3, 6f);
                     break;
                 case 8:             // Day 10 on Chart
-                    createScriptedViewer(2);
+                    spawnProceduralForScript(27, 3, 2, 10);
+                    createScriptedViewer(4, 4f);
                     break;                
                 case 9:             // Day 11 on Chart
-                    createScriptedViewer(3);
+                    spawnProceduralForScript(35, 5, 0, 10);
+                    createScriptedViewer(5, 3f);
                     break;
-                case 1:            // Day 13 on Chart
-                    createScriptedViewer(4);
+                case 10:            // Day 13 on Chart
+                    spawnProceduralForScript(20, 0, 0, -5);
+                    createScriptedViewer(6, 2f);
                     break;                
                 case 11:            // Day 14 on Chart
                     break;
@@ -231,6 +239,70 @@ public class ViewerControlSystem : MonoBehaviour
         newViewer.GetComponent<Viewer>().setup();
     }
 
+    private void createNormalViewer() {
+        Globals.dayViewer += 1;
+
+        // 9 types of viewers. 
+        /* 
+           > 0 - 1 is friendly
+           >     2 is lurker (neutral but low talk)
+           > 3 - 5 is neutral
+           > 6 - 8 is negative
+        */
+        int mySpawnType = Random.Range(0,100);
+        int viewType;
+        float myAttitude;
+        string nameNumbers = "";
+        
+        viewType = Random.Range(3, 6);
+        myAttitude = Random.Range(-30f, 30f);
+
+        if (Random.Range(0, 100) > 30) {
+            for (int i = 0; i < Random.Range(0, 3); i++) {
+                nameNumbers += Random.Range(0, 10).ToString();
+            }
+        }
+        string myName = viewerNames[Random.Range(0, viewerNames.Length)] + "" + nameNumbers;
+
+        GameObject newViewer = Instantiate(viewerTypes[viewType], transform);
+        newViewer.name = viewType + "_" + myName;
+        newViewer.GetComponent<Viewer>().chatBox = chatBox.GetComponent<Chatbox>();
+        newViewer.GetComponent<Viewer>().username = myName;
+        newViewer.GetComponent<Viewer>().attitude = myAttitude;
+        newViewer.GetComponent<Viewer>().myObject = newViewer;
+        newViewer.GetComponent<Viewer>().setup();
+    }
+
+    private void createLurker() {
+        Globals.dayViewer += 1;
+
+        // 9 types of viewers. 
+        /* 
+           > 0 - 1 is friendly
+           >     2 is lurker (neutral but low talk)
+           > 3 - 5 is neutral
+           > 6 - 8 is negative
+        */
+        int viewType = 2;
+        float myAttitude = Random.Range(-5f, 5f);
+        string nameNumbers = "";
+
+        if (Random.Range(0, 100) > 30) {
+            for (int i = 0; i < Random.Range(0, 3); i++) {
+                nameNumbers += Random.Range(0, 10).ToString();
+            }
+        }
+        string myName = viewerNames[Random.Range(0, viewerNames.Length)] + "" + nameNumbers;
+
+        GameObject newViewer = Instantiate(viewerTypes[viewType], transform);
+        newViewer.name = viewType + "_" + myName;
+        newViewer.GetComponent<Viewer>().chatBox = chatBox.GetComponent<Chatbox>();
+        newViewer.GetComponent<Viewer>().username = myName;
+        newViewer.GetComponent<Viewer>().attitude = myAttitude;
+        newViewer.GetComponent<Viewer>().myObject = newViewer;
+        newViewer.GetComponent<Viewer>().setup();
+    }
+
     private void createReturner(string name) {
         Globals.dayViewer += 1;
 
@@ -282,7 +354,14 @@ public class ViewerControlSystem : MonoBehaviour
         */
         int viewType;
         float myAttitude;
-        string myName = "Good_Demo_" + Random.Range(0,1000);
+        string nameNumbers = "";
+
+        if (Random.Range(0, 100) > 30) {
+            for (int i = 0; i < Random.Range(0, 3); i++) {
+                nameNumbers += Random.Range(0, 10).ToString();
+            }
+        }
+        string myName = viewerNames[Random.Range(0, viewerNames.Length)] + "" + nameNumbers;
 
         // Good Viewer Only
         viewType = 0;
@@ -298,7 +377,7 @@ public class ViewerControlSystem : MonoBehaviour
         newViewer.GetComponent<Viewer>().setup();
     }
 
-    private void createScriptedViewer(int scriptLoaded) {
+    private void createScriptedViewer(int scriptLoaded, float speed) {
         GameObject newViewer = Instantiate(scriptedViewer[0], transform);
         newViewer.GetComponent<ScriptedViewer>().LoadStory(dayScripts[scriptLoaded]);
         int scViewers = newViewer.GetComponent<ScriptedViewer>().GetViewerCount();
@@ -326,6 +405,7 @@ public class ViewerControlSystem : MonoBehaviour
         newViewer.GetComponent<Viewer>().attitude = 0;
         newViewer.GetComponent<Viewer>().myObject = newViewer;
         newViewer.GetComponent<Viewer>().setup();
+        newViewer.GetComponent<ScriptedViewer>().SetSpeed(speed);
         newViewer.GetComponent<ScriptedViewer>().AttachDummies(dummySet);
         newViewer.GetComponent<ScriptedViewer>().SetupComplete();
     }
@@ -374,5 +454,18 @@ public class ViewerControlSystem : MonoBehaviour
         string myName = viewerNames[Random.Range(0, viewerNames.Length)] + "" + nameNumbers;
 
         return myName;
+    }
+
+    public void spawnProceduralForScript(int lurkers, int normals, int goods, int subGain) {
+        for (int i = 0; i < lurkers; i++) {
+            createLurker();
+        }
+        for (int n = 0; n < normals; n++) {
+            createNormalViewer();
+        }
+        for (int m = 0; m < goods; m++) {
+            createGoodViewer();
+        }
+        Globals.subNumber += subGain;
     }
 }

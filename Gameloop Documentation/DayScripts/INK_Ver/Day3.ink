@@ -92,12 +92,12 @@ You stream often?
     -> Fin
     
 == Fin ==
+S_C
 cya
-S_D
+I_M_Nice, a Sub!
 I_M_That was a pretty cool guy
-S_D
+L_D
 I_M_I think that's good enough for one day
-S_D
 E_C
 -> END
 

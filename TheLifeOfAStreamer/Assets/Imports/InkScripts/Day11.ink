@@ -16,7 +16,7 @@ they're just garbo
 I_M_Not again...
 * I was doing good
     N_C_1
-    That's what u call 'doing great'
+    That's what u call 'doing good'???
     I'd hate to see what a 'bad run' is then
     N_C_1
     just git gud
@@ -32,7 +32,13 @@ I_M_Not again...
 == Ch2 ==
 N_C_2
 wot r u even doing?
-Rolling ur face all over ur keyboard and seeing what happens?
+{game_type == "plat" || game_type == "inv":
+    Rolling ur face all over ur keyboard and seeing what happens?
+}
+{game_type == "mem":
+    Flipping over every single shit and hoping to get lucky?
+    I guess with two brain cells, u couldn't remember anything even if u wanted to...
+}
 N_C_3
 Lamee
 N_C_4
@@ -75,12 +81,24 @@ what a joke
     N_C_2
     LMAO ye
     N_C_3
-    {playername}, u gotta actually put ur HANDS on the keyboard to play.
+    {game_type == "plat" || game_type == "inv":
+        {playername}, u gotta actually put ur HANDS on the keyboard to play.
+    }
+    {game_type == "mem":
+        {playername}, u gotta actually remember to do anything
+    }
+    
     y'know
     it's called not being a fkn disgrace
     u ever tried b4?
+    But I guess this game's trash anyway so there's like ZERO point 
     N_C_1
-    Maybe they don't actually HAVE hands?
+    {game_type == "plat" || game_type == "inv":
+        Maybe they don't actually HAVE hands?
+    }
+    {game_type == "mem":
+        Maybe they're ACTUALLY retarded?
+    }
     lmao
     that explains how they're this shit at the game
     N_C_2
@@ -174,7 +192,7 @@ N_C_1
 LMAO No wonder they play so bad
 Must be hard to play with ALL THAT GREASE ON UR SWEATY FACE
 N_C_6
-wtf, don't stalk their pages
+wtf, don't stalk his page
 stop
 N_C_3
 gross dude
@@ -182,6 +200,7 @@ ur parents must be so disappointed in you
 N_C_1
 lmao, it's no wonder, considering where they're from
 Don't let the cops see this pic or they'll come arrest you lmao
+I_M_What??
 N_C_3
 How's basement life going
 must be good not needing to pay rent and be a manchild forever
@@ -202,6 +221,7 @@ I_M_That's it. I'm done.
     -> Ban
 
 == Ban ==
+I_M_You're gone...
 N_C_1
 B_N
 N_C_2
@@ -215,7 +235,7 @@ N_C_7
 same
 N_C_6
 Don't worry about it ok
-They're just saying sht
+They're just saying stuff
 N_C_5
 Yeah just idiots with nothing better to do
 * Thanks
@@ -226,10 +246,6 @@ Yeah just idiots with nothing better to do
 == Epilogue ==
 I_M_I don't feel so good...
 I_M_.... I should stop streaming for today.
-L_D
-L_D
-L_D
-L_D
 L_D
 N_C_7
 E_C

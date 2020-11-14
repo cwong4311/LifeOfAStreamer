@@ -79,6 +79,10 @@ public class ScriptedViewer : Viewer
         scriptCounter = UnityEngine.Random.Range(scriptDelay / 5f, scriptDelay / 2.5f);
     }
 
+    public void SetSpeed(float speed) {
+        scriptDelay = speed;
+    }
+
     private void ToggleAllOptions(bool flag) {
         foreach (GameObject button in buttons) {
             button.SetActive(flag);

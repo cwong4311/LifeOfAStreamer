@@ -15,6 +15,7 @@ public class Viewer : MonoBehaviour
     protected string[] fillerBank;
     protected string[] positiveBank;
     protected string[] negativeBank;
+    protected string[] gameoverBank;
     protected bool paused = false;
     protected int step = 0;
     // Start is called before the first frame update
@@ -24,13 +25,15 @@ public class Viewer : MonoBehaviour
     protected float fillerWait = 10f;
     protected float leaveCheck = 30f;
 
-    protected int mainLurk = 1; // Message miss rate is 10% by default
-    protected int fillerLurk = 3; // Message miss rate is 30% by default
+    protected int mainLurk = 7; // Message miss rate is 60% by default
+    protected int fillerLurk = 9; // Message miss rate is 80% by default
 
     protected float startingAttitude;
     protected Color myColor;
+    protected GameObject gameItem; 
 
     public bool amSubbed = false;
+    private bool gameoverTriggered = false;
 
     protected int timesDonated = 1;
 
@@ -43,6 +46,7 @@ public class Viewer : MonoBehaviour
         downtime = Random.Range(3f, 40f);
         populateDictionary();
         populateFillerBank();
+        populateGameOver();
         populatePositive();
         populateNegative();
     }
@@ -142,6 +146,21 @@ public class Viewer : MonoBehaviour
                 }
             }
 
+            if (!sent) {
+                if (Globals.hasStreamed) {
+                    gameItem = GameObject.Find("Game Camera/GameSpawnPoint").transform.GetChild(0).gameObject;
+                    if (gameItem.tag == "GameOver" && !gameoverTriggered) {
+                        string myMessage = getGameOverMessage();
+                        //Debug.Log(username + ": " + myMessage);
+                        sendMyMessage(username, myMessage, fillerLurk);
+
+                        gameoverTriggered = true;
+                    } else if (gameItem.tag != "GameOver" && gameoverTriggered) {
+                        gameoverTriggered = false;
+                    }
+                }
+            }
+
             attitude += Random.Range(-0.5f, 0.5f);
         }
 
@@ -160,7 +179,7 @@ public class Viewer : MonoBehaviour
         //If viewer happy, and 5% (decreasing) chance
         int checkValue = 5 / timesDonated;
         
-        if (attitude > 20 && Random.Range(0, 100) < (checkValue > 0 ? checkValue : 1)) {
+        if (attitude > 20 && Random.Range(0, 300) < (checkValue > 0 ? checkValue : 1)) {
             int donationAmount = (int)Random.Range(attitude / 4, attitude + 1);
             Globals.dayMoney += donationAmount;
             Globals.dayAttitude += ((float)donationAmount / 50);
@@ -176,7 +195,7 @@ public class Viewer : MonoBehaviour
         if (!amSubbed) {
             if (attitude > 20) {
                 int checkValue = (int) (Globals.popularity > 20 ? 20 : Globals.popularity); if (checkValue < 5) checkValue = 5;
-                if (Random.Range(0, 50) < checkValue) {
+                if (Random.Range(0, 100) < checkValue) {
                     Globals.subNumber++;
                     Globals.subNames += username + ",";
                     Globals.dayAttitude += 0.3f;
@@ -186,7 +205,7 @@ public class Viewer : MonoBehaviour
                 }         
             } else {
                 int checkValue = (int) (Globals.popularity > 10 ? 10 : Globals.popularity); if (checkValue < 1) checkValue = 1;
-                if (Random.Range(0, 100) < checkValue) {
+                if (Random.Range(0, 200) < checkValue) {
                     Globals.subNumber++;
                     Globals.subNames += username + ",";
                     Globals.dayAttitude += 0.3f;
@@ -288,6 +307,11 @@ public class Viewer : MonoBehaviour
         "yiiiikesss", "yikes", "this ain't it..", "that's not cool, bro", "that's not cool man", "....", "..", "that's terrible", "what", "wot", "wut"};
     }
 
+    protected virtual void populateGameOver() {
+        gameoverBank = new string[] {"gg", "GG", "ggz", "GGZ", "hahaha ripp", "ripppp", "hahahaha", "game overr", "he dedd", "pogs death", "it's over", "good game",
+        "yiiiikesss", "yikes", "lmao", "LMAO", "wot", "WOT", "pogs", "POGGERS", "MonkaS"};
+    }
+
     protected string internetFormat(string inputString) {
         string originalString = inputString;
         int presufChance = Random.Range(0, 10);
@@ -348,6 +372,10 @@ public class Viewer : MonoBehaviour
         return myMessage;
     }
 
+    protected virtual string getGameOverMessage() {
+        return gameoverBank[Random.Range(0, gameoverBank.Length)];
+    }
+
     protected virtual string getTrollResponse(string trollMsg) {
         string myMessage = "";
         if (Random.Range(0, 2) == 0) {
@@ -363,7 +391,7 @@ public class Viewer : MonoBehaviour
 
     protected virtual void sendMyMessage(string username, string message, int myLurk) {
         string myMessage = internetFormat(message);
-        if (Random.Range(0, 10) > myLurk) {
+        if (Random.Range(0, 11) > myLurk) {
             chatBox.SendChatMessage(username + ": " + myMessage, myColor);
             //Debug.Log(username + ": Request Successful");
             return;
