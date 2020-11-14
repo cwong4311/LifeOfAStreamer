@@ -182,7 +182,7 @@ we're not bots doe
 obviously people
 u needa see a doctor
 N_C_5
-U needa see a doctor
+'YOU' needa see a doctor
 thinking we can't see ur faker act
 N_C_2
 E_C
@@ -209,7 +209,7 @@ i totes believe you
 I_M_It's no use...
 N_C_6
 ppl like u are pathetic
-I_M_Nothing I say gets through
+I_M_Nothing I say is getting through
 N_C_4
 No skills, no content
 N_C_5
@@ -221,7 +221,7 @@ just ANNOYING as hek
 I_M_They're just making fun of me
 N_C_6
 Just kill urself dude
-I_M_I'm not as bad as they say
+I_M_I'm... not as bad as they say
 save everyone the pain of watching ur snorefest
 noone cares anyway
 I_M_I swear
@@ -235,8 +235,10 @@ N_C_7
 HAHAHAHA
 * Get lost \[Ban\]
     -> Ban
-* ... \[Ban\]
+* \[Ban\]
     -> Ban
+* ...
+    -> PostBan
     
 == Ban ==
 N_C_6
@@ -286,6 +288,9 @@ A_D
 R_N
 U think it was gonna be that easy?
 think again LMAO
+-> PostBan
+
+== PostBan ==
 I_M_Shut up
 A_D
 R_N 
@@ -297,7 +302,6 @@ I_M_Shut UP!
 A_D
 R_N
 All u're doing is showing how cringe u are
-F_X_0
 just face it
 I_M_They just keep coming
 I_M_I can't stop them..
@@ -305,6 +309,7 @@ A_D
 R_N
 and if u think putting this garbage on the net is gonna help u
 I_M_Please, I don't want to hear anymore
+F_X_0
 I'm gonna give it to u straight, u shitter
 I_M_M-my phone is ringing
 I_M_I need to pick it up

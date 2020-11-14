@@ -2,11 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PhoneSpamming : MonoBehaviour
 {
     private string[] wordBank;
     public Chatbox myChatBox;
+
+    private Transform PhoneMenu;
+    private Transform screenCanvas;
+    private TextHandler monologue;
+
+    private GameObject myDay;
 
     private float counter = 0f;
     private float delay = 0.2f;
@@ -16,6 +23,10 @@ public class PhoneSpamming : MonoBehaviour
         StartCoroutine(OverridePhoneMenu());
         populateWordBank();
         counter = 0f;
+
+        monologue = GameObject.Find("PlayerCanvas/PlayerMessage").GetComponent<TextHandler>();
+        screenCanvas = GameObject.Find("PlayerCanvas").transform.Find("ScreenCanvas");
+        myDay = GameObject.Find("LevelFader/Fader");
     }
 
     // Update is called once per frame
@@ -34,13 +45,15 @@ public class PhoneSpamming : MonoBehaviour
         
         while (!found) {
             try {
-                Transform PhoneMenu = GameObject.Find("PlayerCanvas").transform.Find("PhoneMenu");
-                this.transform.SetParent(PhoneMenu, false);
-                MenuController phoneMenu = PhoneMenu.gameObject.GetComponent<MenuController>();
+                PhoneMenu = GameObject.Find("PlayerCanvas").transform.Find("PhoneMenu");
+ 
+                MenuController phoneController = PhoneMenu.gameObject.GetComponent<MenuController>();
                 found = true;
-                for (int i = 0; i < phoneMenu.myMenus.Length; i++) {
-                    phoneMenu.myMenus[i] = gameObject;
+                for (int i = 0; i < phoneController.myMenus.Length; i++) {
+                    phoneController.myMenus[i] = myChatBox.gameObject;
                 }
+
+                StartCoroutine(SpamMonologue());
             } catch (Exception e) {
             } 
             yield return new WaitForSeconds(0.2f);
@@ -68,5 +81,73 @@ public class PhoneSpamming : MonoBehaviour
             myName += UnityEngine.Random.Range(0,10) + "";
         }
         return myName;
+    }
+
+    IEnumerator SpamMonologue() {
+        while (!PhoneMenu.gameObject.activeInHierarchy) {
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        myChatBox.gameObject.transform.SetParent(PhoneMenu, false);
+        PhoneMenu.transform.Find("LeaveButton").gameObject.GetComponent<Button>().interactable = false;
+
+        yield return new WaitForSeconds(3f);
+
+        monologue.SetText("What");
+
+        yield return new WaitForSeconds(3f);
+
+        monologue.SetText("How did they find my number?");
+
+        yield return new WaitForSeconds(3f);
+
+        monologue.SetText("They know where I live..?");
+
+        yield return new WaitForSeconds(3f);
+
+        monologue.SetText("What do I even do");
+
+        yield return new WaitForSeconds(3f);
+
+        monologue.SetText("Call the cops");
+
+        yield return new WaitForSeconds(3f);
+
+        monologue.SetText("But can they even do anything?");
+
+        yield return new WaitForSeconds(3f);
+
+        monologue.SetText("They might not believe me...");
+
+        yield return new WaitForSeconds(4f);
+
+        monologue.SetText("The stream! What's happening on the stream?");
+
+        yield return new WaitForSeconds(4f);
+        PhoneMenu.transform.Find("LeaveButton").gameObject.GetComponent<Button>().interactable = true;
+
+        while(!screenCanvas.gameObject.activeInHierarchy) {
+            yield return new WaitForSeconds(2f);
+        }
+
+        yield return new WaitForSeconds(4f);
+
+        monologue.SetText("Where did I go wrong?");
+
+        yield return new WaitForSeconds(4f);
+
+        monologue.SetText("It wasn't my fault.. was it?");
+
+        yield return new WaitForSeconds(8f);
+
+        monologue.SetText("Make it stop...");
+
+        yield return new WaitForSeconds(4f);
+
+        monologue.SetText("Please...");
+
+        yield return new WaitForSeconds(3f);
+        
+        myDay.GetComponent<DayHandler>().DayEnd();
     }
 }
