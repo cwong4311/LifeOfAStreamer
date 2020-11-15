@@ -131,7 +131,6 @@ public class ViewerControlSystem : MonoBehaviour
                     spawnProceduralForScript(2, 2, 0, 0);       // Lurker, Normal, Simps, +Sub
                     createScriptedViewer(2, 6f);
                     break;
-                case 1:
                 case 7:
                     spawnProceduralForScript(6, 2, 1, 5);
                     createScriptedViewer(3, 6f);
@@ -149,8 +148,12 @@ public class ViewerControlSystem : MonoBehaviour
                     createScriptedViewer(6, 2f);
                     break;                
                 case 11:            // Day 14 on Chart
+                    spawnProceduralForScript(0, 0, 0, -15);
+                    createScriptedViewer(7, 1f);
                     break;
                 case 12:            // Day 15 on Chart
+                    spawnProceduralForScript(5, 1, 0, 100);
+                    createScriptedViewer(8, 6f);
                     break;
             }
             storyInitialised = true;

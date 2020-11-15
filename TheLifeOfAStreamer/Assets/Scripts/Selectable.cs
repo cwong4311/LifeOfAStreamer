@@ -44,6 +44,9 @@ public class Selectable : MonoBehaviour
         if (Globals.hasStreamed) {
             playerMessage.GetComponent<TextHandler>().SetText("I've already started streaming. I can't leave halfway");
             return false;
+        } else if (Globals.days == 12) {
+            playerMessage.GetComponent<TextHandler>().SetText("I promised to stream today. I can't miss it.");
+            return false;
         }
         if (playerMessage.GetComponent<TextHandler>().SetText(MyMessage)) {
             clicked = true;

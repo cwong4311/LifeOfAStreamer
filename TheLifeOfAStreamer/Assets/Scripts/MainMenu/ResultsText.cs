@@ -45,114 +45,445 @@ public class ResultsText : MonoBehaviour
                 i.GetComponentInParent<Button>().interactable = false;
             }
 
-            if (Globals.prevAction == "stream")
-            {
-                if (i.name == "time")
-                {
-                    float ingameMinutes = ((float)timeTag / 60) * 24;
-                    if (ingameMinutes > 60) {
-                        int finalHour = (int)Mathf.Floor(ingameMinutes / 60);
-                        int finalMinute = (int)(ingameMinutes - (finalHour * 60));
-                        i.GetComponent<Text>().text = "I streamed for " + finalHour + "h " + finalMinute + "m today.";
-                    } else {
-                        i.GetComponent<Text>().text = "I streamed for " + (int)((float)timeTag / 60 * 24) + " minutes today.";
-                    }
-                }
-                else if (i.name == "audience")
-                {
-                    i.GetComponent<Text>().text = viewTag + " people watched me.";
-                }
-                else if (i.name == "money")
-                {
-                    i.GetComponent<Text>().text = "I got " + moneyTag + " in donations.";
-                }
-            }
-            else
-            {
-                if (i.name == "time")
-                {
-                    i.GetComponent<Text>().text = "I didn't stream today.";
-                }
-                else if (i.name == "audience")
-                {
-                    i.GetComponent<Text>().text = "Just decided to take a break.";
-                }
-                else if (i.name == "money")
-                {
-                    i.GetComponent<Text>().text = "I wonder what they think about me now...";
-                }
-            }
+            string myMsg = "";
 
-            if (i.name == "feelings")
-            {
-                i.GetComponent<Text>().text = "";
+            // time
+            // audience
+            // money
+            // feelings
 
-                if (popDelta > 5)
-                {
-                    i.GetComponent<Text>().text += "I think today went really well. ";
-                }
-                else if (popDelta > 2 && popDelta <= 5)
-                {
-                    i.GetComponent<Text>().text += "I think today didn't go too badly. ";
-                }
-                else if (popDelta < -1 && popDelta >= -5)
-                {
-                    i.GetComponent<Text>().text += "I didn't do too well today. ";
-                }
-                else if (popDelta < -5)
-                {
-                    i.GetComponent<Text>().text += "Today went really badly. ";
-                }
-                else
-                {
-                    i.GetComponent<Text>().text += "Nothing much happened. ";
-                }
+            switch(Globals.days - 1) {
+                case 1:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "No-one, as expected";
+                                break;
+                            case "audience":
+                                myMsg = "I streamed for about " + getTime();
+                                break;
+                            case "money":
+                                myMsg = "Hopefully tomorrow goes better";
+                                break;
+                            case "feelings":
+                                myMsg = "";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "I skipped my first day";
+                                break;
+                            case "audience":
+                                myMsg = "Maybe I was feeling a bit anxious";
+                                break;
+                            case "money":
+                                myMsg = "Getting judged on screen";
+                                break;
+                            case "feelings":
+                                myMsg = "Hopefully I'll be more ready tomorrow";
+                                break;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "No-one again today";
+                                break;
+                            case "audience":
+                                myMsg = "Why is this so hard?";
+                                break;
+                            case "money":
+                                myMsg = "At this rate, my channel will never grow";
+                                break;
+                            case "feelings":
+                                myMsg = "Maybe I should start advertising..";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Skipped today";
+                                break;
+                            case "audience":
+                                myMsg = "Not sure why";
+                                break;
+                            case "money":
+                                myMsg = "Maybe I wasn't feeling it";
+                                break;
+                            case "feelings":
+                                myMsg = "Hopefully I'll actually get to it tomorrow";
+                                break;
+                        }
+                    }
+                    break;
+                case 3:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "I finally got someone today!";
+                                break;
+                            case "audience":
+                                myMsg = "He seemed a pretty nice guy";
+                                break;
+                            case "money":
+                                myMsg = "Even subbed to my channel!";
+                                break;
+                            case "feelings":
+                                myMsg = "I feel like tomorrow's gonna be great";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Skipped today";
+                                break;
+                            case "audience":
+                                myMsg = "Not sure why";
+                                break;
+                            case "money":
+                                myMsg = "Maybe I wasn't feeling it";
+                                break;
+                            case "feelings":
+                                myMsg = "Hopefully I'll actually get to it tomorrow";
+                                break;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Back to no-one";
+                                break;
+                            case "audience":
+                                myMsg = "I even tried for " + getTime();
+                                break;
+                            case "money":
+                                myMsg = "Guess I was just lucky huh?";
+                                break;
+                            case "feelings":
+                                myMsg = "That kinda blows...";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Skipped today";
+                                break;
+                            case "audience":
+                                myMsg = "Maybe I wasn't feeling it";
+                                break;
+                            case "money":
+                                myMsg = "I wasn't gonna get anyone anyway";
+                                break;
+                            case "feelings":
+                                myMsg = "Nothing lost... Hopefully";
+                                break;
+                        }
+                    }
+                    break;
+                case 5:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Some people dropped by today!";
+                                break;
+                            case "audience":
+                                myMsg = "They were pretty cool guys";
+                                break;
+                            case "money":
+                                myMsg = "There weren't many, but that's ok";
+                                break;
+                            case "feelings":
+                                myMsg = "As long as I'm getting people";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Skipped today";
+                                break;
+                            case "audience":
+                                myMsg = "Maybe I wasn't feeling it";
+                                break;
+                            case "money":
+                                myMsg = "I wasn't gonna get anyone anyway";
+                                break;
+                            case "feelings":
+                                myMsg = "Nothing lost... Hopefully";
+                                break;
+                        }
+                    }
+                    break;
+                case 6:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "It's happening!";
+                                break;
+                            case "audience":
+                                myMsg = "I'm getting viewers AND subs";
+                                break;
+                            case "money":
+                                myMsg = "Things are gonna pick up now";
+                                break;
+                            case "feelings":
+                                myMsg = "I can just feel it";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Skipped today";
+                                break;
+                            case "audience":
+                                myMsg = "Maybe I wasn't feeling it";
+                                break;
+                            case "money":
+                                myMsg = "Wonder if I would've gotten any viewers";
+                                break;
+                            case "feelings":
+                                myMsg = "Nothing lost... Hopefully";
+                                break;
+                        }
+                    }
+                    break;
+                case 7:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Today went well";
+                                break;
+                            case "audience":
+                                myMsg = "Got more subs and more viewers";
+                                break;
+                            case "money":
+                                myMsg = "My channels finally growing";
+                                break;
+                            case "feelings":
+                                myMsg = "Hope things go just as well tomorrow too!";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Skipped today";
+                                break;
+                            case "audience":
+                                myMsg = "Maybe I wasn't feeling it";
+                                break;
+                            case "money":
+                                myMsg = "Wonder if I would've gotten any viewers";
+                                break;
+                            case "feelings":
+                                myMsg = "Nothing lost... Hopefully";
+                                break;
+                        }
+                    }
+                    break;
+                case 8:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Who even was that?";
+                                break;
+                            case "audience":
+                                myMsg = "Just said whatever he liked";
+                                break;
+                            case "money":
+                                myMsg = "Is that what they call trolling?";
+                                break;
+                            case "feelings":
+                                myMsg = "Hope he doesn't come back";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "I took a break today";
+                                break;
+                            case "audience":
+                                myMsg = "Social media got flooded by bad comments";
+                                break;
+                            case "money":
+                                myMsg = "I don't know why this is happening";
+                                break;
+                            case "feelings":
+                                myMsg = "But I feel sick";
+                                break;
+                        }
+                    }
+                    break;
+                case 9:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "Why is this happening...";
+                                break;
+                            case "audience":
+                                myMsg = "What did I do wrong";
+                                break;
+                            case "money":
+                                myMsg = "I can't believe it";
+                                break;
+                            case "feelings":
+                                myMsg = "I'm so mad";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "I skipped streaming today";
+                                break;
+                            case "audience":
+                                myMsg = "My social media's getting pretty bad";
+                                break;
+                            case "money":
+                                myMsg = "Why is this happening?";
+                                break;
+                            case "feelings":
+                                myMsg = "I can't believe it";
+                                break;
+                        }
+                    }
+                    break;
+                case 10:
+                    if (Globals.prevAction == "stream")
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "";
+                                break;
+                            case "audience":
+                                myMsg = "...";
+                                break;
+                            case "money":
+                                myMsg = "";
+                                break;
+                            case "feelings":
+                                myMsg = "";
+                                break;
+                            case "ButtonText":
+                                myMsg = "No more";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "";
+                                break;
+                            case "audience":
+                                myMsg = "...";
+                                break;
+                            case "money":
+                                myMsg = "";
+                                break;
+                            case "feelings":
+                                myMsg = "";
+                                break;
+                            case "ButtonText":
+                                myMsg = "No more";
+                                break;
+                        }
+                    }
+                    break;
+                case 11:
 
-                if (attDelta > 15)
-                {
-                    if (popDelta < -1)
+                    if (Globals.prevAction == "stream")
                     {
-                        i.GetComponent<Text>().text += "Except somehow, I feel really good.";
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "\"Streaming isn't worth it\"";
+                                break;
+                            case "audience":
+                                myMsg = "I wanted to stop";
+                                break;
+                            case "money":
+                                myMsg = "I felt sick";
+                                break;
+                            case "feelings":
+                                myMsg = "But that's not the case anymore";
+                                break;
+                            case "ButtonText":
+                                myMsg = "I want to stream";
+                                break;
+                        }
                     }
                     else
                     {
-                        i.GetComponent<Text>().text += "I feel really good.";
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "BAD Ending";
+                                break;
+                            case "audience":
+                                myMsg = "";
+                                break;
+                            case "money":
+                                myMsg = "";
+                                break;
+                            case "feelings":
+                                myMsg = "";
+                                break;
+                        }
                     }
-                }
-                else if (attDelta > 5 && attDelta <= 15)
-                {
-                    if (popDelta < -1)
+                    break;
+                case 12:
+                    if (Globals.prevAction == "stream")
                     {
-                        i.GetComponent<Text>().text += "I feel pretty good though.";
+                        switch(i.name) {
+                            case "time":
+                                myMsg = "GOOD Ending";
+                                break;
+                            case "audience":
+                                myMsg = "";
+                                break;
+                            case "money":
+                                myMsg = "";
+                                break;
+                            case "feelings":
+                                myMsg = "";
+                                break;
+                        }
                     }
-                    else
-                    {
-                        i.GetComponent<Text>().text += "I feel pretty good.";
-                    }
-                }
-                else if (attDelta < -5 && attDelta >= -15)
-                {
-                    if (popDelta > 2)
-                    {
-                        i.GetComponent<Text>().text += "Except I don't feel too good.";
-                    }
-                    else
-                    {
-                        i.GetComponent<Text>().text += "I don't feel too good.";
-                    }
-                }
-                else if (attDelta < -15)
-                {
-                    if (popDelta > 2)
-                    {
-                        i.GetComponent<Text>().text += "Why does it feel so bad then...";
-                    }
-                    else
-                    {
-                        i.GetComponent<Text>().text += "Hm...";
-                    }
-                }
+                    break;
+                default:
+                    break;
             }
+            
+            i.GetComponent<Text>().text = myMsg;
+            if (myMsg == "" && i.name == "ButtonText") i.GetComponent<Text>().text = "Only tomorrow will tell";
         }
 
         StartCoroutine(SlowShow());
@@ -191,6 +522,17 @@ public class ResultsText : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private string getTime() {
+        float ingameMinutes = ((float)timeTag / 60) * 24;
+        if (ingameMinutes > 60) {
+            int finalHour = (int)Mathf.Floor(ingameMinutes / 60);
+            int finalMinute = (int)(ingameMinutes - (finalHour * 60));
+            return ("" + finalHour + "h " + finalMinute + "m today.");
+        } else {
+            return ("" + (int)((float)timeTag / 60 * 24) + " minutes today.");
         }
     }
 }

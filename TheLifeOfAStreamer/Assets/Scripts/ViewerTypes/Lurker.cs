@@ -7,7 +7,7 @@ public class Lurker : Viewer
     public override void setup() {
         base.setup();
         
-        mainLurk = 8;
+        mainLurk = 9;
         fillerLurk = 9;
     }
 

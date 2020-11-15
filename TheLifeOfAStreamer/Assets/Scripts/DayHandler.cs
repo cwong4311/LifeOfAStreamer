@@ -13,7 +13,8 @@ public class DayHandler : MonoBehaviour
 
     public GameObject myResultsScreen;
 
-    public GameObject myEndScren;
+    public GameObject GoodEnd;
+    public GameObject BadEnd;
 
     private Material blurObj;
 
@@ -122,9 +123,14 @@ public class DayHandler : MonoBehaviour
 
         if (Globals.days > totalDays)
         {
-            myEndScren.SetActive(true);
-        }
-        else
+            GoodEnd.SetActive(true);
+        // If all days finished (check value - 1)
+        } else if ((Globals.days - 1) == 12) {
+            GoodEnd.SetActive(true);
+        // Of if on day 11, the player doesn't stream
+        } else if ((Globals.days - 1) == 11 && Globals.prevAction != "stream") {
+            BadEnd.SetActive(true);
+        } else
         {
             myResultsScreen.SetActive(true);
 
@@ -157,82 +163,187 @@ public class DayHandler : MonoBehaviour
         float THRESHOLD = Globals.mentalThreshold;
         string myText = ""; float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
 
-        myDay.SetText("Day " + Globals.days, 1.7f, 0.5f, myColor);
+        int dayNum = Globals.days;
+        if (dayNum == 7) {
+            dayNum = 10;
+        } else if (dayNum == 8) {
+            dayNum = 13;
+        } else if (dayNum == 9) {
+            dayNum = 14;
+        } else if (dayNum == 10) {
+            dayNum = 15;
+        } else if (dayNum == 11) {
+            dayNum = 20;
+        } else if (dayNum == 12) {
+            dayNum = 30;
+        }
+        myDay.SetText("Day " + dayNum, 1.7f, 0.5f, myColor);
 
         yield return new WaitForSeconds(2);
 
-        if (Globals.days == 1) {
-            myText = "Finally got my streaming equipment all set up.\nNow I can start streaming!";
-            myDuration = 4f;
-
-            StartCoroutine(TriggerInternalMonologue(myMessage, "No viewers, as expected.\nMaybe it's time to call it...", 300f));
-        } else if (Globals.days == 2) {
-            if (Globals.prevAction == "stream") {
-                myText = "Things didn't go too bad last time.\nHope today goes alright too";
-            } else {
-                myText = "I ended up putting it off yesterday\nHope today's the day";
-            }
-
-            StartCoroutine(TriggerInternalMonologue(myMessage, "Still no one.\nWonder when someone will pop in to chat...", 300f));
-            StartCoroutine(TriggerInternalMonologue(myMessage, "Let's call it a day.\nHopefully tomorrow will go better.", 500f));
-        } else if (Globals.days == 3) {
-            if (Globals.prevAction == "stream") {
-                myText = "Another day on the job.\nHere goes nothing!";
-            } else {
-                myText = "Gotta start somewhere. Let's stream today";
-            }
-        } else if (Globals.days == 4) {
-            if (Globals.prevAction == "stream") {
-                myText = "Yeah, I feel pretty used to streaming now.\nIf only I could actually start making money off this";
+        switch(Globals.days) {
+            case 1:
+                myText = "Finally got my streaming equipment all set up.\nNow I can stream!";
                 myDuration = 4f;
-            } else {
-                myText = "Taking breaks like this might feel good but I'll never get anywhere";
-                myDuration = 4f;  
-            }
 
-            StartCoroutine(TriggerInternalMonologue(myMessage, "No one's coming in today.\n Guess you can't always be lucky...", 300f));
-            StartCoroutine(TriggerInternalMonologue(myMessage, "Maybe it's time to wrap for the day", 500f));
-        } else if (Globals.days == totalDays) {
-            myText = "This is the last day...";
-        } else {
-            if (Globals.attitude > -THRESHOLD && Globals.attitude < THRESHOLD) {
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "Doubt I'll get anyone\nBut let's give it a shot anyway", 3f));
+                StartCoroutine(TriggerInternalMonologue(myMessage, "No viewers, as expected.\nMaybe it's time to call it...", 300f));
+                break;
+            case 2:
                 if (Globals.prevAction == "stream") {
-                    myText = "Let's stream again today!";
+                    myText = "Alright, time to stream\nHope I get some people today";
                 } else {
-                    myText = "I didn't end up streaming yesterday..\nI probably should today";
+                    myText = "I ended up putting it off yesterday\nLet's start today, for sure";
                 }
-            } else if (Globals.attitude >= THRESHOLD && Globals.attitude < THRESHOLD*2) {
+
+                StartCoroutine(TriggerInternalMonologue(myMessage, "Still no one.\nWonder when someone will pop in to chat...", 300f));
+                StartCoroutine(TriggerInternalMonologue(myMessage, "Let's call it a day.\nHopefully tomorrow will go better.", 500f));
+                break;
+            case 3:
                 if (Globals.prevAction == "stream") {
-                    myText = "Streaming's pretty fun!";
+                    myText = "It's really hard to get viewers huh.\nLet's hope today's the day";
                 } else {
-                    myText = "I got a good break yesterday.\nMy viewers are waiting for me!";
+                    myText = "Gotta start somewhere. I've bought all this stuff!";
                 }
-            } else if (Globals.attitude >= THRESHOLD*2) {
-                myText = "Let's get right into it again today!";
-            } else if (Globals.attitude > -THRESHOLD*2 && Globals.attitude <= -THRESHOLD) {
+                break;
+            case 4:
                 if (Globals.prevAction == "stream") {
-                    myText = "Another day of streaming";
+                    myText = "Finally got someone yesterday!\n Let's keep this up";
+                    myDuration = 4f;
                 } else {
-                    myText = "Maybe I should go somewhere and fun today";
-                    myColor = Color.red;                    
+                    myText = "Taking breaks like this might feel good\n But I'll never get anywhere";
+                    myDuration = 4f;  
                 }
-            } else if (Globals.attitude <= -THRESHOLD*2) {
+
+                StartCoroutine(TriggerInternalMonologue(myMessage, "No one's coming in today.\n Guess you can't always be lucky...", 300f));
+                StartCoroutine(TriggerInternalMonologue(myMessage, "Maybe it's time to wrap for the day", 500f));
+                break;
+            case 5:
                 if (Globals.prevAction == "stream") {
-                    myText = "Gotta stream again today...";
-                    myColor = Color.red;
+                    myText = "Guess I just got lucky the other day\n Streaming's hard...";
+                    myDuration = 4f;
                 } else {
-                    myText = "Is streaming really what I want to do..?";
-                    myColor = Color.red;
+                    myText = "Feels like I haven't streamed in a while\nStrange..";
+                    myDuration = 4f;  
                 }
-            } else if (Globals.attitude <= -THRESHOLD*3) {
+                break;
+            case 6:
                 if (Globals.prevAction == "stream") {
-                    myText = "I'm pretty done with this whole thing...";
-                    myColor = Color.red;
+                    myText = "That was an interesting pair yesterday\n Wonder if I'll get anyone today";
+                    myDuration = 4f;
                 } else {
-                    myText = "Even though I didn't stream yesterday, I still feel so bad today";
-                    myColor = Color.red;
+                    myText = "That was a good break.\n Let's stream today";
+                    myDuration = 4f;  
                 }
-            }
+                break;    
+            case 7:
+                if (Globals.prevAction == "stream") {
+                    myText = "The last few days went really well!\n I think I'm getting the hang of streaming now";
+                    myDuration = 4f;
+                } else {
+                    myText = "That was a good break.\n Let's stream today";
+                    myDuration = 4f;  
+                }
+                break;  
+            case 8:
+                if (Globals.prevAction == "stream") {
+                    myText = "Another day of streaming.\n Another day of meeting new people!";
+                    myDuration = 4f;
+                } else {
+                    myText = "That was a good break.\n Let's stream today";
+                    myDuration = 4f;  
+                }
+                break;  
+            case 9:
+                if (Globals.prevAction == "stream") {
+                    myText = "What was that yesterday?\n Hope he doesn't show up ever again";
+                    myDuration = 4f;
+                } else {
+                    myText = "Had a good break yesterday\nI wonder if I missed anything?...";
+                    myDuration = 4f;  
+                }
+                break;  
+            case 10:
+                if (Globals.prevAction == "stream") {
+                    myText = "It's getting worse...\nWhat did I do to deserve this?";
+                    myDuration = 4f;
+
+                    StartCoroutine(TriggerBeginningMonologue(myMessage, "I'm not really that bad, am I?", 3f));
+                    StartCoroutine(TriggerBeginningMonologue(myMessage, "Maybe I should just skip streaming today", 6f));
+                    StartCoroutine(TriggerBeginningMonologue(myMessage, "I don't want to hear any more", 9f));
+                } else {
+                    myText = "Getting some text about trolls increasing in activity lately.\n Hopefully I won't run into any";
+                    myDuration = 4f;  
+                }
+                break;  
+            case 11:
+                myText = "Why am I still here";
+                myDuration = 4f;
+
+                if (Globals.prevAction == "stream") {
+                    StartCoroutine(TriggerBeginningMonologue(myMessage, "I'm sick of streaming", 5f));
+                } else {
+                    StartCoroutine(TriggerBeginningMonologue(myMessage, "I'm sick of trying to stream", 3f));
+                    StartCoroutine(TriggerBeginningMonologue(myMessage, "Then getting bashed on social media", 3f));
+                }
+                
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "I don't want to deal with that again", 10f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "I'm only going to get flamed", 15f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "It's useless", 20f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "I'm done", 25f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "I feel sick", 30f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "Let's go back to sleep", 35f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "And forget this all happened", 40f));
+                break;  
+            case 12:
+                myText = "It's been a while since I started streaming";
+                myDuration = 4f;
+
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "Things didn't always go well", 3f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "But that's ok", 6f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "People are waiting for me today too", 9f));
+                StartCoroutine(TriggerBeginningMonologue(myMessage, "Let's start the stream", 12f));
+                break;
+            default:
+                if (Globals.attitude > -THRESHOLD && Globals.attitude < THRESHOLD) {
+                    if (Globals.prevAction == "stream") {
+                        myText = "Let's stream again today!";
+                    } else {
+                        myText = "I didn't end up streaming yesterday..\nI probably should today";
+                    }
+                } else if (Globals.attitude >= THRESHOLD && Globals.attitude < THRESHOLD*2) {
+                    if (Globals.prevAction == "stream") {
+                        myText = "Streaming's pretty fun!";
+                    } else {
+                        myText = "I got a good break yesterday.\nMy viewers are waiting for me!";
+                    }
+                } else if (Globals.attitude >= THRESHOLD*2) {
+                    myText = "Let's get right into it again today!";
+                } else if (Globals.attitude > -THRESHOLD*2 && Globals.attitude <= -THRESHOLD) {
+                    if (Globals.prevAction == "stream") {
+                        myText = "Another day of streaming";
+                    } else {
+                        myText = "Maybe I should go somewhere and fun today";
+                        myColor = Color.red;                    
+                    }
+                } else if (Globals.attitude <= -THRESHOLD*2) {
+                    if (Globals.prevAction == "stream") {
+                        myText = "Gotta stream again today...";
+                        myColor = Color.red;
+                    } else {
+                        myText = "Is streaming really what I want to do..?";
+                        myColor = Color.red;
+                    }
+                } else if (Globals.attitude <= -THRESHOLD*3) {
+                    if (Globals.prevAction == "stream") {
+                        myText = "I'm pretty done with this whole thing...";
+                        myColor = Color.red;
+                    } else {
+                        myText = "Even though I didn't stream yesterday, I still feel so bad today";
+                        myColor = Color.red;
+                    }
+                }
+                break;
         }
 
         myMessage.SetText(myText, myDuration, myDelay, myColor);
@@ -347,5 +458,17 @@ public class DayHandler : MonoBehaviour
         }
 
         if (Globals.hasStreamed) handler.SetText(message, myDuration, myDelay, myColor);
+    }
+
+    IEnumerator TriggerBeginningMonologue(TextHandler handler, string message, float delay) {
+        float timer = 0f;
+        float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
+
+        while (timer < delay) {
+            timer ++;
+            yield return new WaitForSeconds(1);
+        }
+
+        handler.SetText(message, myDuration, myDelay, myColor);
     }
 }
