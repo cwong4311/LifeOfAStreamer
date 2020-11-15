@@ -46,6 +46,8 @@ public static class Globals
 
     public static void SaveGame()
     {
+        dayMoney = 0;
+
         string destination = Application.dataPath + "/Save/save.dat";
         if (!Directory.Exists(Application.dataPath + "/Save")) 
             {

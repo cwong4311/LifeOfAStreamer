@@ -291,10 +291,30 @@ public class Viewer : MonoBehaviour
     }
 
     protected virtual void populateFillerBank() {
-        fillerBank = new string[] {"cool", "lmao", "gg", "ggz", "hahahah", "haha", "wow", "op", "poggers", "pogs", "troller", "nice", "damn", "wish I was this good", "woah", "omg",
-        "that's awesome dude", "k", "aight", "okayyy", "lol", "noice", "brb", "be right back", "one sec", "gonna grab some food", "gonna grab some water", "grabbing food", "grabbing water",
-        "leaving chat for a bit", "u're doin good", "You're doing good", "dude you can do better", "oh boy", "is it happening?", "Is It Happening!?", "niiiiiiiice", "that's crazy",
-        "bonkers", "play something else!", "F", "....", "hmmm", "hmmmmm"};
+        if (Globals.gameType == 1) {    // plat
+            fillerBank = new string[] {"cool", "lmao", "gg", "ggz", "hahahah", "haha", "wow", "op", "poggers", "pogs", "troller", "nice", "damn", "wish I was this good", "woah", "omg",
+            "that's awesome dude", "k", "aight", "okayyy", "lol", "noice", "brb", "be right back", "one sec", "grabbing food", "grabbing water",
+            "leaving chat for a bit", "u're doin good", "You're doing good", "dude you can do better", "oh boy", "is it happening?", "Is It Happening!?", "niiiiiiiice", "that's crazy",
+            "bonkers", "play something else!", "F", "....", "hmmm", "hmmmmm", "JUMP", "Juuuumpppp", "You can make the jump!", "You can make it!", "Those platforms moving fasttt",
+            "aim for high score!", "Keep jumping", "dis jump game ezz", "Is this really a platformer", "where's the goal?"};
+        } else if (Globals.gameType == 2) { // inv
+            fillerBank = new string[] {"cool", "lmao", "gg", "ggz", "hahahah", "haha", "wow", "op", "poggers", "pogs", "troller", "nice", "damn", "wish I was this good", "woah", "omg",
+            "that's awesome dude", "k", "aight", "okayyy", "lol", "noice", "brb", "be right back", "one sec", "grabbing food", "grabbing water",
+            "leaving chat for a bit", "u're doin good", "You're doing good", "dude you can do better", "oh boy", "is it happening?", "Is It Happening!?", "niiiiiiiice", "that's crazy",
+            "bonkers", "play something else!", "F", "....", "hmmm", "hmmmmm", "SHOOT", "Shoooottt", "Keep dodging!", "You can liveee", "Those aliens chonking ur hp",
+            "Aim for high score!", "Hide behind the walls", "dis shooting game ezz", "How many stages r there?", "LMAO is he shooting thumbs ups?"};
+        } else if (Globals.gameType == 3) { // mem
+            fillerBank = new string[] {"cool", "lmao", "gg", "ggz", "hahahah", "haha", "wow", "op", "poggers", "pogs", "troller", "nice", "damn", "wish I was this good", "woah", "omg",
+            "that's awesome dude", "k", "aight", "okayyy", "lol", "noice", "brb", "be right back", "one sec", "grabbing food", "grabbing water",
+            "leaving chat for a bit", "u're doin good", "You're doing good", "dude you can do better", "oh boy", "is it happening?", "Is It Happening!?", "niiiiiiiice", "that's crazy",
+            "bonkers", "play something else!", "F", "....", "hmmm", "hmmmmm", "TOP LEFT", "top riggght", "third row, second from left", "match the cards", "damn dis memory",
+            "u can match faster than that", "bottom right", "that one", "no not that one", "the other carddd"};
+        } else {
+            fillerBank = new string[] {"cool", "lmao", "gg", "ggz", "hahahah", "haha", "wow", "op", "poggers", "pogs", "troller", "nice", "damn", "wish I was this good", "woah", "omg",
+            "that's awesome dude", "k", "aight", "okayyy", "lol", "noice", "brb", "be right back", "one sec", "grabbing food", "grabbing water",
+            "leaving chat for a bit", "u're doin good", "You're doing good", "dude you can do better", "oh boy", "is it happening?", "Is It Happening!?", "niiiiiiiice", "that's crazy",
+            "bonkers", "play something else!", "F", "....", "hmmm", "hmmmmm"};
+        }
     }
 
     protected virtual void populatePositive() {

@@ -48,7 +48,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void SetGame(int gameType) {
+    public void SetGame(int gameType) { // 1 = plat, 2 = inv, 3 = mem
         this.gameMode = gameType;
         currentMenu++;
     }

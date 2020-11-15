@@ -78,7 +78,7 @@ public class Selector : MonoBehaviour
                             case "Door":
                                 if (!isPrompt) {
                                     ToggleController(false);
-                                    DoorPrompt();
+                                    GoOutPrompt();
                                     isPrompt = true;
                                 }
                                 break;
@@ -102,13 +102,16 @@ public class Selector : MonoBehaviour
         yield return null;
     }
 
+    /*
     public void DoorPrompt() {
         confirmPrompt.SetActive(true);
         confirmPrompt.transform.Find("Door").gameObject.SetActive(true);
     }
+    */
 
     public void GoOutPrompt() {
-        confirmPrompt.transform.Find("Door").gameObject.SetActive(false);
+        confirmPrompt.SetActive(true);
+        //confirmPrompt.transform.Find("Door").gameObject.SetActive(false;
         confirmPrompt.transform.Find("GoOut").gameObject.SetActive(true);
     }
 
