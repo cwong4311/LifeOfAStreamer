@@ -61,13 +61,13 @@ public class ResultsText : MonoBehaviour
                                 myMsg = "No-one, as expected";
                                 break;
                             case "audience":
-                                myMsg = "I streamed for about " + getTime();
+                                myMsg = "Not sure what I was hoping for";
                                 break;
                             case "money":
-                                myMsg = "Hopefully tomorrow goes better";
+                                myMsg = "I streamed for about " + getTime();
                                 break;
                             case "feelings":
-                                myMsg = "";
+                                myMsg = "Hopefully tomorrow goes better";
                                 break;
                         }
                     }
@@ -97,13 +97,13 @@ public class ResultsText : MonoBehaviour
                                 myMsg = "No-one again today";
                                 break;
                             case "audience":
-                                myMsg = "Why is this so hard?";
+                                myMsg = "This is harder than I thought";
                                 break;
                             case "money":
-                                myMsg = "At this rate, my channel will never grow";
+                                myMsg = "I need to try something else";
                                 break;
                             case "feelings":
-                                myMsg = "Maybe I should start advertising..";
+                                myMsg = "Otherwise my channel won't grow..";
                                 break;
                         }
                     }
@@ -280,7 +280,7 @@ public class ResultsText : MonoBehaviour
                                 myMsg = "Got more subs and more viewers";
                                 break;
                             case "money":
-                                myMsg = "My channels finally growing";
+                                myMsg = "My channel's finally growing";
                                 break;
                             case "feelings":
                                 myMsg = "Hope things go just as well tomorrow too!";
@@ -385,10 +385,10 @@ public class ResultsText : MonoBehaviour
                                 myMsg = "";
                                 break;
                             case "audience":
-                                myMsg = "...";
+                                myMsg = "";
                                 break;
                             case "money":
-                                myMsg = "";
+                                myMsg = "...";
                                 break;
                             case "feelings":
                                 myMsg = "";
@@ -405,10 +405,10 @@ public class ResultsText : MonoBehaviour
                                 myMsg = "";
                                 break;
                             case "audience":
-                                myMsg = "...";
+                                myMsg = "";
                                 break;
                             case "money":
-                                myMsg = "";
+                                myMsg = "...";
                                 break;
                             case "feelings":
                                 myMsg = "";

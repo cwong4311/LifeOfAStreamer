@@ -81,8 +81,10 @@ public class DayHandler : MonoBehaviour
         Globals.hasStreamed = false;
         Globals.hasPosted = false;
 		
+        ScriptedIncrement();
         Globals.attitude += attitude;
         Globals.popularity += popularity;
+
         Globals.dayAttitude = 0;
         Globals.gameScore = 0;
         Globals.dayViewer = 0;
@@ -157,6 +159,58 @@ public class DayHandler : MonoBehaviour
         }
     }
 
+    private void ScriptedIncrement() {
+       switch(Globals.days) {
+            case 2:
+                Globals.popularity = 0;
+                Globals.attitude = -10;
+                break;
+            case 3:
+                Globals.popularity = 0;
+                Globals.attitude = -35;
+                break;
+            case 4:
+                Globals.popularity = 5;
+                Globals.attitude = 10;
+                break;
+            case 5:
+                Globals.popularity = 5;
+                Globals.attitude = 5;
+                break;
+            case 6:
+                Globals.popularity = 10;
+                Globals.attitude = 10;
+                break;    
+            case 7:
+                Globals.popularity = 20;
+                Globals.attitude = 20;
+                break;  
+            case 8:
+                Globals.popularity = 30;
+                Globals.attitude = 30;
+                break;  
+            case 9:
+                Globals.popularity = 40;
+                Globals.attitude = -35;
+                break;  
+            case 10:
+                Globals.popularity = 45;
+                Globals.attitude = -60;
+                break;  
+            case 11:
+                Globals.popularity = 10;
+                Globals.attitude = -100;
+                break;  
+            case 12:
+                Globals.popularity = 70;
+                Globals.attitude = 30;
+                break;
+            default:
+                break;
+        }
+   
+    }
+
     IEnumerator runDailyQuote() {
         TextHandler myDay = GameObject.Find("DayMessage").GetComponent<TextHandler>();
         TextHandler myMessage = GameObject.Find("PlayerMessage").GetComponent<TextHandler>();
@@ -183,6 +237,9 @@ public class DayHandler : MonoBehaviour
 
         switch(Globals.days) {
             case 1:
+                Globals.popularity = 0;
+                Globals.attitude = 0;
+
                 myText = "Finally got my streaming equipment all set up.\nNow I can stream!";
                 myDuration = 4f;
 
@@ -190,6 +247,9 @@ public class DayHandler : MonoBehaviour
                 StartCoroutine(TriggerInternalMonologue(myMessage, "No viewers, as expected.\nMaybe it's time to call it...", 300f));
                 break;
             case 2:
+                Globals.popularity = 0;
+                Globals.attitude = -5;
+
                 if (Globals.prevAction == "stream") {
                     myText = "Alright, time to stream\nHope I get some people today";
                 } else {
@@ -200,6 +260,9 @@ public class DayHandler : MonoBehaviour
                 StartCoroutine(TriggerInternalMonologue(myMessage, "Let's call it a day.\nHopefully tomorrow will go better.", 500f));
                 break;
             case 3:
+                Globals.popularity = 0;
+                Globals.attitude = -10;
+
                 if (Globals.prevAction == "stream") {
                     myText = "It's really hard to get viewers huh.\nLet's hope today's the day";
                 } else {
@@ -207,6 +270,9 @@ public class DayHandler : MonoBehaviour
                 }
                 break;
             case 4:
+                Globals.popularity = 5;
+                Globals.attitude = 10;
+
                 if (Globals.prevAction == "stream") {
                     myText = "Finally got someone yesterday!\n Let's keep this up";
                     myDuration = 4f;
@@ -219,6 +285,9 @@ public class DayHandler : MonoBehaviour
                 StartCoroutine(TriggerInternalMonologue(myMessage, "Maybe it's time to wrap for the day", 500f));
                 break;
             case 5:
+                Globals.popularity = 5;
+                Globals.attitude = 5;
+
                 if (Globals.prevAction == "stream") {
                     myText = "Guess I just got lucky the other day\n Streaming's hard...";
                     myDuration = 4f;
@@ -228,6 +297,9 @@ public class DayHandler : MonoBehaviour
                 }
                 break;
             case 6:
+                Globals.popularity = 10;
+                Globals.attitude = 10;
+
                 if (Globals.prevAction == "stream") {
                     myText = "That was an interesting pair yesterday\n Wonder if I'll get anyone today";
                     myDuration = 4f;
@@ -237,6 +309,9 @@ public class DayHandler : MonoBehaviour
                 }
                 break;    
             case 7:
+                Globals.popularity = 20;
+                Globals.attitude = 20;
+
                 if (Globals.prevAction == "stream") {
                     myText = "The last few days went really well!\n I think I'm getting the hang of streaming now";
                     myDuration = 4f;
@@ -246,6 +321,9 @@ public class DayHandler : MonoBehaviour
                 }
                 break;  
             case 8:
+                Globals.popularity = 30;
+                Globals.attitude = 30;
+
                 if (Globals.prevAction == "stream") {
                     myText = "Another day of streaming.\n Another day of meeting new people!";
                     myDuration = 4f;
@@ -255,6 +333,9 @@ public class DayHandler : MonoBehaviour
                 }
                 break;  
             case 9:
+                Globals.popularity = 40;
+                Globals.attitude = -20;
+
                 if (Globals.prevAction == "stream") {
                     myText = "What was that yesterday?\n Hope he doesn't show up ever again";
                     myDuration = 4f;
@@ -264,6 +345,9 @@ public class DayHandler : MonoBehaviour
                 }
                 break;  
             case 10:
+                Globals.popularity = 45;
+                Globals.attitude = -40;
+
                 if (Globals.prevAction == "stream") {
                     myText = "It's getting worse...\nWhat did I do to deserve this?";
                     myDuration = 4f;
@@ -277,6 +361,9 @@ public class DayHandler : MonoBehaviour
                 }
                 break;  
             case 11:
+                Globals.popularity = 50;
+                Globals.attitude = -100;
+
                 myText = "Why am I still here";
                 myDuration = 4f;
 
@@ -296,6 +383,9 @@ public class DayHandler : MonoBehaviour
                 StartCoroutine(TriggerBeginningMonologue(myMessage, "And forget this all happened", 40f));
                 break;  
             case 12:
+                Globals.popularity = 70;
+                Globals.attitude = 300;
+
                 myText = "It's been a while since I started streaming";
                 myDuration = 4f;
 

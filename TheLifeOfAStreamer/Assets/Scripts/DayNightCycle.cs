@@ -8,15 +8,15 @@ public class DayNightCycle : MonoBehaviour
     public float speed = 3f;
     void Start()
     {
-        if (Globals.attitude <= -30) {
+        if (Globals.attitude <= -20) {
             transform.RotateAround(Vector3.zero, Vector3.right, -90 + Globals.attitude);
 
             if (Globals.attitude > -100) {
                 RenderSettings.ambientIntensity = 0.6f + (Globals.attitude / 200);
                 RenderSettings.reflectionIntensity = 0.6f + (Globals.attitude / 200);
             } else {
-                RenderSettings.ambientIntensity = 0.1f;
-                RenderSettings.reflectionIntensity = 0.1f;
+                RenderSettings.ambientIntensity = 0.2f;
+                RenderSettings.reflectionIntensity = 0.2f;
             }
         } else {
             RenderSettings.ambientIntensity = 1f;

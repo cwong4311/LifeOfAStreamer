@@ -2,7 +2,8 @@ VAR game_type = "mem"
 VAR viewers = 26
 VAR playername = "Player"
 
-I_M_And so it begins again
+I_M_And so it begins
+I_M_Another day
 N_C_1
 Hey again
 How're things going
@@ -66,10 +67,7 @@ I_M_Got mods now to watch my back
     N_C_2
     Gunna spam them first thing
     N_C_1
-    LMAO, don't do that dude
-    That's rude
-    N_C_2
-    Hahahaha, maybe just a bit then.
+    LMAO
     I_M_I'm having a good time now
     I_M_And that's all that matters
     N_C_3
@@ -77,10 +75,10 @@ I_M_Got mods now to watch my back
     You planning on playing that too?
     ** Definitely
         N_C_3
+        I_M_It's streaming time
+        F_X_1
         Oh my god
         I am HYPED
-        I_M_It's streaming time
-        F_X_6
         N_C_1
         Thank god it's the holidays
         N_C_2
