@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 50c1745f62023da4399b0f30b67b13b3
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Baseboard
+    100002: Crown Molding
+    100004: Crown Molding Wardrobe
+    100006: Door
+    100008: Door_Group
+    100010: DoorFrame
+    100012: Handle.001
+    100014: Handle.002
+    100016: Handle_Back
+    100018: Handle_Front
+    100020: Room
+    100022: //RootNode
+    100024: Wardrobe Baseboard
+    100026: Wardrobe Door Inner
+    100028: Wardrobe Door Outer
+    100030: Wardrobe Frame
+    100032: Wardrobe Rail
+    100034: Wardrobe Walls
+    100036: Wardrobe_Group
+    100038: Window
+    100040: Window_Group
+    400000: Baseboard
+    400002: Crown Molding
+    400004: Crown Molding Wardrobe
+    400006: Door
+    400008: Door_Group
+    400010: DoorFrame
+    400012: Handle.001
+    400014: Handle.002
+    400016: Handle_Back
+    400018: Handle_Front
+    400020: Room
+    400022: //RootNode
+    400024: Wardrobe Baseboard
+    400026: Wardrobe Door Inner
+    400028: Wardrobe Door Outer
+    400030: Wardrobe Frame
+    400032: Wardrobe Rail
+    400034: Wardrobe Walls
+    400036: Wardrobe_Group
+    400038: Window
+    400040: Window_Group
+    2100000: Plaster
+    2100002: Wood Floor
+    2100004: Dark Wood
+    2100006: Door
+    2100008: Metal Door Handle
+    2100010: No Name
+    2100012: Glass
+    2100014: Cupboard Handle
+    2300000: Baseboard
+    2300002: Crown Molding
+    2300004: Crown Molding Wardrobe
+    2300006: Door
+    2300008: DoorFrame
+    2300010: Handle.001
+    2300012: Handle.002
+    2300014: Handle_Back
+    2300016: Handle_Front
+    2300018: Room
+    2300020: Wardrobe Baseboard
+    2300022: Wardrobe Door Inner
+    2300024: Wardrobe Door Outer
+    2300026: Wardrobe Frame
+    2300028: Wardrobe Rail
+    2300030: Wardrobe Walls
+    2300032: Window
+    3300000: Baseboard
+    3300002: Crown Molding
+    3300004: Crown Molding Wardrobe
+    3300006: Door
+    3300008: DoorFrame
+    3300010: Handle.001
+    3300012: Handle.002
+    3300014: Handle_Back
+    3300016: Handle_Front
+    3300018: Room
+    3300020: Wardrobe Baseboard
+    3300022: Wardrobe Door Inner
+    3300024: Wardrobe Door Outer
+    3300026: Wardrobe Frame
+    3300028: Wardrobe Rail
+    3300030: Wardrobe Walls
+    3300032: Window
+    4300000: Room
+    4300002: DoorFrame
+    4300004: Door
+    4300006: Handle_Front
+    4300008: Handle_Back
+    4300010: Window
+    4300012: Baseboard
+    4300014: Crown Molding
+    4300016: Wardrobe Baseboard
+    4300018: Wardrobe Walls
+    4300020: Crown Molding Wardrobe
+    4300022: Wardrobe Frame
+    4300024: Wardrobe Door Inner
+    4300026: Handle.002
+    4300028: Wardrobe Door Outer
+    4300030: Handle.001
+    4300032: Wardrobe Rail
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cupboard Handle
+    second: {fileID: 2100000, guid: 5bd724216fc9cd34aa71cd7f70c6025f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark Wood
+    second: {fileID: 2100000, guid: fd81a0e3a1f3f854781747e6fb9f8a47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door
+    second: {fileID: 2100000, guid: 29adf344ac6557545a498c40a6f5fdd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: bbcd49ff14daaa44b9727136309e442a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal Door Handle
+    second: {fileID: 2100000, guid: a675254fd465f234c98e1f20ed3fca24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 42e91e63c636f8c4a9dd452526f71300, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plaster
+    second: {fileID: 2100000, guid: 3bb8f771f81721f4e96342ab38a78f92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood Floor
+    second: {fileID: 2100000, guid: 0fadf4835d216a5439cfd5ed3997fa9f, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
