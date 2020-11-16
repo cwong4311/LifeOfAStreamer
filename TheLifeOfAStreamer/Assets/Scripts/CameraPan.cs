@@ -13,7 +13,7 @@ public class CameraPan : MonoBehaviour
     private Transform originalTrans;
     private Transform phoneDestinationTrans;
     private bool isFocused = false;
-    private bool isPanning = false;
+    public bool isPanning = false;
     // Start is called before the first frame update
     void Start()
     {

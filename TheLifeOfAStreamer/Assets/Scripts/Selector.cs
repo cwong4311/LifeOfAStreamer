@@ -45,6 +45,7 @@ public class Selector : MonoBehaviour
             Debug.Log("Days: " + Globals.days + ", Pop: " + Globals.popularity + ", Att: " + Globals.attitude + ", Score: " + Globals.gameScore);
         }
     }
+    
     private IEnumerator TrackInteract() {
         running = true;
 

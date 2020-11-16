@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 public class DayHandler : MonoBehaviour
 {
     public Animator myFade;
@@ -35,6 +36,7 @@ public class DayHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        OnStartFX();
         StartCoroutine(runDailyQuote());
 
         if (Globals.days >= 15) {dailyTimeLimit = 1800f;}   //Streamer can stream twice as long after they get used to it
@@ -560,5 +562,12 @@ public class DayHandler : MonoBehaviour
         }
 
         handler.SetText(message, myDuration, myDelay, myColor);
+    }
+
+    void OnStartFX() {
+        if (Globals.days == 11) {
+            FX myFX = GameObject.Find("Effects").GetComponent<FX>();
+            myFX.PlayEffects(3);
+        }
     }
 }

@@ -15,8 +15,8 @@ public class DayNightCycle : MonoBehaviour
                 RenderSettings.ambientIntensity = 0.6f + (Globals.attitude / 200);
                 RenderSettings.reflectionIntensity = 0.6f + (Globals.attitude / 200);
             } else {
-                RenderSettings.ambientIntensity = 0.2f;
-                RenderSettings.reflectionIntensity = 0.2f;
+                RenderSettings.ambientIntensity = 0.3f;
+                RenderSettings.reflectionIntensity = 0.3f;
             }
         } else {
             RenderSettings.ambientIntensity = 1f;
