@@ -241,7 +241,7 @@ public class DayHandler : MonoBehaviour
                     myText = "The last few days went really well!\n I think I'm getting the hang of streaming now";
                     myDuration = 4f;
                 } else {
-                    myText = "That was a good break.\n Let's stream today";
+                    myText = "Haven't really streamed the last few days...\n Let's stream today!";
                     myDuration = 4f;  
                 }
                 break;  
@@ -250,7 +250,7 @@ public class DayHandler : MonoBehaviour
                     myText = "Another day of streaming.\n Another day of meeting new people!";
                     myDuration = 4f;
                 } else {
-                    myText = "That was a good break.\n Let's stream today";
+                    myText = "Haven't really streamed the last few days...\n Let's stream today";
                     myDuration = 4f;  
                 }
                 break;  
