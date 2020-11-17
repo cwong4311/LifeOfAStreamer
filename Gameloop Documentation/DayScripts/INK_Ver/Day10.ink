@@ -5,8 +5,6 @@ VAR playername = "player"
 
 L_D
 L_D
-L_D
-L_D
 N_C_1
 Hahaha look at this Ninjoe wannabe
 Hang on, lemme guess
@@ -131,7 +129,7 @@ You get ppl like him often?
     What a piece of work.
     N_C_2
     Welcome to the internet, I guess
-    Good thing he's banned now tho
+    Good thing he's gone now tho
     N_C_3
     Yea.. Back to playing
     -> Epilogue
@@ -161,6 +159,7 @@ Me too. Cya later
 I_M_That was a pretty terrible experience.
 I_M_Is this what they call getting trolled?
 I_M_Hope I don't run into people like him again...
+I_M_Let's wrap up for the day
 E_C
 
 -> END

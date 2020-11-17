@@ -5,30 +5,35 @@ using UnityEngine;
 public class DayNightCycle : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float speed = 3f;
+    public float speed = 0.2f;
     void Start()
     {
         if (Globals.attitude <= -20) {
-            transform.RotateAround(Vector3.zero, Vector3.right, -90 + Globals.attitude);
+            transform.rotation = Quaternion.Euler(-30f, 69f, 141f);
 
             if (Globals.attitude > -100) {
                 RenderSettings.ambientIntensity = 0.6f + (Globals.attitude / 200);
                 RenderSettings.reflectionIntensity = 0.6f + (Globals.attitude / 200);
             } else {
-                RenderSettings.ambientIntensity = 0.3f;
-                RenderSettings.reflectionIntensity = 0.3f;
+                RenderSettings.ambientIntensity = 0.18f;
+                RenderSettings.reflectionIntensity = 0.18f;
             }
         } else {
             RenderSettings.ambientIntensity = 1f;
             RenderSettings.reflectionIntensity = 1f;
+
+            if (Globals.attitude >= 5) {
+                transform.rotation = Quaternion.Euler(23f, 74f, 259f);
+            } else {
+                transform.rotation = Quaternion.Euler(5f, 20f, 245f);
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(Vector3.zero, Vector3.right, speed*Time.deltaTime);
-        transform.LookAt(Vector3.zero);
+        transform.Rotate(-speed * Time.deltaTime, 0, 0);
         float intensity = gameObject.transform.rotation.x * 10;
         gameObject.GetComponent<Light>().intensity = intensity;
     }
