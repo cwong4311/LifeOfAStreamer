@@ -194,7 +194,7 @@ public class Viewer : MonoBehaviour
         // If this viewer isn't subbed, chance of subbing
         if (!amSubbed) {
             if (attitude > 20) {
-                int checkValue = (int) (Globals.popularity > 20 ? 20 : Globals.popularity); if (checkValue < 5) checkValue = 5;
+                int checkValue = 3;
                 if (Random.Range(0, 100) < checkValue) {
                     Globals.subNumber++;
                     Globals.subNames += username + ",";
@@ -204,7 +204,7 @@ public class Viewer : MonoBehaviour
                     DisplaySubbed();
                 }         
             } else {
-                int checkValue = (int) (Globals.popularity > 10 ? 10 : Globals.popularity); if (checkValue < 1) checkValue = 1;
+                int checkValue = 1;
                 if (Random.Range(0, 200) < checkValue) {
                     Globals.subNumber++;
                     Globals.subNames += username + ",";
@@ -215,7 +215,7 @@ public class Viewer : MonoBehaviour
                 }
             }
         // If this viewer is subbed, chance of leaving
-        } else {
+        } /*else {
             if (attitude < -50) {
                 int checkValue = (int) (Globals.popularity > 10 ? 10 : Globals.popularity); if (checkValue < 1) checkValue = 1;
                 if (Random.Range(0, 100) < checkValue) {
@@ -255,7 +255,7 @@ public class Viewer : MonoBehaviour
                     }      
                 }     
             }
-        }
+        }*/
     }
 
     public void Pause() {

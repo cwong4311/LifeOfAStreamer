@@ -2,6 +2,9 @@ VAR game_type = "mem"
 VAR viewers = 1
 VAR playername = "Player"
 
+I_M_I'm back...
+I_M_Why am I doing this?
+I_M_It's just gonna happen again..
 L_D
 N_C_1
 It's happening

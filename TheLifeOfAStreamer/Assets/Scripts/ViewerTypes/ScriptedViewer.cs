@@ -170,16 +170,19 @@ public class ScriptedViewer : Viewer
                 int nameIndex = int.Parse(s.Split('_')[2]);
                 username = viewerNames[nameIndex - 1];
                 myColor = viewerColors[nameIndex - 1];
+                scriptCounter = 0.3f;
                 return "";
             case string s when s.Contains("D_T"):
                 int money = int.Parse(s.Split('_')[2]);
                 string msg = s.Split('_')[3];
                 Globals.dayMoney += money;
+                scriptCounter = 0.3f;
                 DisplayDonation(money, msg);
                 return "";
             case string s when s.Contains("S_C"):
                 Globals.subNumber++;
                 Globals.subNames += username + ",";
+                scriptCounter = 0.3f;
                 DisplaySubbed();
                 return "";
             case string s when s.Contains("B_N"):
@@ -192,6 +195,7 @@ public class ScriptedViewer : Viewer
             case string s when s.Contains("F_X"):
                 int effectNum = int.Parse(s.Split('_')[2]);
                 myFX.PlayEffects(effectNum);
+                scriptCounter = 0.3f;
                 return "";
             case string s when s.Contains("S_F"):
                 // TODO:
@@ -202,6 +206,7 @@ public class ScriptedViewer : Viewer
                 float myDuration = 3f; float myDelay = 0.5f; Color color = Color.white;
                 string myText = s.Split('_')[2];
                 myMessage.SetText(myText, myDuration, myDelay, color);
+                scriptCounter = 0.3f;
                 return "";
             case string s when s.Contains("A_D"):
                 if (dummy == null) return "";

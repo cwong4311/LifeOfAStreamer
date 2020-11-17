@@ -75,6 +75,7 @@ Yea love to see some other things too!
     N_C_5
     It's true lmao
     I_M_Not again...
+    F_X_4
     N_C_3
     if my stream was this boring, I'd like for someone to tell me
     and your stream is like
@@ -107,6 +108,7 @@ Yea love to see some other things too!
     hey, don't blame me
     I'm just tryna help
     I_M_Not again...
+    F_X_4
     I'd want someone to tell me
     if my stream was boring, y'know
     N_C_6
@@ -135,6 +137,7 @@ Yea love to see some other things too!
     they definitely look it
     living in mom's basement
     I_M_Not again...
+    F_X_4
     N_C_3
     mooching off ur parents ain't gonne get u much cash aye
     N_C_4
@@ -206,6 +209,7 @@ That's soooo cringe bro
 N_C_3
 yeah real good defense man
 i totes believe you
+F_X_5
 I_M_It's no use...
 N_C_6
 ppl like u are pathetic
@@ -215,15 +219,18 @@ No skills, no content
 N_C_5
 and SUPER goddamn unoriginal
 just copying others
+F_X_5
 I_M_They aren't listening
 it's not interesting
 just ANNOYING as hek
+F_X_5
 I_M_They're just making fun of me
 N_C_6
 Just kill urself dude
 I_M_I'm... not as bad as they say
 save everyone the pain of watching ur snorefest
 noone cares anyway
+F_X_5
 I_M_I swear
 hahahahaha
 N_C_4
@@ -231,6 +238,7 @@ LMAO
 N_C_5
 Good one!
 I_M_I'm really.. not copying anyone..
+F_X_6
 N_C_7
 HAHAHAHA
 * Get lost \[Ban\]
@@ -249,15 +257,19 @@ B_N
 N_C_5
 Is that how u deal with criticism
 just banning people who says things u don't like
+F_X_5
 I_M_Shut up
 N_C_2
 what a snowflake
+F_X_5
 I_M_I don't need to take this from you
 N_C_5
 B_N
 N_C_4
 u know when someone starts doing this sht
 they've gone batshit and lost their cool
+F_X_6
+F_X_5
 N_C_3
 LMAO YEAH
 and this dude lost it so damn quickly too
@@ -272,11 +284,14 @@ I_M_There's more...?
 N_C_3
 u gonna ban me too?
 LMAO
+F_X_6
+F_X_5
 A_D
 R_N
 U can't do jack about this hahaha
 I saw u tried making ur Eyebook private ystd
 won't stop me from trackin u down and ending u tho
+F_X_4
 I_M_What...
 B_N
 A_D
@@ -291,6 +306,8 @@ think again LMAO
 -> PostBan
 
 == PostBan ==
+F_X_6
+F_X_5
 I_M_Shut up
 A_D
 R_N 
@@ -298,12 +315,16 @@ U're fkn worthless
 Why r u streaming anyway
 did you think this would make u cool?
 make u famous?
+F_X_6
+F_X_5
 I_M_Shut UP!
 A_D
 R_N
 All u're doing is showing how cringe u are
 just face it
 I_M_They just keep coming
+F_X_6
+F_X_5
 I_M_I can't stop them..
 A_D
 R_N
@@ -313,6 +334,7 @@ F_X_0
 I'm gonna give it to u straight, u shitter
 I_M_M-my phone is ringing
 I_M_I need to pick it up
+F_X_2
 And I'm gunna enjoy putting u in ur place
 A_D
 R_N

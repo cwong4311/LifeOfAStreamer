@@ -91,6 +91,9 @@ public class PhoneSpamming : MonoBehaviour
         myChatBox.gameObject.transform.SetParent(PhoneMenu, false);
         PhoneMenu.transform.Find("LeaveButton").gameObject.GetComponent<Button>().interactable = false;
 
+        //Glitch
+        GameObject.Find("Effects").GetComponent<FX>().PlayEffects(4);
+
         yield return new WaitForSeconds(3f);
 
         monologue.SetText("What");
@@ -98,6 +101,9 @@ public class PhoneSpamming : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         monologue.SetText("How did they find my number?");
+
+        //Glitch
+        GameObject.Find("Effects").GetComponent<FX>().PlayEffects(4);
 
         yield return new WaitForSeconds(3f);
 
@@ -107,17 +113,12 @@ public class PhoneSpamming : MonoBehaviour
 
         monologue.SetText("What do I even do");
 
-        yield return new WaitForSeconds(3f);
-
-        monologue.SetText("Call the cops");
-
-        yield return new WaitForSeconds(3f);
-
-        monologue.SetText("But can they even do anything?");
-
-        yield return new WaitForSeconds(3f);
-
-        monologue.SetText("They might not believe me...");
+        //Glitch
+        GameObject.Find("Effects").GetComponent<FX>().PlayEffects(4);
+        Transform statEff1 = GameObject.Find("Effects").GetComponent<FX>().PlayEffects(6);
+        statEff1.gameObject.GetComponent<StaticHandler>().max = 0.2f;
+        statEff1.gameObject.GetComponent<StaticHandler>().speed = 0.5f;
+        statEff1.gameObject.GetComponent<StaticHandler>().duration = 120f;
 
         yield return new WaitForSeconds(4f);
 
@@ -126,9 +127,17 @@ public class PhoneSpamming : MonoBehaviour
         yield return new WaitForSeconds(4f);
         PhoneMenu.transform.Find("LeaveButton").gameObject.GetComponent<Button>().interactable = true;
 
+        //Vignette Pulsing
+        Transform vigEff = GameObject.Find("Effects").GetComponent<FX>().PlayEffects(7);
+
         while(!screenCanvas.gameObject.activeInHierarchy) {
             yield return new WaitForSeconds(2f);
         }
+
+        //Static Short
+        Transform statEff = GameObject.Find("Effects").GetComponent<FX>().PlayEffects(6);
+        statEff.gameObject.GetComponent<StaticHandler>().max = 0.4f;
+        statEff.gameObject.GetComponent<StaticHandler>().duration = 1f;
 
         yield return new WaitForSeconds(4f);
 
@@ -140,14 +149,25 @@ public class PhoneSpamming : MonoBehaviour
 
         yield return new WaitForSeconds(8f);
 
+        //Static Short
+        statEff = GameObject.Find("Effects").GetComponent<FX>().PlayEffects(6);
+        statEff.gameObject.GetComponent<StaticHandler>().max = 0.6f;
+        statEff.gameObject.GetComponent<StaticHandler>().duration = 1.2f;
         monologue.SetText("Make it stop...");
 
         yield return new WaitForSeconds(4f);
 
+        //Static Long
+        statEff = GameObject.Find("Effects").GetComponent<FX>().PlayEffects(6);
+        statEff.gameObject.GetComponent<StaticHandler>().max = 1f;
+        statEff.gameObject.GetComponent<StaticHandler>().speed = 0.5f;
+        statEff.gameObject.GetComponent<StaticHandler>().duration = 10f;
         monologue.SetText("Please...");
 
         yield return new WaitForSeconds(3f);
         
+        // Stop Vignette Pulsing
+        vigEff.gameObject.GetComponent<VignettePulse>().StopAll();
         myDay.GetComponent<DayHandler>().DayEnd();
     }
 }

@@ -29,10 +29,6 @@ public class PPSuite : MonoBehaviour
         drunk = GameObject.Find("FPSController/FirstPersonCharacter").AddComponent<Drunk>();
         drunk.material = drunkMat;
         drunk.enabled = false;
-
-        GameObject.FindObjectOfType<FirstPersonController>().m_WalkSpeed = 0.03f;
-        GameObject.FindObjectOfType<FirstPersonController>().m_RunSpeed = 0.03f;
-        GameObject.FindObjectOfType<FirstPersonController>().m_StepInterval = 0.12f;
     }
     void Update()
     {

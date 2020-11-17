@@ -18,9 +18,10 @@ public class FX : MonoBehaviour
         
     }
 
-    public void PlayEffects(int index) {
+    public Transform PlayEffects(int index) {
         Transform newEffect = Instantiate(Effects[index], transform);
         effectList.Add(newEffect);
+        return newEffect;
     }
 
     public void StopEffects(int index) {

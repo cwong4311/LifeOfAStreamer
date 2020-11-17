@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class DayHandler : MonoBehaviour
 {
@@ -123,7 +124,6 @@ public class DayHandler : MonoBehaviour
             SceneManager.LoadScene("Menu_0.1-MainMenuPrototpye");
             return;
         }
-        Globals.SaveGame();
 
         if (Globals.days > totalDays)
         {
@@ -151,6 +151,7 @@ public class DayHandler : MonoBehaviour
 
     public void ProgressDay()
     {
+        Globals.SaveGame();
         if (continuousPlay)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -565,7 +566,16 @@ public class DayHandler : MonoBehaviour
     }
 
     void OnStartFX() {
-        if (Globals.days == 11) {
+        if (Globals.days == 10) {
+            GameObject.FindObjectOfType<FirstPersonController>().m_WalkSpeed = 0.3f;
+            GameObject.FindObjectOfType<FirstPersonController>().m_RunSpeed = 0.6f;
+            GameObject.FindObjectOfType<FirstPersonController>().m_StepInterval = 0.4f;
+        } else if (Globals.days == 11) {
+
+            GameObject.FindObjectOfType<FirstPersonController>().m_WalkSpeed = 0.03f;
+            GameObject.FindObjectOfType<FirstPersonController>().m_RunSpeed = 0.03f;
+            GameObject.FindObjectOfType<FirstPersonController>().m_StepInterval = 0.12f;
+
             FX myFX = GameObject.Find("Effects").GetComponent<FX>();
             myFX.PlayEffects(3);
         }

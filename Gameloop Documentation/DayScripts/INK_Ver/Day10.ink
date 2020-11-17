@@ -24,6 +24,7 @@ hahaha basic bitch
 
 == Ch2 ==
 You realise how pathetic u sound right now?
+F_X_4
 I see ur diet Shr00d act
 Ur so CleVEr
 Trying to deny copying the most popular streamer on {platform}
@@ -55,8 +56,9 @@ L_D
 N_C_1
 lol imagine anyone paying you for anything
 nurd
+F_X_5
 N_C_2
-D_T_5_Fuck off, troll
+D_T_5_Go home, troll
 N_C_3
 LMAO rekt
 N_C_1

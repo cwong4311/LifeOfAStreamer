@@ -13,6 +13,7 @@ clearly ur playing this bad on purpose
 N_C_2
 Nah fam
 they're just garbo
+F_X_5
 I_M_Not again...
 * I was doing good
     N_C_1
@@ -39,6 +40,7 @@ wot r u even doing?
     Flipping over every single shit and hoping to get lucky?
     I guess with two brain cells, u couldn't remember anything even if u wanted to...
 }
+F_X_5
 N_C_3
 Lamee
 N_C_4
@@ -51,6 +53,7 @@ what a joke
 * It's just a game
     N_C_3
     iT's JuST a gAmE
+    F_X_5
     N_C_1
     LOL get a load of this guy
     Imagine being ok with sucking this much
@@ -63,6 +66,7 @@ what a joke
     N_C_3
     You mean what's wrong with 'YOU'
     LMAO
+    F_X_5
     N_C_2
     Stop being so serious lololol
     N_C_1
@@ -90,6 +94,7 @@ what a joke
     
     y'know
     it's called not being a fkn disgrace
+    F_X_5
     u ever tried b4?
     But I guess this game's trash anyway so there's like ZERO point 
     N_C_1
@@ -127,6 +132,7 @@ Dude's paying to pad his numbers
 N_C_1
 Overcompensating much?
 With these garbage skills, he's got no other way.
+F_X_5
 Amirite?
     * I'm not
         N_C_2
@@ -158,6 +164,7 @@ N_C_2
 ^^^^
 Everytime he opens his mouth it's like listening to a whiny kid
 it's sooooooooo annoyinggg
+F_X_5
 N_C_1
 Probably is a kid lmao
 N_C_6
@@ -169,6 +176,7 @@ wtf it's TERRIBLE
 N_C_2
 disgusting
 go back to playing fortday with the other 9 year olds lmao
+F_X_6
 I_M_I can't deal with this anymore
 N_C_4
 wtf, fortday's cool
@@ -185,12 +193,14 @@ L_D
 N_C_2
 Dudes I found his eyebook
 http\:\/\/www.eyebook.com\/profile\/342892\/
+F_X_4
 Look at him LMAO
 just like every other uglyass nurd
 L_D
 N_C_1
 LMAO No wonder they play so bad
 Must be hard to play with ALL THAT GREASE ON UR SWEATY FACE
+F_X_8
 N_C_6
 wtf, don't stalk his page
 stop
@@ -200,17 +210,22 @@ ur parents must be so disappointed in you
 N_C_1
 lmao, it's no wonder, considering where they're from
 Don't let the cops see this pic or they'll come arrest you lmao
+F_X_5
 I_M_What??
 N_C_3
 How's basement life going
 must be good not needing to pay rent and be a manchild forever
 Tryna 'make it big' by streaming vidya games?
 get lost LMAO
+F_X_6
+F_X_5
 N_C_1
 Shit's outta ur league
 With THOSE skills
 N_C_2
 If I was ur mom I'd have disowned u by now
+F_X_6
+F_X_5
 otherwise killed u then kill myself for giving birth to this fkn dropkick
 I_M_That's it. I'm done.
 * I look fabulous \[Ban\]

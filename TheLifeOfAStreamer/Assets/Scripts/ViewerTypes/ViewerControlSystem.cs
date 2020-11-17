@@ -136,11 +136,11 @@ public class ViewerControlSystem : MonoBehaviour
                     createScriptedViewer(3, 6f);
                     break;
                 case 8:             // Day 10 on Chart
-                    spawnProceduralForScript(27, 3, 2, 10);
+                    spawnProceduralForScript(30, 1, 1, 10);
                     createScriptedViewer(4, 4f);
                     break;                
                 case 9:             // Day 11 on Chart
-                    spawnProceduralForScript(35, 5, 0, 10);
+                    spawnProceduralForScript(37, 3, 0, 10);
                     createScriptedViewer(5, 3f);
                     break;
                 case 10:            // Day 13 on Chart
