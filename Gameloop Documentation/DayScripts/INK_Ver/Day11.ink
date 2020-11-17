@@ -192,13 +192,14 @@ I_M_I didn't want to, but it's probably time to ban...
 L_D
 N_C_2
 Dudes I found his eyebook
-http\:\/\/www.eyebook.com\/profile\/342892\/
 F_X_4
+http\:\/\/www.eyebook.com\/profile\/342892\/
 Look at him LMAO
 just like every other uglyass nurd
 L_D
 N_C_1
 LMAO No wonder they play so bad
+F_X_6
 Must be hard to play with ALL THAT GREASE ON UR SWEATY FACE
 F_X_8
 N_C_6
