@@ -61,7 +61,7 @@ S_C
 A_D
 R_N
 Heyss
-I_M_Are there actually people who want me back?
+I_M_Do these people actually want me back?
 A_D
 R_N
 U doin ok?
@@ -78,7 +78,7 @@ Good to see u streaming again
 A_D
 R_N
 He's ALIVE POGS
-I_M_Is it really ok for me to stream?
+I_M_Is it actually ok for me to stream again..?
 A_D
 R_N
 D_T_30_Pogs in the chat
