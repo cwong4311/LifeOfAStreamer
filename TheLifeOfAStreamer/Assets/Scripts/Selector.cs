@@ -54,6 +54,17 @@ public class Selector : MonoBehaviour
         if(Physics.Raycast (transform.position, transform.forward, out hit, interactionDistance, ~IgnoreMe)) {
             if (hit.collider.tag == "Selectable") {
                 crosshairPersist = 0.1f;
+                switch (hit.collider.name)
+                {
+                    default:
+                        crosshair.transform.Find("Eye").gameObject.SetActive(true);
+                        crosshair.transform.Find("Phone").gameObject.SetActive(false);
+                        break;
+                    case "IPhoneX": 
+                        crosshair.transform.Find("Eye").gameObject.SetActive(false);
+                        crosshair.transform.Find("Phone").gameObject.SetActive(true);
+                        break;
+                }
                 if (Input.GetMouseButtonDown(0)) {
                     Selectable myObject = hit.transform.gameObject.GetComponent<Selectable>();
                     if (myObject.objectType == Selectable.ObjectType.Stream) {
@@ -61,7 +72,6 @@ public class Selector : MonoBehaviour
                         try {
                             switch(hit.collider.name) {
                                 default:
-                                case "Table":
                                     GetComponent<CameraPan>().ChangeViews("pc");
                                     break;
                                 case "IPhoneX":
