@@ -27,6 +27,8 @@ public class PhoneSpamming : MonoBehaviour
         monologue = GameObject.Find("PlayerCanvas/PlayerMessage").GetComponent<TextHandler>();
         screenCanvas = GameObject.Find("PlayerCanvas").transform.Find("ScreenCanvas");
         myDay = GameObject.Find("LevelFader/Fader");
+
+        screenCanvas.Find("LeaveButton").gameObject.GetComponent<StreamButton>().Leave();
     }
 
     // Update is called once per frame

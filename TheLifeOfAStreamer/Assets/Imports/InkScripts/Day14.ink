@@ -78,7 +78,7 @@ Good to see u streaming again
 A_D
 R_N
 He's ALIVE POGS
-I_M_Is it actually ok for me to stream again..?
+I_M_Is it ok for me to stream again..?
 A_D
 R_N
 D_T_30_Pogs in the chat

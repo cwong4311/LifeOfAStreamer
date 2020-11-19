@@ -330,12 +330,12 @@ A_D
 R_N
 and if u think putting this garbage on the net is gonna help u
 I_M_Please, I don't want to hear anymore
-F_X_0
 I'm gonna give it to u straight, u shitter
 I_M_M-my phone is ringing
 I_M_I need to pick it up
 F_X_2
 And I'm gunna enjoy putting u in ur place
+F_X_0
 A_D
 R_N
 LMAO get rekt

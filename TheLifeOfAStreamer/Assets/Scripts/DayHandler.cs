@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.Rendering.PostProcessing;
 
 public class DayHandler : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class DayHandler : MonoBehaviour
 
     public GameObject GoodEnd;
     public GameObject BadEnd;
+
+    public PostProcessProfile ppProfile;
 
     private Material blurObj;
 
@@ -579,5 +582,14 @@ public class DayHandler : MonoBehaviour
             FX myFX = GameObject.Find("Effects").GetComponent<FX>();
             myFX.PlayEffects(3);
         }
+    }
+
+    void OnApplicationQuit() {
+        StopPostProcessing();
+    }
+
+    public void StopPostProcessing() {
+        ppProfile.GetSetting<Vignette>().active = false;
+        ppProfile.GetSetting<LensDistortion>().active = false;
     }
 }

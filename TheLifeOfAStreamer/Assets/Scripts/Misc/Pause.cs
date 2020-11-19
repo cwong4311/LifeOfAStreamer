@@ -58,6 +58,7 @@ public class Pause : MonoBehaviour
     }
 
     public void LeaveGame() {
+        Fader.GetComponent<DayHandler>().StopPostProcessing();
         Fader.GetComponent<DayHandler>().LeaveGame();
         Continue();
     }

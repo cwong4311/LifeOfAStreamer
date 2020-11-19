@@ -22,11 +22,17 @@ public class StreamButton : MonoBehaviour
 			Globals.gameFlag = -1;
 		} else if (myButton == ButtonType.Finish) {
 			Globals.prevAction = "stream";
+			myFade.GetComponent<DayHandler>().StopPostProcessing();
 			myFade.GetComponent<DayHandler>().DayEnd();
 		} else if (myButton == ButtonType.Reset) {
 			myFade.GetComponent<LScreenController>().ResetGame();
 		} else if (myButton == ButtonType.Exit) {
             myFade.GetComponent<DayHandler>().LeaveGame();
         }
+	}
+
+	public void Leave() {
+		myCamera.GetComponentInChildren<CameraPan>().ResetViews();
+		Globals.gameFlag = -1;
 	}
 }

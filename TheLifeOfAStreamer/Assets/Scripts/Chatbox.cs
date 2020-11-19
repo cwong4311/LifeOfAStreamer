@@ -29,6 +29,7 @@ public class Chatbox : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return)) {
                 SendChatMessage(username + ": " + chatBox.text, Message.MessageType.streamerMessage);
                 chatBox.text = "";
+                chatBox.DeactivateInputField();
             }
         }
     }
