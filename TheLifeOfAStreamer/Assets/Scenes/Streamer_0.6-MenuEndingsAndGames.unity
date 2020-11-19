@@ -2365,6 +2365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 132719871}
+  - component: {fileID: 132719872}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -2386,6 +2387,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &132719872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132719870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b213ddd7a5c6c79439b4ae37a3780a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioList:
+  - {fileID: 9205563693539340814, guid: 00441c55d9d57414b90c8264c4958669, type: 3}
+  - {fileID: 7612704910635123238, guid: 78e2d3242cccc4b4da8b9ea5308cf0d3, type: 3}
+  - {fileID: 6608212000714624183, guid: 229c9172ea9f4ad42ab2336c1fe808f2, type: 3}
+  - {fileID: 2477730529485418971, guid: 7004dbaa6ceb9e849b9ec7157f069ec6, type: 3}
+  - {fileID: 5849526581207674901, guid: 7ce24d38e6741c6458242ec58e864c34, type: 3}
+  - {fileID: 1139391805583773445, guid: 7bb08528b4e3b5f4c97dda553c888132, type: 3}
+  - {fileID: 3192499106448284919, guid: e7371158e1e6cdd4793749a475f2bd11, type: 3}
+  - {fileID: 8537501997119727878, guid: c3c759f50d50be84484f26c2e32667bd, type: 3}
 --- !u!1 &143599278
 GameObject:
   m_ObjectHideFlags: 0
@@ -33481,6 +33503,7 @@ MonoBehaviour:
   myResultsScreen: {fileID: 583172882}
   GoodEnd: {fileID: 949490894}
   BadEnd: {fileID: 247643978}
+  sound: {fileID: 132719872}
   ppProfile: {fileID: 11400000, guid: f164f113c7f68664ab0f0f33b99125d0, type: 2}
 --- !u!1 &1650840894
 GameObject:

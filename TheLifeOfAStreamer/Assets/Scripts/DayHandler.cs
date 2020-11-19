@@ -18,6 +18,7 @@ public class DayHandler : MonoBehaviour
 
     public GameObject GoodEnd;
     public GameObject BadEnd;
+    public SoundHandler sound;
 
     public PostProcessProfile ppProfile;
 
@@ -122,12 +123,14 @@ public class DayHandler : MonoBehaviour
     }
 
     public void OnFadeComplete() {
+        sound.StopAll();
+
         if (leaveGame)
         {
             SceneManager.LoadScene("Menu_0.1-MainMenuPrototpye");
             return;
         }
-
+        
         if (Globals.days > totalDays)
         {
             GoodEnd.SetActive(true);
@@ -154,6 +157,8 @@ public class DayHandler : MonoBehaviour
 
     public void ProgressDay()
     {
+        sound.StopAll();
+
         Globals.SaveGame();
         if (continuousPlay)
         {
@@ -224,18 +229,37 @@ public class DayHandler : MonoBehaviour
         string myText = ""; float myDuration = 3f; float myDelay = 0.5f; Color myColor = Color.white;
 
         int dayNum = Globals.days;
-        if (dayNum == 7) {
+        int bgSound = 0;
+        if (dayNum == 1) {
+            bgSound = sound.PlayAudio(0, true);
+        } else if (dayNum == 2) {
+            bgSound = sound.PlayAudio(0, true);
+        } else if (dayNum == 3) {
+            bgSound = sound.PlayAudio(1, true);
+        } else if (dayNum == 4) {
+            bgSound = sound.PlayAudio(0, true);
+        } else if (dayNum == 5) {
+            bgSound = sound.PlayAudio(0, true);
+        } else if (dayNum == 6) {
+            bgSound = sound.PlayAudio(0, true);
+        } else if (dayNum == 7) {
             dayNum = 10;
+            bgSound = sound.PlayAudio(0, true);
         } else if (dayNum == 8) {
             dayNum = 13;
+            bgSound = sound.PlayAudio(0, true);
         } else if (dayNum == 9) {
             dayNum = 14;
+            bgSound = sound.PlayAudio(1, true);
         } else if (dayNum == 10) {
             dayNum = 15;
+            bgSound = sound.PlayAudio(1, true);
         } else if (dayNum == 11) {
             dayNum = 20;
+            bgSound = sound.PlayAudio(1, true);
         } else if (dayNum == 12) {
             dayNum = 30;
+            bgSound = sound.PlayAudio(0, true);
         }
         myDay.SetText("Day " + dayNum, 1.7f, 0.5f, myColor);
 
