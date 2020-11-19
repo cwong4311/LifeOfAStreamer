@@ -11,6 +11,7 @@ public class FadetoWhite : MonoBehaviour
     {
         myFader = GameObject.Find("LevelFader/Fader");
         myFader.GetComponent<Image>().color = Color.white;
+        Globals.prevAction = "stream";
 
         myFader.GetComponent<Animator>().speed = 0.3f;
         myFader.GetComponent<DayHandler>().DayEnd();

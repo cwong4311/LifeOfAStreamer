@@ -13,10 +13,10 @@ public class DayNightCycle : MonoBehaviour
 
             if (Globals.attitude > -100) {
                 RenderSettings.ambientIntensity = 0.6f + (Globals.attitude / 200);
-                RenderSettings.reflectionIntensity = 0.6f + (Globals.attitude / 200);
+                RenderSettings.reflectionIntensity = 0.6f    + (Globals.attitude / 200);
             } else {
-                RenderSettings.ambientIntensity = 0.18f;
-                RenderSettings.reflectionIntensity = 0.18f;
+                RenderSettings.ambientIntensity = 0.25f;
+                RenderSettings.reflectionIntensity = 0.25f;
             }
         } else {
             RenderSettings.ambientIntensity = 1f;

@@ -47,7 +47,7 @@ public class Selectable : MonoBehaviour
         } else if (Globals.days == 12) {
             playerMessage.GetComponent<TextHandler>().SetText("I promised to stream today. I can't miss it.");
             return false;
-        } else if (Globals.days == 11) {
+        } else if (Globals.days == 11 && this.name == "Door") {
             playerMessage.GetComponent<TextHandler>().SetText("I can't go out... They'll find me");
             return false;
         }
