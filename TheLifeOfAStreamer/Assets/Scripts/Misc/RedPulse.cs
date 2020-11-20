@@ -21,6 +21,8 @@ public class RedPulse : MonoBehaviour
         float t = 0.01f;
         bool rising = true;
 
+        GameObject.Find("Sound").GetComponent<SoundHandler>().PlayAudio(4, false);
+
         while (t > 0) {
             if (t >= 1f) {
                 rising = false;

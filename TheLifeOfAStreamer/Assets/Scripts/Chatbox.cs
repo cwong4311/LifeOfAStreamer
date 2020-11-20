@@ -14,10 +14,18 @@ public class Chatbox : MonoBehaviour
     public InputField chatBox;
 
     public Color message, info, streamerMessage, trollMessage;
+
+    public bool soundFX = false;
+
+    SoundHandler sound;
+    private int soundFile;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        sound = GameObject.Find("Sound").GetComponent<SoundHandler>();
+        soundFile = sound.PlayAudio(7, false);
+        sound.ChangeVolume(soundFile, 0f);
     }
 
     // Update is called once per frame
@@ -48,6 +56,11 @@ public class Chatbox : MonoBehaviour
         newMessage.textObject.text = newMessage.text;
         newMessage.textObject.color = color;
         newMessage.messageType = messageType;
+
+        if (soundFX) {
+            sound.ChangeVolume(soundFile, 0.3f);
+            sound.ResumeAudio(soundFile);
+        }
 
         messageList.Add(newMessage);
     }

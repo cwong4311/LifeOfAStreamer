@@ -2408,6 +2408,8 @@ MonoBehaviour:
   - {fileID: 1139391805583773445, guid: 7bb08528b4e3b5f4c97dda553c888132, type: 3}
   - {fileID: 3192499106448284919, guid: e7371158e1e6cdd4793749a475f2bd11, type: 3}
   - {fileID: 8537501997119727878, guid: c3c759f50d50be84484f26c2e32667bd, type: 3}
+  - {fileID: 7612704910635123238, guid: 8b6cb5e3d70b7ef4ca1da0480a2e03a9, type: 3}
+  - {fileID: 5849526581207674901, guid: 10b5f64ae66504a4085782bff31583b5, type: 3}
 --- !u!1 &143599278
 GameObject:
   m_ObjectHideFlags: 0
@@ -5683,6 +5685,7 @@ MonoBehaviour:
   info: {r: 0, g: 0.13757372, b: 1, a: 1}
   streamerMessage: {r: 0.095318615, g: 0.3207547, b: 0.095318615, a: 1}
   trollMessage: {r: 1, g: 0, b: 0, a: 1}
+  soundFX: 1
 --- !u!114 &284544581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15119,6 +15122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7448158c2631bc345a825a63869aaaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundFX: 0
 --- !u!114 &695674052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17503,6 +17507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7448158c2631bc345a825a63869aaaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundFX: 0
 --- !u!114 &775506880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24209,6 +24214,7 @@ MonoBehaviour:
   - {fileID: 1366390406618772705, guid: 7e3d6196e3da6924999ba1fdbf5a03a4, type: 3}
   resetButton: {fileID: 1099947243}
   GameSpawnPoint: {fileID: 771996386}
+  sound: {fileID: 132719872}
 --- !u!1 &1154388249
 GameObject:
   m_ObjectHideFlags: 0
@@ -40176,6 +40182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7448158c2631bc345a825a63869aaaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundFX: 1
 --- !u!114 &2083579071
 MonoBehaviour:
   m_ObjectHideFlags: 0

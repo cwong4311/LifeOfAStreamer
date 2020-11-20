@@ -18,10 +18,16 @@ public class TextHandler : MonoBehaviour
     private bool hasText = false;
     private bool running = false;
     private LinkedList<textEntry> mybacklog = new LinkedList<textEntry>();
+
+    public bool soundFX = false;
+    private SoundHandler sound;
+    private int soundFile;
     // Start is called before the first frame update
     void Start()
     {
-        
+        sound = GameObject.Find("Sound").GetComponent<SoundHandler>();
+        soundFile = sound.PlayAudio(8, false);
+        sound.ChangeVolume(soundFile, 0f);
     }
 
     // Update is called once per frame
@@ -75,6 +81,11 @@ public class TextHandler : MonoBehaviour
         Text text = gameObject.GetComponent<Text>();
         text.text = message;
         text.color = Color.clear;
+
+        if (soundFX) {
+            sound.ChangeVolume(soundFile, 0.3f);
+            sound.ResumeAudio(soundFile);
+        }
 
         for (float t = 0.01f; t < fadeTime; t += Time.deltaTime)
         {

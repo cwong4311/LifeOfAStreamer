@@ -26,6 +26,9 @@ public class StaticHandler : MonoBehaviour
         float t = 0.01f;
         bool rising = true;
 
+        SoundHandler sound = GameObject.Find("Sound").GetComponent<SoundHandler>();
+        int soundIndex = sound.PlayAudio(5, false);
+
         while (t > 0) {
             if (t >= 1f) {
                 rising = false;
@@ -33,10 +36,12 @@ public class StaticHandler : MonoBehaviour
             }
             if (rising) {
                 t += Time.deltaTime * speed;
+                sound.ChangeVolume(soundIndex, t + 0.2f);
             } else {
                 t -= Time.deltaTime * speed;
+                sound.ChangeVolume(soundIndex, t);
             }
-            
+
             var temp = Grain.color;
             temp.a = Mathf.Lerp(min, max, t);
             Grain.color = temp;

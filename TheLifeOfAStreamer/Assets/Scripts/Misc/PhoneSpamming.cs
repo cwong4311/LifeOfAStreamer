@@ -15,6 +15,9 @@ public class PhoneSpamming : MonoBehaviour
 
     private GameObject myDay;
 
+    private SoundHandler sound;
+    private int soundFile;
+
     private float counter = 0f;
     private float delay = 0.2f;
     // Start is called before the first frame update
@@ -29,6 +32,9 @@ public class PhoneSpamming : MonoBehaviour
         myDay = GameObject.Find("LevelFader/Fader");
 
         screenCanvas.Find("LeaveButton").gameObject.GetComponent<StreamButton>().Leave();
+
+        sound = GameObject.Find("Sound").GetComponent<SoundHandler>();
+        soundFile = sound.PlayAudio(9, true);
     }
 
     // Update is called once per frame

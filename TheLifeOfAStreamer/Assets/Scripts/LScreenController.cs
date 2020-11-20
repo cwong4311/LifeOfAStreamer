@@ -13,6 +13,10 @@ public class LScreenController : MonoBehaviour
 
     public GameObject GameSpawnPoint;
 
+    public SoundHandler sound;
+
+    private int mySoundFile = -1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,11 +40,17 @@ public class LScreenController : MonoBehaviour
         Globals.gameFlag = -1;
         int delay; GameObject messageBox;
 
+        if (mySoundFile != -1) {
+            if (!sound.IsPlaying(mySoundFile)) sound.ResumeAudio(mySoundFile);
+        } else {
+            mySoundFile = sound.PlayAudio(2, true);
+        }
+
         switch(Globals.gameType) {
             default:
             case 1:
                 if (spawnedGame == null) spawnedGame = Instantiate(myGames[0], GameSpawnPoint.transform);
-                spawnedGame.SetActive(true); Globals.hasStreamed = true;
+                spawnedGame.SetActive(true); Globals.hasStreamed = true; 
                 delay = 3; messageBox = spawnedGame.transform.Find("UI/GameOver").gameObject;
                 if (!Globals.webcamEnabled) { spawnedGame.transform.Find("UI/WebCam").gameObject.SetActive(false); }
                 break;
@@ -52,7 +62,7 @@ public class LScreenController : MonoBehaviour
                 break;
             case 3:
                 if (spawnedGame == null) spawnedGame = Instantiate(myGames[1], GameSpawnPoint.transform);
-                spawnedGame.SetActive(true); Globals.hasStreamed = true;
+                spawnedGame.SetActive(true); Globals.hasStreamed = true; 
                 delay = 3; messageBox = spawnedGame.transform.Find("GameOver").gameObject;
                 if (!Globals.webcamEnabled) { spawnedGame.transform.Find("WebCam").gameObject.SetActive(false); }
                 break;
@@ -62,6 +72,16 @@ public class LScreenController : MonoBehaviour
             StartCoroutine(Countdown(delay, messageBox));
         } else {
             messageBox.SetActive(true);
+        }
+    }
+
+    void OnDisable() {
+        if (Globals.hasStreamed) {
+            try {
+                sound.StopAudio(mySoundFile);
+            } catch (Exception e) {
+                Debug.Log(e);
+            }
         }
     }
 

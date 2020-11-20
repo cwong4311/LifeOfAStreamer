@@ -449,14 +449,14 @@ public class Viewer : MonoBehaviour
     }
 
     protected virtual void DisplaySubbed() {
-        TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
+        TextHandler streamMessage = GameObject.Find("PlayerCanvas").transform.Find("ScreenCanvas/SubMessage").gameObject.GetComponent<TextHandler>();
         float myDuration = 3f; float myDelay = 0.5f; Color color = Color.white;
 
         streamMessage.SetText("You got a new sub!:\n" + username, myDuration, myDelay, color);
     }
 
     protected virtual void DisplayDonation(int amount, string msg) {
-        TextHandler streamMessage = GameObject.Find("PlayerCanvas/ScreenCanvas/SubMessage").GetComponent<TextHandler>();
+        TextHandler streamMessage = GameObject.Find("PlayerCanvas").transform.Find("ScreenCanvas/SubMessage").gameObject.GetComponent<TextHandler>();
         float myDuration = 4f; float myDelay = 0.5f; Color color = Color.white;
 
         streamMessage.SetText(username + " has donated: $" + amount + "\n\"" + msg +"\"", myDuration, myDelay, color);

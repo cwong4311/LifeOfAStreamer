@@ -6,6 +6,8 @@ public class SoundHandler : MonoBehaviour
 {
     public GameObject[] audioList;
     private ArrayList activeList;
+
+    private Coroutine fadeFX = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +28,30 @@ public class SoundHandler : MonoBehaviour
         return listDex;
     }
 
+    public void StopAudio(int index, float duration) {
+        if (index > activeList.Count) return;
+        fadeFX = StartCoroutine(FadeOut(((GameObject)activeList[index]).GetComponent<AudioSource>(), 1f));
+    }
+
     public void StopAudio(int index) {
-        StartCoroutine(FadeOut(((GameObject)activeList[index]).GetComponent<AudioSource>(), 1f));
+        if (index > activeList.Count) return;
+        StopAudio(index, 1f);
+    }
+
+    public void ResumeAudio(int index) {
+        if (index > activeList.Count) return;
+        if (fadeFX != null) StopCoroutine(fadeFX);
+        ((GameObject)activeList[index]).GetComponent<AudioSource>().Play();
     }
 
     public void ChangeVolume(int index, float vol) {
+        if (index > activeList.Count) return;
         ((GameObject)activeList[index]).GetComponent<AudioSource>().volume = vol;
+    }
+
+    public bool IsPlaying(int index) {
+        if (index > activeList.Count) return false;
+        return ((GameObject)activeList[index]).GetComponent<AudioSource>().isPlaying;
     }
 
     public void StopAll() {
@@ -40,6 +60,11 @@ public class SoundHandler : MonoBehaviour
             StartCoroutine(FadeOut(item.GetComponent<AudioSource>(), 1f));
             activeList.RemoveAt(0);
         }
+    }
+
+    public void FadeInOutNoStop(int index, float FadeTime, float start, float end) {
+        if (index > activeList.Count) return;
+        StartCoroutine(Fade(((GameObject)activeList[index]).GetComponent<AudioSource>(), FadeTime, start, end));  
     }
 
     IEnumerator FadeOut(AudioSource audioSource, float FadeTime) {
@@ -51,7 +76,24 @@ public class SoundHandler : MonoBehaviour
             yield return null;
         }
  
-        audioSource.Stop ();
+        audioSource.Stop();
         audioSource.volume = startVolume;
+    }
+
+    IEnumerator Fade(AudioSource audioSource, float FadeTime, float start, float end) {
+        audioSource.volume = start;
+        if (start < end) {
+            while (audioSource.volume < end) {
+                audioSource.volume += end * Time.deltaTime / FadeTime;
+    
+                yield return null;
+            }
+        } else {
+            while (audioSource.volume > end) {
+                audioSource.volume -= start * Time.deltaTime / FadeTime;
+    
+                yield return null;
+            }
+        }
     }
 }

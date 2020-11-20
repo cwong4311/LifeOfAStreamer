@@ -8,6 +8,9 @@ public class DrunkHandler : MonoBehaviour
 
     private Drunk drunk;
     private float lifetime;
+
+    private SoundHandler sound;
+    private int mySound;
     // Start is called before the first frame update
     void Awake()
     {
@@ -15,13 +18,22 @@ public class DrunkHandler : MonoBehaviour
         drunk.material = drunkMat;
         lifetime = 10f;
         StartCoroutine(AliveDecay());
+
+        sound = GameObject.Find("Sound").GetComponent<SoundHandler>();
+        mySound = sound.PlayAudio(3, true);
     }
 
     void Update() {
         if (GameObject.Find("FPSController").GetComponent<MonoBehaviour>().enabled) {
-            if (!drunk.enabled) drunk.enabled = true;
+            if (!drunk.enabled) {
+                drunk.enabled = true;
+                sound.ResumeAudio(mySound);
+            }
         } else {
-            if (drunk.enabled) drunk.enabled = false;
+            if (drunk.enabled) {
+                drunk.enabled = false;
+                sound.StopAudio(mySound);
+            }
         }
     }
 

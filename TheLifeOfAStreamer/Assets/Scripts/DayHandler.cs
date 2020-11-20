@@ -130,7 +130,7 @@ public class DayHandler : MonoBehaviour
             SceneManager.LoadScene("Menu_0.1-MainMenuPrototpye");
             return;
         }
-        
+
         if (Globals.days > totalDays)
         {
             GoodEnd.SetActive(true);
@@ -236,6 +236,7 @@ public class DayHandler : MonoBehaviour
             bgSound = sound.PlayAudio(0, true);
         } else if (dayNum == 3) {
             bgSound = sound.PlayAudio(1, true);
+            sound.ChangeVolume(bgSound, 0.15f);
         } else if (dayNum == 4) {
             bgSound = sound.PlayAudio(0, true);
         } else if (dayNum == 5) {
@@ -251,12 +252,15 @@ public class DayHandler : MonoBehaviour
         } else if (dayNum == 9) {
             dayNum = 14;
             bgSound = sound.PlayAudio(1, true);
+            sound.ChangeVolume(bgSound, 0.15f);
         } else if (dayNum == 10) {
             dayNum = 15;
             bgSound = sound.PlayAudio(1, true);
+            sound.ChangeVolume(bgSound, 0.3f);
         } else if (dayNum == 11) {
             dayNum = 20;
             bgSound = sound.PlayAudio(1, true);
+            sound.ChangeVolume(bgSound, 0.5f);
         } else if (dayNum == 12) {
             dayNum = 30;
             bgSound = sound.PlayAudio(0, true);

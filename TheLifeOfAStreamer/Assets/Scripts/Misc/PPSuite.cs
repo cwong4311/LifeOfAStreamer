@@ -16,6 +16,9 @@ public class PPSuite : MonoBehaviour
     private LensDistortion lens;
     private Drunk drunk;
 
+    private SoundHandler sound;
+    private int mySound;
+
     private bool isActive = true;
     private bool running = false;
     private bool firstRun = true;
@@ -29,14 +32,17 @@ public class PPSuite : MonoBehaviour
         drunk = GameObject.Find("FPSController/FirstPersonCharacter").AddComponent<Drunk>();
         drunk.material = drunkMat;
         drunk.enabled = false;
+
+        sound = GameObject.Find("Sound").GetComponent<SoundHandler>();
+        mySound = sound.PlayAudio(3, true);
+        sound.ChangeVolume(mySound, 0f);
     }
+
     void Update()
     {
         if (camera.isPanning) isActive = false;
 
         if (isActive) {
-            if (!firstRun) StartAll();
-
             RaycastHit hit;
             Debug.DrawRay(player.position, player.forward * 500f);
             if(Physics.Raycast (player.position, player.forward, out hit, 500f, ~IgnoreMe)) {
@@ -58,7 +64,11 @@ public class PPSuite : MonoBehaviour
                             }
                             break;
                     }
+                } else {
+                    if (!firstRun) StartAll();
                 }
+            } else {
+                if (!firstRun) StartAll();
             }
         } else {
             StopAll();
@@ -75,6 +85,9 @@ public class PPSuite : MonoBehaviour
             drunk.enabled = true;
             StartCoroutine(VignettePulse());
             StartCoroutine(LensStretch());
+
+            sound.ChangeVolume(mySound, 0.3f);
+            sound.ResumeAudio(mySound);
         }
     }
 
@@ -82,6 +95,8 @@ public class PPSuite : MonoBehaviour
         if (running) {
             running = false;
             drunk.enabled = false;
+
+            sound.StopAudio(mySound);
         }
     }
 

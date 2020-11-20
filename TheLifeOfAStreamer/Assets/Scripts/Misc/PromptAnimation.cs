@@ -5,10 +5,16 @@ using UnityEngine;
 public class PromptAnimation : MonoBehaviour
 {
     Animator anim;
+    SoundHandler sound;
+    private int soundFile;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        sound = GameObject.Find("Sound").GetComponent<SoundHandler>();
+        soundFile = sound.PlayAudio(6, false);
+        sound.ChangeVolume(soundFile, 0f);
     }
 
     // Update is called once per frame
@@ -32,7 +38,10 @@ public class PromptAnimation : MonoBehaviour
 
     IEnumerator ShowPrompts() {
         anim.SetBool("isShowing", true);
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
+        sound.ChangeVolume(soundFile, 0.6f);
+        sound.ResumeAudio(soundFile);
+        
     }
 
     IEnumerator HidePrompts() {
