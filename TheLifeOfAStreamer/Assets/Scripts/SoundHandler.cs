@@ -8,6 +8,7 @@ public class SoundHandler : MonoBehaviour
     private ArrayList activeList;
 
     private Coroutine fadeFX = null;
+    private bool distortionOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,17 @@ public class SoundHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (distortionOn) {
+            for (int i = 0; i < activeList.Count; i++) {
+                GameObject item = (GameObject)(activeList[i]);
+                if (item.name.Contains("Dark") || item.name.Contains("Sunny") || item.name.Contains("Music")) {
+                    item.GetComponent<AudioChorusFilter>().enabled = true;
+                    float newPitch = Random.Range(-3f, 3f);
+                    if (newPitch < 0 && newPitch > -1) {newPitch = -1;} else if (newPitch > 0 && newPitch < 1) {newPitch = 1;}
+                    item.GetComponent<AudioSource>().pitch = newPitch;
+                }
+            }  
+        }
     }
 
     public int PlayAudio(int index, bool looping) {
@@ -65,6 +76,20 @@ public class SoundHandler : MonoBehaviour
     public void FadeInOutNoStop(int index, float FadeTime, float start, float end) {
         if (index > activeList.Count) return;
         StartCoroutine(Fade(((GameObject)activeList[index]).GetComponent<AudioSource>(), FadeTime, start, end));  
+    }
+
+    public void ToggleDistortion(bool flag) {
+        distortionOn = flag;
+        
+        if (!flag) {
+            for (int i = 0; i < activeList.Count; i++) {
+                GameObject item = (GameObject)(activeList[i]);
+                if (item.name.Contains("Dark") || item.name.Contains("Sunny") || item.name.Contains("Music")) {
+                    item.GetComponent<AudioChorusFilter>().enabled = false;
+                    item.GetComponent<AudioSource>().pitch = 1;
+                }
+            }  
+        }
     }
 
     IEnumerator FadeOut(AudioSource audioSource, float FadeTime) {

@@ -10,6 +10,9 @@ public class GlitchHandler : MonoBehaviour
     private GlitchEffect glitch;
     private float lifetime;
 
+    private SoundHandler sound;
+    private int soundFile;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,6 +24,8 @@ public class GlitchHandler : MonoBehaviour
         glitch.colorIntensity = 0.5f;
         lifetime = 3f;
 
+        sound = GameObject.Find("Sound").GetComponent<SoundHandler>();
+
         StartCoroutine(AliveDecay());
     }
 
@@ -29,8 +34,12 @@ public class GlitchHandler : MonoBehaviour
     }
 
     IEnumerator AliveDecay() {
+        soundFile = sound.PlayAudio(10, true);
+        sound.ToggleDistortion(true);
+
         float counter = 0f;
         while (counter < lifetime) {
+            sound.ChangeVolume(soundFile, Mathf.Min((lifetime - counter) / lifetime, 0.5f));
             counter += Time.deltaTime;
             yield return null;
         }

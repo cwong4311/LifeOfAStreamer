@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9205563693539340814
+--- !u!1 &3192499106448284919
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9205563693539340815}
-  - component: {fileID: 9205563693539341040}
-  - component: {fileID: 6000919004672978948}
-  - component: {fileID: 7332009052705368967}
+  - component: {fileID: 3192499106448284918}
+  - component: {fileID: 3192499106448284913}
+  - component: {fileID: 918669911058758635}
+  - component: {fileID: 8923951693983438002}
   m_Layer: 0
-  m_Name: Sunny
+  m_Name: Glitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9205563693539340815
+--- !u!4 &3192499106448284918
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9205563693539340814}
+  m_GameObject: {fileID: 3192499106448284919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,17 +33,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &9205563693539341040
+--- !u!82 &3192499106448284913
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9205563693539340814}
+  m_GameObject: {fileID: 3192499106448284919}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3970da7a69df2d649ba62ccabc786835, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8c63b5895ead0af4fa8e37a417635520, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -129,13 +129,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!166 &6000919004672978948
+--- !u!166 &918669911058758635
 AudioChorusFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9205563693539340814}
+  m_GameObject: {fileID: 3192499106448284919}
   m_Enabled: 0
   m_DryMix: 0.5
   m_WetMix1: 0.5
@@ -144,12 +144,12 @@ AudioChorusFilter:
   m_Delay: 40
   m_Rate: 6
   m_Depth: 1
---- !u!170 &7332009052705368967
+--- !u!170 &8923951693983438002
 AudioDistortionFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9205563693539340814}
+  m_GameObject: {fileID: 3192499106448284919}
   m_Enabled: 0
   m_DistortionLevel: 0.8

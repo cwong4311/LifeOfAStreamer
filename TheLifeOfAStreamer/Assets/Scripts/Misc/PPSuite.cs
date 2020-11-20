@@ -86,7 +86,7 @@ public class PPSuite : MonoBehaviour
             StartCoroutine(VignettePulse());
             StartCoroutine(LensStretch());
 
-            sound.ChangeVolume(mySound, 0.3f);
+            sound.ChangeVolume(mySound, 0.1f);
             sound.ResumeAudio(mySound);
         }
     }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public static class Globals
 {
-    public static int days = 10;
+    public static int days = 12;
     public static float popularity = 0f;
     public static float attitude = 0f;
     public static int totalMoney = 0;

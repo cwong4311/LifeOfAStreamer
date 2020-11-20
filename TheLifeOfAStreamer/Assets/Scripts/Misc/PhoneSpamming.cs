@@ -176,6 +176,8 @@ public class PhoneSpamming : MonoBehaviour
         
         // Stop Vignette Pulsing
         vigEff.gameObject.GetComponent<VignettePulse>().StopAll();
+
+        Globals.prevAction = "stream";
         myDay.GetComponent<DayHandler>().DayEnd();
     }
 }

@@ -36,7 +36,7 @@ public class DayHandler : MonoBehaviour
     private float timer = 0f;
     private float streamTimer = 0f;
 
-    private int totalDays = 30;
+    private int totalDays = 13;
 
     // Start is called before the first frame update
     void Start()
@@ -134,15 +134,23 @@ public class DayHandler : MonoBehaviour
         if (Globals.days > totalDays)
         {
             GoodEnd.SetActive(true);
+
+            sound.ChangeVolume(sound.PlayAudio(2, true), 0.15f);
         // If all days finished (check value - 1)
         } else if ((Globals.days - 1) == 12) {
             GoodEnd.SetActive(true);
+
+            sound.ChangeVolume(sound.PlayAudio(2, true), 0.15f);
         // Of if on day 11, the player doesn't stream
         } else if ((Globals.days - 1) == 11 && Globals.prevAction != "stream") {
             BadEnd.SetActive(true);
+
+            sound.ChangeVolume(sound.PlayAudio(1, true), 0.2f);
         } else
         {
             myResultsScreen.SetActive(true);
+
+            sound.ChangeVolume(sound.PlayAudio(1, true), 0.2f);
 
             myResultsScreen.GetComponent<ResultsText>().timeTag = (int) (timer - streamTimer);
             myResultsScreen.GetComponent<ResultsText>().viewTag = "" + Globals.prevViewer;
@@ -256,11 +264,11 @@ public class DayHandler : MonoBehaviour
         } else if (dayNum == 10) {
             dayNum = 15;
             bgSound = sound.PlayAudio(1, true);
-            sound.ChangeVolume(bgSound, 0.3f);
+            sound.ChangeVolume(bgSound, 0.25f);
         } else if (dayNum == 11) {
             dayNum = 20;
             bgSound = sound.PlayAudio(1, true);
-            sound.ChangeVolume(bgSound, 0.5f);
+            sound.ChangeVolume(bgSound, 0.4f);
         } else if (dayNum == 12) {
             dayNum = 30;
             bgSound = sound.PlayAudio(0, true);
