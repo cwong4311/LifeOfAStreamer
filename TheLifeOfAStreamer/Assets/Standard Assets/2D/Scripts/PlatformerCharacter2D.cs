@@ -53,7 +53,7 @@ namespace UnityStandardAssets._2D
         public void Move(float move, bool crouch, bool jump)
         {
             if (m_Grounded && move == 0f && !jump) {
-                Vector2 slideBack = new Vector2(m_Rigidbody2D.position.x - 0.13f, m_Rigidbody2D.position.y);
+                Vector2 slideBack = new Vector2(m_Rigidbody2D.position.x - 0.125f, m_Rigidbody2D.position.y);
                 m_Rigidbody2D.MovePosition(slideBack);
             } 
             

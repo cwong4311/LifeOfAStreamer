@@ -69,7 +69,7 @@ I mean, like, what's the point?
     
 == Ch2 ==
 L_D
-* Hope it's fun to watch, at least!
+* Hope it's fun to watch!
     Yeah, think I'll stick around a bit
     Maybe I'll see why it's fun haha
     -> Ch3

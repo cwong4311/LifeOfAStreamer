@@ -104,7 +104,7 @@ public class MemoryHandler : MonoBehaviour
     }
 
     public void GameOver() {
-        Globals.gameFlag = -1;
+        //Globals.gameFlag = -1;
         int totalScore = (420 - (int)myCounter > 0) ? (420 - (int)myCounter) : 0;
         Globals.gameScore = (Globals.gameScore > totalScore) ? Globals.gameScore : totalScore;
     }
