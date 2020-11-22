@@ -129,6 +129,7 @@ public class DayHandler : MonoBehaviour
     }
 
     public void OnFadeComplete() {
+        StopPostProcessing();
         sound.StopAll();
 
         if (leaveGame)
