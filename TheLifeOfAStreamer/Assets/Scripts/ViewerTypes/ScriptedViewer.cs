@@ -235,4 +235,8 @@ public class ScriptedViewer : Viewer
             Destroy(gameObject);
         }
     }
+
+    public void killScript() {
+        Destroy(gameObject);
+    }
 }

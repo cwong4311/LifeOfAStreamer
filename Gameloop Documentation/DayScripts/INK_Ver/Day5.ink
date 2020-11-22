@@ -82,7 +82,7 @@ L_D
     N_C_1
     I'm kinda trash at it though
     My brother bought it for my birthday
-    ** Maybe I'll stream that someday
+    ** Might stream that someday
         That'd be really cool!
         I've played it a lot but I really wanna see what others think about bit
         Don't normally play videogames, but this one really caught my eye

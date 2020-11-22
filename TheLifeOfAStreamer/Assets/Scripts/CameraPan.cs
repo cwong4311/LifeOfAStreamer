@@ -27,9 +27,9 @@ public class CameraPan : MonoBehaviour
     {
     }
 
-    public void ChangeViews(string destinationFlag)
+    public bool ChangeViews(string destinationFlag)
     {
-        if (isPanning) return;
+        if (isPanning) return false;
         GetComponent<Selector>().enabled = false;
         originalTrans.position = originObj.transform.position;
         originalTrans.rotation = this.transform.rotation;
@@ -45,17 +45,19 @@ public class CameraPan : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         ToggleController(false);
+        return true;
     }
 
-    public void ResetViews()
+    public bool ResetViews()
     {
-        if (isPanning) return;
+        if (isPanning) return false;
         StartCoroutine(PanToPosition(this.transform, originalTrans, 0.7f));
         StartCoroutine(ScreenFlick(false, 0.015f, -1));
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         StartCoroutine(WaitToToggleController(0.7f));
         GetComponent<Selector>().enabled = true;
+        return true;
     }
     public IEnumerator PanToPosition(Transform start, Transform destination, float timeToMove)
     {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -102,8 +103,8 @@ public class DayHandler : MonoBehaviour
     }
 
     public void DayEnd() {
-        dayAttitude = Random.Range(-2f, 2f) + Globals.dayAttitude;   // TO DO: Better Formula
-        dayPopularity = Random.Range(-3f, 3f) + (Globals.gameScore / 300f) 
+        dayAttitude = UnityEngine.Random.Range(-2f, 2f) + Globals.dayAttitude;   // TO DO: Better Formula
+        dayPopularity = UnityEngine.Random.Range(-3f, 3f) + (Globals.gameScore / 300f) 
                                 + ((float) (Globals.dayViewer - Globals.prevViewer) / 10f)
                                 + ((float) (Mathf.Min(Globals.dayAttitude, 50f) / 10f))
                                 + ((float) Globals.subNumber / 10f);
@@ -112,6 +113,11 @@ public class DayHandler : MonoBehaviour
     }
 
     public void FadeOut() {
+        try {
+            viewerSystem.GetComponentInChildren<ScriptedViewer>().killScript();
+        } catch (Exception e) {
+            Debug.Log("No Viewer");
+        }
         leaveGame = false;
         myFade.SetTrigger("FadeOut");
     }

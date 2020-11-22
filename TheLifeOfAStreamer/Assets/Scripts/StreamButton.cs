@@ -18,8 +18,10 @@ public class StreamButton : MonoBehaviour
 
 	void TaskOnClick(){
 		if (myButton == ButtonType.Leave) {
-			myCamera.GetComponentInChildren<CameraPan>().ResetViews();
-			Globals.gameFlag = -1;
+			Debug.Log("Triggered");
+			if (myCamera.GetComponentInChildren<CameraPan>().ResetViews()) {
+				Globals.gameFlag = -1;
+			}
 		} else if (myButton == ButtonType.Finish) {
 			Globals.prevAction = "stream";
 			myFade.GetComponent<DayHandler>().StopPostProcessing();

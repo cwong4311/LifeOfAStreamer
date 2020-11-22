@@ -9,6 +9,8 @@ public class FadetoWhite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("PlayerCanvas").transform.Find("ScreenCanvas/FinishButton").gameObject.GetComponent<Button>().interactable = false;
+
         myFader = GameObject.Find("LevelFader/Fader");
         myFader.GetComponent<Image>().color = Color.white;
         Globals.prevAction = "stream";
