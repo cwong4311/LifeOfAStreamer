@@ -74,13 +74,12 @@ public class TextHandler : MonoBehaviour
         textEntry myMessage = new textEntry();
         myMessage.message = message; myMessage.duration = 3; myMessage.delay = 0; myMessage.color = Color.white;
 
-        if (mybacklog.Count == 0 && gameObject.GetComponent<Text>().text != message) {
-            mybacklog.AddFirst(myMessage);
-        } else if (mybacklog.Count > 0 
-                    && mybacklog.First.Value.message != message 
-                    && gameObject.GetComponent<Text>().text != message) {
-            mybacklog.AddFirst(myMessage);
-        }
+        mybacklog.AddFirst(myMessage);
+
+        StopAllCoroutines();
+        hasText = false;
+        running = false;
+        gameObject.GetComponent<Text>().text = "";
 
         return true;
     }
