@@ -523,6 +523,8 @@ public class ResultsText : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
         }
+
+        Time.timeScale = 0f;
     }
 
     private string getTime() {

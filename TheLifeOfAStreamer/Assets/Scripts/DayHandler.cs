@@ -165,6 +165,8 @@ public class DayHandler : MonoBehaviour
 
     public void ProgressDay()
     {
+        Time.timeScale = 1f;
+
         sound.StopAll();
 
         Globals.SaveGame();
@@ -238,6 +240,7 @@ public class DayHandler : MonoBehaviour
 
         int dayNum = Globals.days;
         int bgSound = 0;
+        string prefix = "";
         if (dayNum == 1) {
             bgSound = sound.PlayAudio(0, true);
         } else if (dayNum == 2) {
@@ -252,9 +255,11 @@ public class DayHandler : MonoBehaviour
         } else if (dayNum == 6) {
             bgSound = sound.PlayAudio(0, true);
         } else if (dayNum == 7) {
+            prefix = "A few days later...\n";
             dayNum = 10;
             bgSound = sound.PlayAudio(0, true);
         } else if (dayNum == 8) {
+            prefix = "A few days later...\n";
             dayNum = 13;
             bgSound = sound.PlayAudio(0, true);
         } else if (dayNum == 9) {
@@ -266,14 +271,20 @@ public class DayHandler : MonoBehaviour
             bgSound = sound.PlayAudio(1, true);
             sound.ChangeVolume(bgSound, 0.25f);
         } else if (dayNum == 11) {
+            prefix = "A few days later...\n";
             dayNum = 20;
             bgSound = sound.PlayAudio(1, true);
             sound.ChangeVolume(bgSound, 0.4f);
         } else if (dayNum == 12) {
+            prefix = "A week later...\n";
             dayNum = 30;
             bgSound = sound.PlayAudio(0, true);
         }
-        myDay.SetText("Day " + dayNum, 1.7f, 0.5f, myColor);
+        if (prefix != "") {
+            myDay.SetText(prefix + "Day " + dayNum, 2.2f, 0.5f, myColor);
+        } else {
+            myDay.SetText("Day " + dayNum, 1.7f, 0.5f, myColor);
+        }
 
         yield return new WaitForSeconds(2);
 

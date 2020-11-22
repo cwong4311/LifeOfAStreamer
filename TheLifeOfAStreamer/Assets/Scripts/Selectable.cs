@@ -42,16 +42,16 @@ public class Selectable : MonoBehaviour
     public bool InteractSelect() {
         if (clicked) return false;
         if (Globals.hasStreamed) {
-            playerMessage.GetComponent<TextHandler>().SetText("I've already started streaming. I can't leave halfway");
+            playerMessage.GetComponent<TextHandler>().SetTextPriority("I've already started streaming. I can't leave halfway");
             return false;
         } else if (Globals.days == 12) {
-            playerMessage.GetComponent<TextHandler>().SetText("I promised to stream today. I can't miss it.");
+            playerMessage.GetComponent<TextHandler>().SetTextPriority("I promised to stream today. I can't miss it.");
             return false;
         } else if (Globals.days == 11 && this.name == "Door") {
-            playerMessage.GetComponent<TextHandler>().SetText("I can't go out... They'll find me");
+            playerMessage.GetComponent<TextHandler>().SetTextPriority("I can't go out... They'll find me");
             return false;
         }
-        if (playerMessage.GetComponent<TextHandler>().SetText(MyMessage)) {
+        if (playerMessage.GetComponent<TextHandler>().SetTextPriority(MyMessage)) {
             clicked = true;
             StartCoroutine(WaitForDayEnd(2.5f, Random.Range(1f, 3f), Random.Range(-5f, -2f)));
             return true;
@@ -60,7 +60,7 @@ public class Selectable : MonoBehaviour
     }
 
     public void TextSelect() {
-        playerMessage.GetComponent<TextHandler>().SetText(MyMessage);
+        playerMessage.GetComponent<TextHandler>().SetTextPriority(MyMessage);
     }
 
     private IEnumerator WaitForDayEnd(float delay, float attitude, float popularity) {

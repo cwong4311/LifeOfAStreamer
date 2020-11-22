@@ -70,6 +70,21 @@ public class TextHandler : MonoBehaviour
         return SetText(message, 3, 0, Color.white);
     }
 
+    public bool SetTextPriority(string message) {
+        textEntry myMessage = new textEntry();
+        myMessage.message = message; myMessage.duration = 3; myMessage.delay = 0; myMessage.color = Color.white;
+
+        if (mybacklog.Count == 0 && gameObject.GetComponent<Text>().text != message) {
+            mybacklog.AddFirst(myMessage);
+        } else if (mybacklog.Count > 0 
+                    && mybacklog.First.Value.message != message 
+                    && gameObject.GetComponent<Text>().text != message) {
+            mybacklog.AddFirst(myMessage);
+        }
+
+        return true;
+    }
+
     private IEnumerator FadeIn(string message, float delay, Color toColor)
     { 
         running = true;

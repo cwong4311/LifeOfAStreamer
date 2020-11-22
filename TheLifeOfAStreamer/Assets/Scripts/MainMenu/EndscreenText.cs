@@ -60,6 +60,8 @@ public class EndscreenText : MonoBehaviour
 
     public void IncrementPage()
     {
+        Time.timeScale = 1f;
+
         endScreens[pageNum - 1].SetActive(false);
 
         pageNum++;

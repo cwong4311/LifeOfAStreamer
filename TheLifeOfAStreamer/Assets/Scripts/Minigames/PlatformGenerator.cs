@@ -8,7 +8,7 @@ public class PlatformGenerator : MonoBehaviour
     public GameObject myPlayer;
     public GameObject myUI;
     public GameObject myRootObject;
-    private Vector2 y_boundary = new Vector2(-6.5f, 6.5f);
+    private Vector2 y_boundary = new Vector2(-6f, 8f);
     private Vector3 origin = new Vector3(18f, 0f, -0.5f);
     private float origin_y = 3f;
     private float lastY = 6.684f;

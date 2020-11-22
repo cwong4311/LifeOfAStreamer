@@ -184,7 +184,7 @@ everyone plays it
 I_M_They're not listening to anything
 N_C_1
 SHUT UP NURD
-Go back to ur mom's basement and cry me a new one
+Go back to ur mom's basement and cry me a river
 I_M_I didn't want to, but it's probably time to ban...
 -> Ch5
 

@@ -39,7 +39,7 @@ public class GlitchHandler : MonoBehaviour
 
         float counter = 0f;
         while (counter < lifetime) {
-            sound.ChangeVolume(soundFile, Mathf.Min((lifetime - counter) / lifetime, 0.5f));
+            sound.ChangeVolume(soundFile, Mathf.Min((lifetime - counter) / lifetime, 0.3f));
             counter += Time.deltaTime;
             yield return null;
         }

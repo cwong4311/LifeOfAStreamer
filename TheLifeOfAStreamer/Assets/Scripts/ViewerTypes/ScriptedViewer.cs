@@ -110,6 +110,10 @@ public class ScriptedViewer : Viewer
         }
         try {
             _inkStory.variablesState["platform"] = platformName;
+        } catch (Exception e3) {
+            Debug.Log("Not Existing Variables");
+        }
+        try {
             _inkStory.variablesState["playername"] = Globals.username;
         } catch (Exception e3) {
             Debug.Log("Not Existing Variables");
