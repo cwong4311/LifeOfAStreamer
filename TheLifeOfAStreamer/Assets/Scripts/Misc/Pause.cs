@@ -10,6 +10,7 @@ public class Pause : MonoBehaviour
 
     public int wasGameFlag = -1;
     private bool wasEnabledOnPause = false;
+    private bool selectorEnabledOnPause = false;
 
 
     // Update is called once per frame
@@ -41,6 +42,8 @@ public class Pause : MonoBehaviour
 
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+
+        selectorEnabledOnPause = player.GetComponentInChildren<Selector>().enabled;
         player.GetComponentInChildren<Selector>().enabled = false;
     }
 
@@ -54,11 +57,11 @@ public class Pause : MonoBehaviour
         Globals.gameFlag = wasGameFlag;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
-        player.GetComponentInChildren<Selector>().enabled = true;
+        player.GetComponentInChildren<Selector>().enabled = selectorEnabledOnPause;
     }
 
     public void LeaveGame() {
-        Fader.GetComponent<DayHandler>().StopPostProcessing();
+        //Fader.GetComponent<DayHandler>().StopPostProcessing();
         Fader.GetComponent<DayHandler>().LeaveGame();
         Continue();
     }
