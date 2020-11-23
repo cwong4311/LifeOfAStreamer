@@ -415,6 +415,8 @@ public class DayHandler : MonoBehaviour
                     StartCoroutine(TriggerBeginningMonologue(myMessage, "I'm not really that bad, am I?", 3f));
                     StartCoroutine(TriggerBeginningMonologue(myMessage, "Maybe I should just skip streaming today", 6f));
                     StartCoroutine(TriggerBeginningMonologue(myMessage, "I don't want to hear any more", 9f));
+                    StartCoroutine(TriggerBeginningMonologue(myMessage, "But what if there's people waiting for me?", 12f));
+                    StartCoroutine(TriggerBeginningMonologue(myMessage, "One more try...", 15f));
                 } else {
                     myText = "Getting some text about trolls increasing in activity lately.\n Hopefully I won't run into any";
                     myDuration = 4f;  

@@ -93,6 +93,7 @@ N_C_2
 Nice
 N_C_3
 what was his problem?
+F_X_9
 N_C_2
 idk, but he seemed like he was trying to start something
 N_C_3
