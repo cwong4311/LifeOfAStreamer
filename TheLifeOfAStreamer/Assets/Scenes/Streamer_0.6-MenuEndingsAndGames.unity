@@ -11440,9 +11440,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'You realise moderators are
-
-    essential in achieving this balance'
+  m_Text: "You realise perseverance and moderators \nare essential in achieving this
+    balance"
 --- !u!222 &548391945
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -29,9 +29,9 @@ public static class Globals
     public static string reserveDays = "";
 
     public static int subNumber = 0;
-    public static string subNames = "";
+    //public static string subNames = "";
 
-    public static string username = "Player1024";
+    public static string username = "Player";
     public static bool webcamEnabled = false;
     public static int platformSetting = 0;
 
@@ -150,7 +150,7 @@ public static class Globals
             reserveDays = "";
 
             subNumber = 0;
-            subNames = "";
+            //subNames = "";
             
             webcamEnabled = false;
         }

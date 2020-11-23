@@ -197,7 +197,7 @@ public class Viewer : MonoBehaviour
                 int checkValue = 3;
                 if (Random.Range(0, 100) < checkValue) {
                     Globals.subNumber++;
-                    Globals.subNames += username + ",";
+                    //Globals.subNames += username + ",";
                     Globals.dayAttitude += 0.3f;
                     amSubbed = true;
 
@@ -207,7 +207,7 @@ public class Viewer : MonoBehaviour
                 int checkValue = 1;
                 if (Random.Range(0, 200) < checkValue) {
                     Globals.subNumber++;
-                    Globals.subNames += username + ",";
+                    //Globals.subNames += username + ",";
                     Globals.dayAttitude += 0.3f;
                     amSubbed = true;
 

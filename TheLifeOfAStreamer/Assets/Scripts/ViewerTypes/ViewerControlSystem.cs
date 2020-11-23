@@ -14,7 +14,7 @@ public class ViewerControlSystem : MonoBehaviour
     private int test_created = 3;
     private string[] viewerNames;
 
-    private ArrayList returnerNames = new ArrayList();
+    //private ArrayList returnerNames = new ArrayList();
 
     private int dayTroll = 0;
     private int returningViewer = 0;
@@ -32,10 +32,10 @@ public class ViewerControlSystem : MonoBehaviour
         if (Globals.subNumber > 0) {
             todayReturner = Globals.subNumber;
 
-            foreach (string name in Globals.subNames.Split(',')) {
-                if (name.Trim() == "") continue;
-                returnerNames.Add(name.Trim());
-            }
+            //foreach (string name in Globals.subNames.Split(',')) {
+            //    if (name.Trim() == "") continue;
+            //    returnerNames.Add(name.Trim());
+            //}
         }
     }
 

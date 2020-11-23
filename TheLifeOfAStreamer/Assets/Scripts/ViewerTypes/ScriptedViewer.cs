@@ -185,7 +185,7 @@ public class ScriptedViewer : Viewer
                 return "";
             case string s when s.Contains("S_C"):
                 Globals.subNumber++;
-                Globals.subNames += username + ",";
+                //Globals.subNames += username + ",";
                 scriptCounter = 0.3f;
                 DisplaySubbed();
                 return "";

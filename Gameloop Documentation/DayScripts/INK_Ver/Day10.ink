@@ -101,7 +101,7 @@ must be a troll. don't worry about it.
 * Ok
     -> Epilogue
 * What's a troll?
-    They're like dicks who just say mean things to people without thinking.
+    They're terrible people who just say mean things to others without thinking.
     trying to get people to feel down or bad about themselves
     just to get some laughs out of it
     N_C_2

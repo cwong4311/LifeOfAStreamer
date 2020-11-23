@@ -330,7 +330,7 @@ public class ResultsText : MonoBehaviour
                                 myMsg = "I took a break today";
                                 break;
                             case "audience":
-                                myMsg = "Social media got flooded by bad comments";
+                                myMsg = "Social media flooded by bad comments";
                                 break;
                             case "money":
                                 myMsg = "I don't know why this is happening";
